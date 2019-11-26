@@ -1,0 +1,10 @@
+Dagur 1:
+Á degi eitt var byrjað á að fara yfir A kröfur í verkefnalýsingu og þær settar fram á skýran máta sem grunnvirknikröfur kerfisins (sjá skýrslu). Gerð var stutt greining á þeim tveimur notendahópum sem koma til með að nota kerfið. Gerð voru notkunartilvik fyrir hverja grunnvirknikröfu sem sett var fram.
+
+Dagur 2:
+Morgunfundur:
+Á morgunfundinum var ákveðið að byrja daginn á að fara saman yfir notkunartilvikin sett fram á fyrsta degi, til að meðlimir hópsins gætu samræmt hugmyndir sínar um virkni kerfisins. Helstu verkefni dagsins voru síðan að greina hvaða valmöguleikar væru notanda í boði á hverjum glugga og að gera stöðurit fyrir stöðu notanda innan forritsins (sem sýnir þá hvaða glugga notandi getur skoðað).
+
+Kvöldfundur:
+Á degi tvö tókst hópnum að fara yfir notkunartilvikin, klára stöðuritið og kortleggja, í grófum dráttum, hvað notandi gæti gert á hverjum glugga tengdum kröfunum. Á degi þrjú verður síðan hægt að gera skissur af gluggunum fyrir nokkur vel valin notkunartilvik („Use case“) og skoða betur útfærslu á viðmótslagi kerfisins. Mynd sýnir verkefnalistann við lok 2. dagsins.
+
