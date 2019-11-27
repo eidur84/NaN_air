@@ -1,10 +1,30 @@
-Dagur 1:
-Á degi eitt var byrjað á að fara yfir A kröfur í verkefnalýsingu og þær settar fram á skýran máta sem grunnvirknikröfur kerfisins (sjá skýrslu). Gerð var stutt greining á þeim tveimur notendahópum sem koma til með að nota kerfið. Gerð voru notkunartilvik fyrir hverja grunnvirknikröfu sem sett var fram.
+﻿Dagbók fyrir Verklegt námskeið 1 í Tölvunarfræði, HR Haust 2019
+Hópur 49:
+Daníel Páll Smárason,
+Eiður Ágúst Egilsson,
+Logi Eyjólfsson,
+Pétur Daníel Þórðarson
+Dagur 1, vika 1:
+  
 
-Dagur 2:
+Á degi eitt var byrjað á að fara yfir A kröfur í verkefnalýsingu og þær settar fram á skýran máta sem grunnvirknikröfur kerfisins. Gerð var stutt greining á þeim tveimur notendahópum sem koma til með að nota kerfið. Gerð voru notkunartilvik fyrir hverja grunnvirknikröfu sem sett var fram. Á mynd sést „to-do“ listi hópsins fyrir fyrstu viku námskeiðsins. Færslum verður síðan bætt við í listann eftir þörfum.
+Dagur 2, vika 1:
 Morgunfundur:
-Á morgunfundinum var ákveðið að byrja daginn á að fara saman yfir notkunartilvikin sett fram á fyrsta degi, til að meðlimir hópsins gætu samræmt hugmyndir sínar um virkni kerfisins. Helstu verkefni dagsins voru síðan að greina hvaða valmöguleikar væru notanda í boði á hverjum glugga og að gera stöðurit fyrir stöðu notanda innan forritsins (sem sýnir þá hvaða glugga notandi getur skoðað).
+  
 
+Á morgunfundinum var ákveðið að byrja daginn á að fara saman yfir notkunartilvikin sett fram á fyrsta degi, til að meðlimir hópsins gætu samræmt hugmyndir sínar um virkni kerfisins. Helstu verkefni dagsins voru síðan að greina hvaða valmöguleikar væru notanda í boði á hverjum glugga og að gera stöðurit fyrir stöðu notanda innan forritsins (sem sýnir glugga innan forritsins).
+Myndin að ofan sýnir „to-do“ listann fyrir fyrstu vikuna við setningu morgunfundar á degi tvö.
+Bætt var við „Fara yfir notkunartilvik“ færslunni.
+Kvöldfundur: 
+  
+
+Á degi tvö tókst hópnum að fara yfir notkunartilvikin. Einnig náðist að klára stöðuritið og kortleggja, í grófum dráttum, hvað notandi gæti gert á hverjum glugga tengdum kröfunum. Á degi þrjú verður síðan hægt að gera skissur af gluggunum fyrir nokkur vel valin notkunartilvik („Use case“) og skoða betur útfærslu á viðmótslagi kerfisins. Mynd sýnir verkefnalistann við lok 2. dagsins.
+Dagur 3, vika 1:
+Morgunfundur:
+  
+
+Á degi þrjú var ákveðið að samræma stöðuritið og skipanayfirlitið sem gerð voru daginn áður og nýta það til að gera grófa útlitshönnun („Wireframe“) á öllum gluggum fyrir helstu skipanir notanda. Einnig var ákveðið að setja fram nytsemismarkmið/kröfulista fyrir notendaviðmótið. 
 Kvöldfundur:
-Á degi tvö tókst hópnum að fara yfir notkunartilvikin, klára stöðuritið og kortleggja, í grófum dráttum, hvað notandi gæti gert á hverjum glugga tengdum kröfunum. Á degi þrjú verður síðan hægt að gera skissur af gluggunum fyrir nokkur vel valin notkunartilvik („Use case“) og skoða betur útfærslu á viðmótslagi kerfisins. Mynd sýnir verkefnalistann við lok 2. dagsins.
+  
 
+Á degi þrjú náði hópurinn að hanna útlit („Wireframe“) á öllum helstu gluggum kerfisins. Einnig voru settar fram nokkrar almennar kröfur fyrir forritið. Þar sem fyrstu verkefni dagsins kláruðust hratt og vel var ákveðið að byrja á klasaritinu og klára það á fimmtudeginum og setja saman hönnunarskýrslu fyrir „NAMS“-kerfið (NaN Air Management System).
