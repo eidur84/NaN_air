@@ -1,8 +1,4 @@
 
-byrja á notkunartilvikum, síðan notendahópagreiningu og léttu wireframe?
-kröfulisti til viðmóts, með virkni og nytsemikröfum
-henda síðan í stöðurit og klasarit
-
 	áfangastaðir:
 		Grænland: Nuuk, Kulusuk
 		Færeyjar: Þórshöfn
@@ -14,18 +10,3 @@ yfirlit yfir A-kröfur:
 	Fyrir hvern áfangstað: Skrá land, flugvöll, flugtíma, fjarlægð frá Íslandi, nafn tengiliðs og neyðarsími
 	Fyrir hverja vinnuferð: Skrá áfangstað, dagsetning og tími brottfarar frá Íslandi, dagsetning og tími brottfarar til Íslands, starfsmenn í flugi (2 flugmenn (1 flugstjóri), a.m.k. 1 flugþjónn (þar af 1 yfirflugþjónn)) Þægilegt að geta: afritað vinnuferðir fyrir marga mismunandi daga
 
-
-	* Skrá og lista alla starfsmenn. komið
-	* Skrá og lista alla flugmenn. komið
-	* Skrá og lista alla flugþjóna. komið
-	* Lista upplýsingar um ákveðinn starfsmann. komið
-	* Breyta upplýsingum um starfsmann (þó ekki nafni né kennitölu). komið
-	* Skrá og lista áfangastaði. komið
-	* Skrá og birta vinnuferðir þar sem eftirfarandi reglum er fylgt:
-		- Starfmenn mega bara fara eina vinnuferð (e. voyage) á degi hverjum. Koma skal því í veg fyrir að hægt sé að skrá sama starfsmann í fleiri en eina vinnuferð á sama degi.
-		- Hver vinnuferð skal hafa amk. tvo flugmenn og amk. einn flugþjón, það skal þó vera hægt að vista/skrá vinnuferð án starfsmannaupplýsinga og þeim svo bætt við síðar.
-	* Einnig þarf að vera hægt að lista allar vinnuferðir á ákveðnum degi og gefa til kynna hvort þær séu fullmannaðar eða ekki.
-	* Einnig þarf að vera hægt að lista allar vinnuferðir í ákveðinni viku og gefa til kynna hvort þær séu fullmannaðar eða ekki.
-	* Lista alla starfsmenn sem eru ekki að vinna ákveðinn dag.
-	* Lista alla starfsmenn sem eru að vinna ákveðinn dag og hvert þeir eru að fara.
-	* Birta prentvænt vinnuyfirlit sem sýnir allar vinnuferðir starfsmanns í ákveðinni viku.
