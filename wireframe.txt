@@ -220,7 +220,7 @@ Skrá ómannaða vinnuferð~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |    																		  |
 |		+--------------------------------------------------------+            |
 |		|Áfangastaður: Nuuk, Grænland       	         	     |            |
-|		|Flugvöllur:                         					 |            |
+|		|Flugvöllur: Nuuk International Airport      			 |            |
 |		|Brottfarardagsetning: _____________             	     |            |
 |		|Brottfarartími: ___________________               	     |            |
 |		|Heimkomutími:                                           |            |
@@ -229,7 +229,7 @@ Skrá ómannaða vinnuferð~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |       |__________ (*)                     ____________  (*)    |            |
 |       |__________                         ____________         |            |
 |		+--------------------------------------------------------+            |
-|			  			Flugvöllur: _________	                              |
+|		  			Brottfarardagsetning:_____  (DD/MM/YY)                    |
 |																			  |
 |																			  |
 |																			  |
@@ -240,6 +240,8 @@ Skrá ómannaða vinnuferð~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	(ascii art)																  |
 |																			  |
 +-----------------------------------------------------------------------------+
+
+(GLUGGI TIL AÐ ENDURTAKA FLUG AUÐVELDLEGA)
 
 (Gerum ráð fyrir einum flugvelli í hverri borg)
 
@@ -378,6 +380,9 @@ Uppfæra vinnuferð~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |	(ascii art)																  |
 |																			  |
 +-----------------------------------------------------------------------------+
+
+(HÆGT AÐ  BREYTA ENDURTEKNINGU)
+(VELJA vikudaga fyrir endurtekningar -> velja END DATE)
 (Need staffID ?) (vinna þenna skjá með nýskráningarskjá)
 
 Breyta uppl. um starfsmann~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -540,13 +545,10 @@ Lista af áfangastöðum með upplýsingum~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 |		|Neyðarsími: 5885522                       	             |            |
 |		+--------------------------------------------------------+            |
 |			  			Hverju viltu breyta?            		     	      |
-|							1) Land									          |
-|							2) Borg											  |
-|							3) Flugvöllur									  |
-|							4) Flugtími									      |
-|							5) Fjarlægð frá ISL								  |
-|							6) Tengiliður									  |
-|							7) Neyðarsími									  |
+|							1) Flugvöllur									  |
+|							2) Flugtími									      |
+|							3) Tengiliður									  |
+|							4) Neyðarsími									  |
 |																 			  |
 |																			  |
 |	(ascii art)																  |
@@ -554,9 +556,68 @@ Lista af áfangastöðum með upplýsingum~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 +-----------------------------------------------------------------------------+
 
 
-(vinna samhliða nýskráningar síðu) (hugsa um modularity, mörg lítil föll, t.d. paging system (með index og slicea lista), update/nýskráning mechanismi, screen display function, generic leitar fall, insert/update database (if key_word is there, update. if no key_word found, insert new row)
+(vinna samhliða nýskráningar síðu)
 
 
+(hugsa um modularity, mörg lítil föll, t.d. paging system (með index og slicea lista), update/nýskráning mechanismi, screen display function, generic leitar fall, insert/update database (if key_word is there, update. if no key_word found, insert new row))
+
+Sjá upplýsingar um flugvél~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++-----------------------------------------------------------------------------+
+|(NAMS logo)																  |
+|																	29/10/2019|
+|Flugvélar 	     												     	 16:00|
+|																			  |
+|0) Til baka																  |
+|-----------------------------------------------------------------------------| 
+|																			  |
+|Vinsamlegast veldu aðgerð:													  |
+|																			  |
+|1) Nýskrá flugvél														  	  |
+|2) Upplýsingar um flugvélar											  	  |
+|																			  |
+|																			  |
+|						Aðgerð: _____										  |
+|																			  |
+|																			  |
+|																			  |
+|																			  |
+|																			  |
+|																			  |
+|																			  |
+|																			  |
+|																 			  |
+|																 			  |
+|																			  |
+|	(ascii art)																  |
+|																			  |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+|(NAMS logo)																  |
+|																	29/10/2019|
+|Nýskrá flugvél														     16:00|
+|																			  | 
+|0) Til baka  																  |
+|-----------------------------------------------------------------------------|
+|																  			  |
+|    																		  |
+|		+--------------------------------------------------------+            |
+|		|Nafn: __________________________                 	 	 |            |
+|		|Framleiðandi: __________________         	   		     |            |
+|		|Tegund: ________________________                	     |            |
+|		|Sætafjöldi: ____________________  	        			 |            |
+|		+--------------------------------------------------------+            |
+|			  			Nafn: ___________            		     	      	  |
+|																 			  |
+|																 			  |
+|																 			  |
+|																 			  |
+|																 			  |
+|																			  |
+|	(ascii art)																  |
+|																			  |
++-----------------------------------------------------------------------------+
 
 
 
