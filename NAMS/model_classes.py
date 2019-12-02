@@ -178,8 +178,6 @@ class Destination():
 		return self.__contact_number_str
 
 
-
-
 class Employee:
 
 	def __init__(self):
