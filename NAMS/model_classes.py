@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-class Rtrip():
-    def __init__(self):
-        self.__valid_bool = True 
-        self.__dest_str = ""
-        self.__rtime_int = ""
-        self.__passenger_count_int = ""
-        self.__start_time_str = ""
-        self.__return_time_str = ""
-        self.__start_date_str = ""
-        self.__return_date_str = ""
-
-    def valid_bool(self, valid_bool):
-        pass
-
-    def set_dest_str(self, dest_str):
-        if dest_str.replace(" ","").isalpha():
-            self.__dest_str = dest_str
-            return True
-        else:
-            return False
-    
-    def get_dest_str(dest_str):
-        return self.__get_dest_str
-    
-    def set_rtime_int(self, rtime_int):
-        if rtime_int.isdecimal:
-            self.__rtime_int = rtime_int:
-            return True
-        else:
-            return False
-=======
 class Rtrip ():
 	"""
 	Model class for round trips (flight from Iceland and flight back to Iceland).
@@ -43,7 +11,6 @@ class Rtrip ():
 		self.__return_time_str = ""
 		self.__start_date_str = ""
 		self.__return_date_str = ""
->>>>>>> 23b3c31ae709186b87d0c826fe1b7a09add441bf
 
 	def valid_bool(self, valid_bool):
 		pass
@@ -287,7 +254,6 @@ class Crew:
             return True
         else:
             return False
-<<<<<<< HEAD
         
     def get_return_date_str(self):
         return self.__return_date_str
@@ -326,5 +292,3 @@ class Airplane():
 
     def get_manuf_str(self):
         return self.__manuf_str
-=======
->>>>>>> 23b3c31ae709186b87d0c826fe1b7a09add441bf
