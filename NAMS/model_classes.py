@@ -171,3 +171,41 @@ class Destination():
 
     def get_contact_number(self):
         return self.__contact_number_str
+
+
+
+
+class Employee:
+
+    def __init__(self):
+        self.__valid_bool = False
+        self.__name_str = ""
+        self.__ssn_str = ""
+        self.__address_str = ""
+        self.__landline_str = ""
+        self.__gsm_str = ""
+        self.__email_str = ""
+        self.__job_str = ""
+        self.__allowed_planes_list = [ ]
+
+    def set_valid(self):
+        if :
+
+
+    def set_name(self, name_str):
+        if name_str.replace(" ","").isalpha() and len(name_str) < 60:
+            self.__name_str = name_str
+            return True
+        else:
+            return False
+
+    def get_name(self):
+        return self.__name_str
+
+
+
+    def set_ssn(self, ssn_str):
+        if ssn_str.isdecimal():
+            if ssn_str[:2] not in [ str(day) for day in range(1, 30)]
+
+
