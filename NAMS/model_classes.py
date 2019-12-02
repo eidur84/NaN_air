@@ -1,4 +1,4 @@
-class Rtrip ():
+class Rtrip:
 	"""
 	Model class for round trips (flight from Iceland and flight back to Iceland).
 	"""
@@ -23,7 +23,7 @@ class Rtrip ():
 			return False
 
 	def get_dest_str(self):
-		return self.__get_dest_str
+		return self.__dest_str
 
 	def set_rtime_int(self, rtime_int):
 		if rtime_int.isdecimal:
@@ -86,7 +86,7 @@ class Rtrip ():
 		return self.__return_date_str
 
 
-class Destination():
+class Destination:
 
 	def __init__(self):
 		self.__valid_bool = False
@@ -189,7 +189,7 @@ class Employee:
 		self.__gsm_str = ""
 		self.__email_str = ""
 		self.__job_str = ""
-		self.__allowed_planes_list = [ ]
+		self.__allowed_planes_list = []
 
 	def set_valid(self):
 		pass
@@ -206,6 +206,51 @@ class Employee:
 
 	def set_ssn(self, ssn_str):
 		if ssn_str.isdecimal():
-			if ssn_str[:2] not in [ str(day) for day in range(1, 30)]:
+			if ssn_str[:2] not in [str(day) for day in range(1, 30)]:
 				pass
 
+
+class Crew:
+
+	def __init__(self):
+		self.__headpilot = ''
+		self.__copilot = ''
+		self.__headsteward = ''
+		self.__otherstewards = []
+
+	def set_headpilot(self, name_str):
+		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
+			self.__headpilot = name_str
+			return True
+		else:
+			return False
+
+	def get_headpilot(self):
+		return self.__headpilot
+
+	def set_copilot(self, name_str):
+		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
+			self.__copilot = name_str
+			return True
+		else:
+			return False
+
+	def get_copilot(self):
+		return self.__copilot
+
+	def set_headsteward(self, name_str):
+		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
+			self.__headsteward = name_str
+			return True
+		else:
+			return False
+
+	def get_headsteward(self):
+		return self.__headsteward
+
+	def set_stewards(self, name_str):
+		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
+			self.__otherstewards.append(name_str)
+			return True
+		else:
+			return False
