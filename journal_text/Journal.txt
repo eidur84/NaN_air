@@ -1,44 +1,71 @@
 ﻿Dagbók fyrir Verklegt námskeið 1 í Tölvunarfræðideild, HR Haust 2019
-
 Hópur 49:
 Daníel Páll Smárason,
 Eiður Ágúst Egilsson,
 Logi Eyjólfsson,
 Pétur Daníel Þórðarson
-
 Dagur 1, vika 1:
+  
+
 Á degi eitt var byrjað á að fara yfir A kröfur í verkefnalýsingu og þær settar fram á skýran máta sem grunnvirknikröfur kerfisins. Gerð var stutt greining á þeim tveimur notendahópum sem koma til með að nota kerfið. Gerð voru notkunartilvik fyrir hverja grunnvirknikröfu sem sett var fram. Á mynd sést „to-do“ listi hópsins fyrir fyrstu viku námskeiðsins. Færslum verður síðan bætt við í listann eftir þörfum.
-
-
 Dagur 2, vika 1:
 Morgunfundur:
+  
+
 Á morgunfundinum var ákveðið að byrja daginn á að fara saman yfir notkunartilvikin sett fram á fyrsta degi, til að meðlimir hópsins gætu samræmt hugmyndir sínar um virkni kerfisins. Helstu verkefni dagsins voru síðan að greina hvaða valmöguleikar væru notanda í boði á hverjum glugga og að gera stöðurit fyrir stöðu notanda innan forritsins (sem sýnir glugga innan forritsins).
 Myndin að ofan sýnir „to-do“ listann fyrir fyrstu vikuna við setningu morgunfundar á degi tvö.
 Bætt var við „Fara yfir notkunartilvik“ færslunni.
-
 Kvöldfundur: 
+  
+
 Á degi tvö tókst hópnum að fara yfir notkunartilvikin. Einnig náðist að klára stöðuritið og kortleggja, í grófum dráttum, hvað notandi gæti gert á hverjum glugga tengdum kröfunum. Á degi þrjú verður síðan hægt að gera skissur af gluggunum fyrir nokkur vel valin notkunartilvik („Use case“) og skoða betur útfærslu á viðmótslagi kerfisins. Mynd sýnir verkefnalistann við lok 2. dagsins.
-
-
 Dagur 3, vika 1:
 Morgunfundur:
-Á degi þrjú var ákveðið að samræma stöðuritið og skipanayfirlitið sem gerð voru daginn áður og nýta það til að gera grófa útlitshönnun („Wireframe“) á öllum gluggum fyrir helstu skipanir notanda. Einnig var ákveðið að setja fram nytsemismarkmið/kröfulista fyrir notendaviðmótið. 
+  
 
+Á degi þrjú var ákveðið að samræma stöðuritið og skipanayfirlitið sem gerð voru daginn áður og nýta það til að gera grófa útlitshönnun („Wireframe“) á öllum gluggum fyrir helstu skipanir notanda. Einnig var ákveðið að setja fram nytsemismarkmið/kröfulista fyrir notendaviðmótið. 
 Kvöldfundur:
+  
+
 Á degi þrjú náði hópurinn að hanna útlit („Wireframe“) á öllum helstu gluggum kerfisins. Einnig voru settar fram nokkrar almennar kröfur fyrir forritið. Þar sem fyrstu verkefni dagsins kláruðust hratt og vel var ákveðið að byrja á klasaritinu og klára það á fimmtudeginum og setja saman hönnunarskýrslu fyrir „NAMS“-kerfið (NaN Air Management System).
 
 
 Dagur 4, vika 1:
 Morgunfundur:
+  
+
 Á morgunfundinum ákvað hópurinn að klára klasaritið og byrja síðan að skrifa skýrslu. Samhliða því að fara yfir allt sem hefur verið klárað og sjá hvort eitthvað vanti upp á.
 
+
 Kvöldfundur:
+  
+
 Tekinn var fundur með kennara og kom í ljós að bæta þurfti við klösum í klasaritið og að bæta mætti B-kröfum við í grunnkröfulistann. Klösunum var bætt við og klasaritið klárað. B-kröfunum var einnig bætt við og use case skrifuð fyrir hverja kröfu. Hafist var handa við að skrifa skýrsluna.
 
 
 Dagur 5, vika 1:
 Morgunfundur:
-Á morgunfundinum var ákveðið að lagfæra/fara yfir klasaritið, leggja lokahönd á skýrsluna og enda á því að fara yfir skýrsluna saman sem hópur. 
+  
 
+Á morgunfundinum var ákveðið að lagfæra/fara yfir klasaritið, leggja lokahönd á skýrsluna og enda á því að fara yfir skýrsluna saman sem hópur. 
 Kvöldfundur:
+  
+
 Um kl 13:30 á föstudeginum voru öll verkefni hópsins kláruð.
+
+
+Dagur 1, vika 2:
+Morgunfundur:
+  
+
+Á fyrsta degi í annarri vikunni byrjaði hópurinn á því að finna hver helstu verkefni vikunnar væru. Á myndinni sést to-do listinn fyrir viku tvö. Hópurinn byrjaði á því að samræma hugmyndir meðlima og ákveða hvernig csv skrárnar væru uppbyggðar. Hópurinn ákvað að byrja á því að skrifa model klasana sem lög forritsins myndu vinna með.
+Kvöldfundur:
+  
+
+Á fyrsta degi viku tvö teiknaði hópurinn upp mynd af csv skránum (á síðunni quick database diagrams), sbr. mynd að ofan. Kennitala starfsmanna er notuð sem foreign key í Crew skránni sem heldur utan um starfsmenn í hverju flugi fyrir sig. Þær færslur eru tengdar við Rtrip skrána sem heldur utan um vinnuferðir NaN Air, í gegnum RtripID sem væri einkennisnúmer hverrar vinnuferðar (primary key í Rtrip skránni). Airplanes skráin tengist á sambærilegan hátt Rtrip og Staff skránum og Destinations tengist Rtrip.
+  
+
+Hópurinn byrjaði á því að skrifa model klasa kerfisins og verður sú vinna kláruð á degi 2 í viku 2.
+
+
+Dagur 2, vika 2:
