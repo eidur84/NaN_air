@@ -352,7 +352,7 @@ class Airplane:
 	Model class for airplanes.
 	"""
 	def __init__(self):
-		self.__seat_count_int = ""
+		self.__seat_count_int = 0
 		self.__type_str = ""
 		self.__manuf_str = ""
 
