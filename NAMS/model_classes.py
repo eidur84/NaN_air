@@ -5,9 +5,9 @@ class Rtrip:
 	Model class for round trips (flight from Iceland and flight back to Iceland).
 	"""
 	def __init__(self):
-		self.__valid_bool = True
+		self.__valid_bool = False
 		self.__dest_str = ""
-		self.__rtime_int = ""
+		self.__rtime_int = 0
 		self.__passenger_count_int = ""
 		self.__start_time_str = ""
 		self.__return_time_str = ""
@@ -15,7 +15,11 @@ class Rtrip:
 		self.__return_date_str = ""
 
 	def set_valid(self):
-		pass  # a eftir að klára
+		if self.__dest_str != "" and self.__rtime_int != 0 and self.__start_time_str != "":
+			self.__valid_bool = True
+			return True
+		else:
+			return False
 
 	def set_dest_str(self, dest_str):
 		if dest_str.replace(" ", "").isalpha():
