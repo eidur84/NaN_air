@@ -1,7 +1,7 @@
 class Departure():
 	def __init__(self):
-		self.start_time_int = 0
-		self.end_time_int = 0
+		self.__start_time_int = 0
+		self.__end_time_int = 0
 	
 	def set_start_time_int(self, start_time_int)
 		if start_time_int.isdecimal():
