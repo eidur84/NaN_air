@@ -1,15 +1,15 @@
 class Update:
-	def __init__(self):
-		self.__new_data = {}
 
-	def update_staff(self):
+	__new_data = {}
+
+	def update_staff():
 		pass
 
-	def update_airplane(self):
+	def update_airplane():
 		pass
 
-	def update_rtrip(self):
+	def update_rtrip():
 		pass
 
-	def update_dest(self):
+	def update_dest():
 		pass
