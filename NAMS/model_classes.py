@@ -8,7 +8,7 @@ class Rtrip:
 		self.__valid_bool = False
 		self.__dest_str = ""
 		self.__rtime_int = 0
-		self.__passenger_count_int = ""
+		self.__passenger_count_int = 0
 		self.__start_time_str = ""
 		self.__return_time_str = ""
 		self.__start_date_str = ""
@@ -385,3 +385,30 @@ class Airplane:
 
 	def get_manuf_str(self):
 		return self.__manuf_str
+
+class Departure():
+	def __init__(self):
+		self.start_time_int = 0
+		self.end_time_int = 0
+	
+	def set_start_time_int(self, start_time_int)
+		if start_time_int.isdecimal():
+			self.__start_time_int = start_time_int
+			return True
+		else:
+			return False
+	
+	def get_start_time_int(self):
+		return self.__start_time_int
+	
+	def set_end_time_int(self, end_time_int):
+		if end_time_int.isdecimal():
+			self.__end_time_int = end_time_int
+			return True
+		else:
+			return False
+
+	def get_end_time_int(self):
+		return self.__end_time_int
+		
+		
