@@ -1,4 +1,5 @@
 
+from random import randint
 
 class Rtrip:
 	"""
@@ -9,10 +10,9 @@ class Rtrip:
 		self.__dest_str = ""
 		self.__rtime_int = 0
 		self.__passenger_count_int = ""
+		self.__airplane_type = ""		# Instance of class Airplane
 		self.__start_time_str = ""
 		self.__return_time_str = ""
-		self.__start_date_str = ""
-		self.__return_date_str = ""
 
 	def set_valid(self):
 		if self.__dest_str != "" and self.__rtime_int != 0 and self.__start_time_str != "":
@@ -41,8 +41,15 @@ class Rtrip:
 	def get_rtime_int(self):
 		return self.__rtime_int
 
+	def set_airplane_type(self, airplane_type_str):
+		self.__airplane_type_str = airplane_type_str
+		return True
+
+	def get_airplane_type(self):
+		return self.__airplane_type_str
+
 	def set_passenger_count_int(self, passenger_count_int):
-		if passenger_count_int.isdecimal():				# random? og má ekki vera fleiri en sætisfjöldi flugvélarinnar
+		if type(passenger_count_int) is int and passenger_count_int < self.__airplane_type.get_seat_count_int():
 			self.__passenger_count_int = passenger_count_int
 			return True
 		else:
@@ -70,26 +77,6 @@ class Rtrip:
 
 	def get_return_time_str(self):
 		return self.__return_time_str
-
-	def set_start_date_str(self, start_date_str):
-		if start_date_str.replace(" ", "").isalpha():	 # Checka lika hvort það sé í samræmi við ISO formattið
-			self.__start_date_str = start_date_str
-			return True
-		else:
-			return False
-
-	def get_start_date_str(self):
-		return self.__start_date_str
-
-	def set_return_date_str(self, return_date_str):
-		if return_date_str.replace(" ", "").isalpha():	 # Checka lika hvort það sé í samræmi við ISO formattið
-			self.__return_date_str = return_date_str
-			return True
-		else:
-			return False
-
-	def get_return_date_str(self):
-		return self.__return_date_str
 
 
 class Destination:
