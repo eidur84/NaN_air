@@ -1,36 +1,33 @@
 Valid,flightID,ssn,role,rank,licence
-True,3009907461,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801
-True,2910858778,Pilot,Captain,NABAE146,Fellsmúli 2,8998802
-True,2706838569,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8998803
-True,2209955782,Pilot,Captain,NABAE146,Fellsmúli 4,8998804
-True,2907675667,Pilot,Captain,NABAE146,Fellsmúli 5,8998805
-True,1309797899,Pilot,Captain,NAFokkerF28,Fellsmúli 6,8998806
-True,2410876598,Pilot,Copilot,NAFokkerF100,Fellsmúli 7,8998807
-True,2211658134,Pilot,Copilot,NABAE146,Fellsmúli 8,8998808
-True,2504939263,Pilot,Copilot,NABAE146,Fellsmúli 9,8998809
-True,1900769521,Pilot,Copilot,NABAE146,Fellsmúli 10,8998810
-True,2500812671,Pilot,Copilot,NAFokkerF28,Fellsmúli 11,8998811
-True,1309927223,Pilot,Copilot,NAFokkerF28,Fellsmúli 12,8998812
-True,1600904199,Cabincrew,Flight Service Manager,N/A,Fellsmúli 13,8998813
-True,0303758167,Cabincrew,Flight Service Manager,N/A,Fellsmúli 14,8998814
-True,2200763823,Cabincrew,Flight Service Manager,N/A,Fellsmúli 15,8998815
-True,1308941169,Cabincrew,Flight Service Manager,N/A,Fellsmúli 16,8998816
-True,1405853585,Cabincrew,Flight Service Manager,N/A,Fellsmúli 17,8998817
-True,0909862878,Cabincrew,Flight Service Manager,N/A,Fellsmúli 18,8998818
-True,1811931544,Cabincrew,Flight Service Manager,N/A,Fellsmúli 19,8998819
-True,0409858797,Cabincrew,Flight Service Manager,N/A,Fellsmúli 20,8998820
-True,3002688722,Cabincrew,Flight Attendant,N/A,Fellsmúli 21,8998821
-True,3003962187,Cabincrew,Flight Attendant,N/A,Fellsmúli 22,8998822
-True,1311772221,Cabincrew,Flight Attendant,N/A,Fellsmúli 23,8998823
-True,2509913418,Cabincrew,Flight Attendant,N/A,Fellsmúli 24,8998824
-True,1103647756,Cabincrew,Flight Attendant,N/A,Fellsmúli 25,8998825
-True,2807755841,Cabincrew,Flight Attendant,N/A,Fellsmúli 26,8998826
-True,0409907212,Cabincrew,Flight Attendant,N/A,Fellsmúli 27,8998827
-True,1103912131,Cabincrew,Flight Attendant,N/A,Fellsmúli 28,8998828
-True,2801645554,Cabincrew,Flight Attendant,N/A,Fellsmúli 29,8998829
-True,1501681497,Cabincrew,Flight Attendant,N/A,Fellsmúli 30,8998830
-True,1811813379,Cabincrew,Flight Attendant,N/A,Fellsmúli 31,8998831
-True,0505942924,Cabincrew,Flight Attendant,N/A,Fellsmúli 32,8998832
-True,1110732819,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833
-True,2602806942,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834
-True,1107951952,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835
+True,1,1311772221,Cabincrew,Flight Attendant,N/A
+True,1,1600904199,Cabincrew,Flight Service Manager,N/A
+True,1,2410876598,Pilot,Copilot,NAFokkerF100
+True,1,3002688722,Cabincrew,Flight Attendant,N/A
+True,1,3003962187,Cabincrew,Flight Attendant,N/A
+True,1,3009907461,Pilot,Captain,NAFokkerF100
+True,2,0303758167,Cabincrew,Flight Service Manager,N/A
+True,2,1103647756,Cabincrew,Flight Attendant,N/A
+True,2,2211658134,Pilot,Copilot,NABAE146
+True,2,2509913418,Cabincrew,Flight Attendant,N/A
+True,2,2910858778,Pilot,Captain,NABAE146
+True,3,0409907212,Cabincrew,Flight Attendant,N/A
+True,3,2200763823,Cabincrew,Flight Service Manager,N/A
+True,3,2706838569,Pilot,Captain,NAFokkerF100
+True,3,2807755841,Cabincrew,Flight Attendant,N/A
+True,4,1103912131,Cabincrew,Flight Attendant,N/A
+True,4,1308941169,Cabincrew,Flight Service Manager,N/A
+True,4,2209955782,Pilot,Captain,NABAE146
+True,4,2504939263,Pilot,Copilot,NABAE146
+True,4,2801645554,Cabincrew,Flight Attendant,N/A
+True,5,0505942924,Cabincrew,Flight Attendant,N/A
+True,5,1405853585,Cabincrew,Flight Service Manager,N/A
+True,5,1501681497,Cabincrew,Flight Attendant,N/A
+True,5,1811813379,Cabincrew,Flight Attendant,N/A
+True,5,1900769521,Pilot,Copilot,NABAE146
+True,5,2907675667,Pilot,Captain,NABAE146
+True,6,0409858797,Cabincrew,Flight Service Manager,N/A
+True,6,1107951952,Cabincrew,Flight Attendant,N/A
+True,6,1110732819,Cabincrew,Flight Attendant,N/A
+True,6,1309797899,Pilot,Captain,NAFokkerF28
+True,6,2500812671,Pilot,Copilot,NAFokkerF28
+True,6,2602806942,Cabincrew,Flight Attendant,N/A
