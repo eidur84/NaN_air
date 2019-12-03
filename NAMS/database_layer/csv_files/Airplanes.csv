@@ -1,4 +1,4 @@
-airplaneID,manufacturer,name,type,seat_count,Valid
+airplaneID,manufacturer,name,type,seat_count,valid
 1,Fokker,TF-EPG,NAFokkerF100,100,True
 2,Fokker,TF-UVR,NAFokkerF28,70,True
 3,British Aerospace,TF-XZR,NABAE146,100,True
