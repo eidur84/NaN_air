@@ -2,11 +2,23 @@ class Rtrip:
 	"""
 	Model class for round trips (flight from Iceland and flight back to Iceland).
 	"""
+
+	__valid_bool = False
+	__dest_str = ""
+	__rtime_int = 0
+	__passenger_count_int = 0
+	__airplane_type = ""		# Instance of class Airplane
+	__passenger_count_int = 0
+	__start_time_str = ""
+	__return_time_str = ""
+
+	# Ekki alveg klár á því hvernig við útfærum þennan constructor þar sem 
+
 	def __init__(self):
 		self.__valid_bool = False
 		self.__dest_str = ""
 		self.__rtime_int = 0
-		self.__passenger_count_int = ""
+		self.__passenger_count_int = ""  # Tvö passenger count.. Þurfum við passenger count yfir höfuð þar sem við erum með flug fram og til baka? Sitthvor farþegafjöldi og flugvélin gefur upp passenger capacity.
 		self.__airplane_type = ""		# Instance of class Airplane
 		self.__passenger_count_int = 0
 		self.__start_time_str = ""

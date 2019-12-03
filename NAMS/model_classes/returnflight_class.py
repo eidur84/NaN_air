@@ -1,7 +1,16 @@
 class Returnflight:
-	def __init__(self):
-		self.__start_time = 0
-		self.__end_time = 0
+
+	Klasabreytur
+
+	__start_time_str = ""
+	__end_time_str = ""
+
+	# Constructor
+	# Þurfum að spá í hvernig við útfærum þetta.. Þetta er auðvitað alltaf tengt departure þannig constructor er mögulega ekki nauðsynlegur
+	# Jafnvel kanski óþarfa klasi?
+
+	def __init__(self, start_time):
+		self.__start_time_str = start_time
 
 	def set_start_time(self, number_int):
 		self.__start_time += number_int

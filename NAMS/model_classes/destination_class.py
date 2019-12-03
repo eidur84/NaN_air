@@ -2,6 +2,9 @@ class Destination:
     """
     Model class for destinations.
     """
+
+    # Klasabreytur
+
     __valid_bool = False
     __country_name_str = ''
     __city_name_str = ''
@@ -10,6 +13,8 @@ class Destination:
     __flight_time_int = 0
     __contact_name_str = ''
     __contact_phone_str = ''
+
+    # Constructor
 
     def __init__(self, country, city, airport, distance, flight_time, contact_name, contact_phone):
         self.__country_name_str = set_country

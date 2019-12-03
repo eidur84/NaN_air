@@ -1,4 +1,7 @@
 class Staff:
+
+    # Myndum við geyma þennan klasa í DB layernum og fylla hann þegar forritið er keyrt?
+
     def __init__(self):
         self.__pilot_list = []
         self.__steward_list = []
