@@ -2,21 +2,36 @@ class Destination:
     """
     Model class for destinations.
     """
-    def __init__(self):
-        self.__valid_bool = False
-        self.__country_name_str = ''
-        self.__city_name_str = ''
-        self.__airport_name_str = ''
-        self.__distance_int = 0
-        self.__flight_time_int = 0
-        self.__contact_name_str = ''
-        self.__contact_phone_str = ''
+    __valid_bool = False
+    __country_name_str = ''
+    __city_name_str = ''
+    __airport_name_str = ''
+    __distance_int = 0
+    __flight_time_int = 0
+    __contact_name_str = ''
+    __contact_phone_str = ''
 
-    #def set_valid(self):
-        #if self.__country_name_str.isalpha() == True.......
-            #self.__valid_bool = True
-        #else:
-            #self.__valid_bool = False
+    def __init__(self, country, city, airport, distance, flight_time, contact_name, contact_phone):
+        self.__country_name_str = set_country
+        self.__city_name_str = city
+        self.__airport_name_str = airport
+        self.__distance_int = distance
+        self.__flight_time_int = flight_time
+        self.__contact_name_str = contact_name
+        self.__contact_phone_str = contact_phone
+        self.set_valid(self)
+
+    # Tjekk hvort öll helstu attribute seu sett og innan lengar-/staerdartakmarkana áður en þau eru acceptuð inn í database
+
+    def set_valid(self):
+        if self.__country_name_str.isalpha() == True && len(country_name_str) <= 60 && len(country_name_str) > 0 \
+		&& self.__city_name_str.isalpha() == True && len(city_name_str) <= 60 && len(city_name_str) > 0 \
+		&& self.__airport_name_str.isalpha() == True && len(airport_name_str) <= 60 && len(airport_name_str) > 0 \
+		&& isinstance(__distance_int,int) && __distance_int > 0 \
+        && isinstance(__flight_time_int,int) && __flight_time_int > 0 &&	
+        	self.__valid_bool = True
+		else:
+			self.__valid_bool = False   	
 
     def get_valid(self):
         return self.__valid_bool
