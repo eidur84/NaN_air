@@ -24,11 +24,11 @@ class Destination:
     # Tjekk hvort öll helstu attribute seu sett og innan lengar-/staerdartakmarkana áður en þau eru acceptuð inn í database
 
     def set_valid(self):
-        if self.__country_name_str.isalpha() == True && len(country_name_str) <= 60 && len(country_name_str) > 0 \
-		&& self.__city_name_str.isalpha() == True && len(city_name_str) <= 60 && len(city_name_str) > 0 \
-		&& self.__airport_name_str.isalpha() == True && len(airport_name_str) <= 60 && len(airport_name_str) > 0 \
-		&& isinstance(__distance_int,int) && __distance_int > 0 \
-        && isinstance(__flight_time_int,int) && __flight_time_int > 0 &&	
+        if self.__country_name_str.isalpha() == True and len(country_name_str) <= 60 and len(country_name_str) > 0 \
+		and self.__city_name_str.isalpha() == True and len(city_name_str) <= 60 and len(city_name_str) > 0 \
+		and self.__airport_name_str.isalpha() == True and len(airport_name_str) <= 60 and len(airport_name_str) > 0 \
+		and isinstance(__distance_int,int) and __distance_int > 0 \
+        and isinstance(__flight_time_int,int) and __flight_time_int > 0:	
         	self.__valid_bool = True
 		else:
 			self.__valid_bool = False   	
