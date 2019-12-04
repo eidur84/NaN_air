@@ -15,7 +15,7 @@ class Create(DBLayer):
 		pass
 
 	def update_create_staff_str():
-		path = Path.joinpath(path).joinpath(Staff.csv)
+		path = path.joinpath(Staff.csv)
 
 		with open(path, "a", newline='') as file:
 
@@ -24,21 +24,21 @@ class Create(DBLayer):
 			writer.writerow(new_row_dict)
 
 	def update_create_airplane_str():
-		path = Path.joinpath(path).joinpath(Airplanes.csv)
+		path = path.joinpath(Airplanes.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
 			new_row_dict = Airplane.getattributes()
 			writer.writerow(new_row_dict)
 
 	def update_create_dest_str():
-		path = Path.joinpath(path).joinpath(Destinations.csv)
+		path = path.joinpath(Destinations.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
 			new_row_dict = Destination.getattributes()
 			writer.writerow(new_row_dict)
 
 	def update_rtrip_str():
-		path = Path.joinpath(path).joinpath(RoundTrips.csv)
+		path = path.joinpath(RoundTrips.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
 			new_row_dict = Rtrip.getattributes()
