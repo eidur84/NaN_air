@@ -6,7 +6,6 @@ class Rtrip:
 		self.__valid_bool = False
 		self.__dest_str = ""
 		self.__rtime_int = 0
-		self.__passenger_count_int = ""
 		self.__airplane_type = ""		# Instance of class Airplane
 		self.__passenger_count_int = 0
 		self.__start_time_str = ""
@@ -75,3 +74,5 @@ class Rtrip:
 
 	def get_return_time_str(self):
 		return self.__return_time_str
+
+
