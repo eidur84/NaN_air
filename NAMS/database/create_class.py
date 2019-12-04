@@ -66,7 +66,8 @@ class Create(DBLayer):
 		finished = Create.append_db_row(csv_file, destination)
 		return finished
 
-
+'''
+	## Flóknara
 	def create_rtrip(rtrip):
 		"""
 		Adds new round trip (voyage), using append_db_row function.
@@ -75,3 +76,4 @@ class Create(DBLayer):
 
 		finished = Create.append_db_row(csv_file, rtrip)
 		return finished
+'''

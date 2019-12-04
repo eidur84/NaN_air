@@ -9,13 +9,26 @@ class Update(DBLayer):
 	new_data = {}
 
 	def update_staff(employee, change_column, new_value):
-		
 
-	def update_airplane():
-		pass
+		search_ssn = employee.get_ssn()
+		finished = update_db_row("Staff.csv", change_column, new_value, "ssn", search_ssn)
+		return True
 
-	def update_rtrip():
-		pass
+	def update_airplane(airplane, change_column, new_value):
 
-	def update_dest():
-		pass
+		search_name = airplane.get_name()
+		finished = update_db_row("Airplanes.csv", change_column, new_value, "name", search_name)
+		return True
+
+'''
+	### Flóknara
+	def update_rtrip(rtrip, change_column, new_value):
+		search_ssn = rtrip.get_ID()
+		finished = update_db_row("Staff.csv", change_column, new_value, "ssn", search_ssn)
+		return True
+'''
+
+	def update_dest(destination, change_column, new_value):
+		search_ID = destination.get_ID()
+		finished = update_db_row("Destinations.csv", change_column, new_value, "ID", search_ID)
+		return True
