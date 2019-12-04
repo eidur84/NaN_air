@@ -42,5 +42,17 @@ class DBLayer:
 		csv_file.close()
 		return results
 
-	def generic_add_update():
-		pass
+	def generic_add_update(filter_column):
+		
+		filename = f"database/csv_files/{filename}"
+		results = [ ]
+		csv_file = open(filename, "a")
+		csv_dict = DictReader(csv_file)
+		if row[filter_column] == key_word:
+			key_word[key_word] = action
+		else :
+			with open(filename, 'a', newline='') as file:
+    			writer = csv.DictWriter(file)
+    			writer.writerow({key_word : action})
+
+		return results
