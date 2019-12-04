@@ -1,4 +1,3 @@
-
 from csv import DictReader
 from pathlib import Path
 
@@ -55,4 +54,5 @@ class DBLayer:
 				writer = csv.DictWriter(file)
 				writer.writerow({key_word: action})
 
+		csv_file.close()
 		return results
