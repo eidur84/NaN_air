@@ -147,7 +147,8 @@ class Employee:
 		self.__allowed_plane_str = ""
 
 	def set_valid(self):
-		pass
+		self.__valid_bool = True
+		return True
 
 	def set_name(self, name_str):
 		if name_str.replace(" ", "").isalpha() and len(name_str) < 60:
