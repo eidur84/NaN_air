@@ -18,6 +18,7 @@ class Destination:
 
 	def set_valid(self):
 		self.__valid_bool = True
+		return True
 
 	def get_valid(self):
 		return self.__valid_bool

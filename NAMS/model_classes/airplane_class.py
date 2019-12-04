@@ -14,14 +14,14 @@ class Airplane:
 
 	def set_valid(self):
 		self.__valid_bool = True
-
+		return True
 
 	def set_name(self, name):
-		if name.replace(" ", "").isalpha() and len(name) == 6:
+		if name.replace("-", "").isalpha() and len(name) == 6:
 			self.__PlaneName_str = name
 			return True
 		else:
-			return false
+			return False
 
 	def set_seat_count(self, seat_count):
 		if seat_count.isdecimal:
@@ -34,7 +34,7 @@ class Airplane:
 		return self.__seat_count_int
 
 	def set_type(self, type_str):
-		if type_str.replace(" ", "").isalpha():
+		if type_str.replace(" ", "").isalnum():
 			self.__type_str = type_str
 			return True
 		else:
@@ -44,7 +44,7 @@ class Airplane:
 		return self.__type_str
 
 	def set_manuf(self, manuf_str):
-		if manuf_str.replace(" ", "").isalpha():
+		if manuf_str.replace(" ", "").isalnum():
 			self.__manuf_str = manuf_str
 			return True
 		else:
