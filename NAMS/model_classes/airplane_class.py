@@ -4,29 +4,17 @@ class Airplane:
 	Model class for airplanes.
 	"""
 
-	__valid_bool = False
-    __PlaneID_int = 0 
-	__PlaneName_str = ""
-	__seat_count_int = 0
-	__type_str = ""
-	__manuf_str = ""
+	def __init__(self, name = "", seats = 0, planetype = "", manuf = ""):
+		self.__PlaneName_str = self.set_name(name)
+		self.__seat_count_int = self.set_seat_count(seats)
+		self.__type_str = self.set_type(planetype)
+		self.__manuf_str = self.set_manuf(manuf)
+		self.__valid_bool = False
 
-	def __init__(self, name, seats, planetype, manufacturer):
-		self.__PlaneName_str = name
-		self.__seat_count_int = seats
-		self.__type_str = planetype
-		self.__manuf_str = manufacturer
-		self.set_valid(self)
 
 	def set_valid(self):
-        if self.__seat_count_int.isdecimal and seat_count_int > 0 \ 
-		and self.__PlaneID_int.isdecimal \
-		and self.__PlaneName_str.replace(" ", "").isalpha() and len(__PlaneName_str) > 0 and len(__PlaneName_str) > 0 \
-		and self.type_str.replace(" ", "").isalpha() and len(type_str) > 0 \
-		and self.__manuf_str(" ", "").isalpha() and len(type_str) > 0:
-        	self.__valid_bool = True
-		else:
-			self.__valid_bool = False   
+		self.__valid_bool = True
+
 
 	def set_name(self, name):
 		if name.replace(" ", "").isalpha() and len(name) == 6:
@@ -64,3 +52,17 @@ class Airplane:
 
 	def get_manuf(self):
 		return self.__manuf_str
+
+	def getattributes(self):
+		column_names = ["airplaneID", "manufacturer", "name", "type", "seat_count", "valid"]
+		attributes = [
+			10,
+			self.__manuf_str,
+			self.__PlaneName_str,
+			self.__type_str,
+			self.__seat_count_int,
+			self.__valid_bool,
+		]
+
+		attribute_dict = dict(zip(column_names, attributes))
+		return attribute_dict

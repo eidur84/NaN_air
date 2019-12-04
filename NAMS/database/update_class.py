@@ -1,6 +1,6 @@
 class Update:
 
-	__new_data = {}
+	new_data = {}
 
 	def update_staff():
 		pass
