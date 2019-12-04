@@ -1,5 +1,6 @@
-
-from csv import DictWriter, DictWriter
+from database.DBLayer import DBLayer
+from model_classes import *
+from csv import DictWriter
 from pathlib import Path
 
 
@@ -10,7 +11,6 @@ class Create(DBLayer):
 	create_dest_str = ""
 	create_rtrip_str = ""
 
-
 	def update_new_data_str():
 		pass
 
@@ -18,7 +18,7 @@ class Create(DBLayer):
 		path = Path.joinpath(path).joinpath(Staff.csv)
 
 		with open(path, "a", newline='') as file:
-		
+
 			writer = DictWriter(file)
 			new_row_dict = Employee.getattributes()
 			writer.writerow(new_row_dict)
@@ -27,17 +27,20 @@ class Create(DBLayer):
 		path = Path.joinpath(path).joinpath(Airplanes.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
-			writer.writerow({"airplaneID" : ?, "manufacturer" : ? "name" : ?, "type" : ?, "seat_count" : ?, "valid" : ?,})
+			new_row_dict = Airplane.getattributes()
+			writer.writerow(new_row_dict)
 
 	def update_create_dest_str():
 		path = Path.joinpath(path).joinpath(Destinations.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
-			writer.writerow({"valid" : ?, "ID" : ? "country" : ?, "city" : ?, "airport" : ?, "flight_time" : ?, "distance" : ?, "contact_name" : ? "contact_phone" })
+			new_row_dict = Destination.getattributes()
+			writer.writerow(new_row_dict)
 
 	def update_rtrip_str():
 		path = Path.joinpath(path).joinpath(RoundTrips.csv)
 		with open(path, "a", newline='') as file:
 			writer = DictWriter(file)
-			writer.writerow({"valid" : ?, "past" : ? "direction" : ?, "flightID" : ?, "departingFrom" : ?, "arrivingAT" : ?, "departure" : ?, "arrival" : ? "aircraft_name"
+			new_row_dict = Rtrip.getattributes()
+			writer.writerow(new_row_dict)
 
