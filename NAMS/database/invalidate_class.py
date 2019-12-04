@@ -1,17 +1,23 @@
-class Invalidate():
-    invalidate_staff_str = ""
-    invalidate_airplane_str = ""
-    invalidate_dest_str = ""
-    invalidate_rtrip_str = ""
+from database.DBLayer_class import DBLayer
+
+class Invalidate(DBLayer):
+	invalidate_staff_str = ""
+	invalidate_airplane_str = ""
+	invalidate_dest_str = ""
+	invalidate_rtrip_str = ""
 
 	def update_invalidate_staff_str():
-	    pass
+		path = DBLayer.path.joinpath("Staff.csv")
+		pass
 
 	def update_invalidate_airplane_str():
-	    pass
+		path = DBLayer.path.joinpath("Airplanes.csv")
+		pass
 
 	def update_invalidate_dest_str():
-	    pass
+		path = DBLayer.path.joinpath("Destinations.csv")
+		pass
 
 	def update_invalidate_rtrip_str():
-	    pass
+		path = DBLayer.path.joinpath("RoundTrips.csv")
+		pass

@@ -13,9 +13,6 @@ class Create(DBLayer):
 	create_dest_str = ""
 	create_rtrip_str = ""
 
-	def update_new_data_str():
-		pass
-
 	def create_staff(employee):
 		path = DBLayer.path.joinpath("Staff.csv")
 

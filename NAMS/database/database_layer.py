@@ -11,9 +11,6 @@ class DBLayer:
 	filenames = []
 	path = Path.cwd().joinpath("database").joinpath("csv_files")
 
-	def search():
-		pass
-
 	def generic_search(filename, filter_column, key_word, result_column="all"):
 		"""
 		Function which searches a csv file for key_word in filter_column.
