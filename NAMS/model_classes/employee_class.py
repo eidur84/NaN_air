@@ -12,7 +12,7 @@ class Employee:
 		self.__gsm_str = ""
 		self.__email_str = ""
 		self.__job_str = ""
-		self.__allowed_planes_list = []
+		self.__allowed_plane_str = ""
 
 	def set_valid(self):
 		pass
@@ -103,9 +103,26 @@ class Employee:
 
 	def set_allowed_planes(self, airplane_type):
 		# IMPLEMENT CHECK
-		self.__allowed_planes_list.append(airplane_type)
+		self.__allowed_plane_str = airplane_type
 		return True
 
 	def get_allowed_planes(self):
-		return self.__allowed_planes_list
+		return self.__allowed_plane_str
 
+	def getattributes(self):
+		column_names = ["valid", "ssn", "staffID", "name", "job", "home", "landline", "gsm", "email", "license"]
+		attributes = [
+			self.__valid_bool,
+			self.__ssn_str,
+			10,
+			self.__name_str,
+			self.__job_str,
+			self.__address_str,
+			self.__landline_str,
+			self.__gsm_str,
+			self.__email_str,
+			self.__allowed_plane_str,
+		]
+
+		attribute_dict = dict(zip(column_names, attributes))
+		return attribute_dict

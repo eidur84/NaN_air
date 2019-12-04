@@ -2,36 +2,22 @@ class Destination:
 	"""
 	Model class for destinations.
 	"""
-	# __valid_bool = False
-	# __country_name_str = ''
-	# __city_name_str = ''
-	# __airport_name_str = ''
-	# __distance_int = 0
-	# __flight_time_int = 0
-	# __contact_name_str = ''
-	# __contact_phone_str = ''
 
-	def __init__(self, country, city, airport, distance, flight_time, contact_name, contact_phone):
-		self.__country_name_str = set_country
-		self.__city_name_str = city
-		self.__airport_name_str = airport
-		self.__distance_int = distance
-		self.__flight_time_int = flight_time
-		self.__contact_name_str = contact_name
-		self.__contact_phone_str = contact_phone
-		self.set_valid(self)
+	def __init__(self):
+		self.__country_name_str = ""
+		self.__city_name_str = ""
+		self.__ID_str = ""
+		self.__airport_name_str = ""
+		self.__distance_int = ""
+		self.__flight_time_int = ""
+		self.__contact_name_str = ""
+		self.__contact_phone_str = ""
+		self.__valid_bool = False
 
 	# Tjekk hvort öll helstu attribute seu sett og innan lengar-/staerdartakmarkana áður en þau eru acceptuð inn í database
 
 	def set_valid(self):
-		if self.__country_name_str.isalpha() == True and len(country_name_str) <= 60 and len(country_name_str) > 0 \
-		and self.__city_name_str.isalpha() == True and len(city_name_str) <= 60 and len(city_name_str) > 0 \
-		and self.__airport_name_str.isalpha() == True and len(airport_name_str) <= 60 and len(airport_name_str) > 0 \
-		and isinstance(__distance_int,int) and __distance_int > 0 \
-		and isinstance(__flight_time_int,int) and __flight_time_int > 0 and
-			self.__valid_bool = True
-		else:
-			self.__valid_bool = False
+		self.__valid_bool = True
 
 	def get_valid(self):
 		return self.__valid_bool
@@ -55,6 +41,16 @@ class Destination:
 
 	def get_city_name(self):
 		return self.__city_name_str
+
+	def set_ID(self, id_str):
+		if len(id_str) == 3 and id_str.isalpha():
+			self.__ID_str = id_str
+			return True
+		else:
+			return False
+
+	def get_ID(self):
+		return self.__ID_str
 
 	def set_airport_name(self, name_str):
 		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
@@ -105,3 +101,20 @@ class Destination:
 
 	def get_contact_number(self):
 		return self.__contact_phone_str
+
+	def getattributes(self):
+		column_names = ["valid", "ID", "country", "city", "airport", "flight_time", "distance", "contact_name", "contact_phone"]
+		attributes = [
+			self.__valid_bool,
+			self.__ID_str,
+			self.__country_name_str,
+			self.__city_name_str,
+			self.__airport_name_str,
+			self.__flight_time_int,
+			self.__distance_int,
+			self.__contact_name_str,
+			self.__contact_phone_str,
+		]
+
+		attribute_dict = dict(zip(column_names, attributes))
+		return attribute_dict
