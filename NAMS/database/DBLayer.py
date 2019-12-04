@@ -3,7 +3,6 @@ from csv import DictReader
 from pathlib import Path
 
 class DBLayer:
-
 	input_data = ''
 	# output_data =
 	key_word = ''
@@ -43,5 +42,5 @@ class DBLayer:
 		csv_file.close()
 		return results
 
-
-	def 
+	def generic_add_update():
+		pass
