@@ -6,6 +6,10 @@ class Returnflight(Rtrip):
 		self.__ret_start_str = ""
 		self.__ret_end_str = ""
 
+	def initialize():
+		pass
+		#### BÚA BARA TIL DEPARTURE KLASA OG SLEPPA RTRIP? REIKNA RETURN FLIGHT UTFRA ÞVI ####
+
 	def set_start_time(self, number_int):
 		self.__start_time += number_int
 
