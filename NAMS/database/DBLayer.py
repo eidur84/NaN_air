@@ -1,5 +1,6 @@
 
 from csv import DictReader
+from pathlib import Path
 
 class DBLayer:
 
@@ -9,6 +10,7 @@ class DBLayer:
 	search_column = ''
 	result_column = ''
 	filenames = []
+	path = Path.cwd().joinpath(database).joinpath(csv_files)
 
 	def search():
 		pass
@@ -20,7 +22,7 @@ class DBLayer:
 		Returns value in specified result_column for each matched row.
 		Returns all values in row if result_column is "all" (default value).
 		"""
-		filename = f'csv_files/{filename}'
+		filename = f'database/csv_files/{filename}'
 
 		csv_file = open(filename, "r")
 		csv_dict = DictReader(csv_file)  # Loads rows into dictionary with column names as keys.
@@ -40,3 +42,6 @@ class DBLayer:
 
 		csv_file.close()
 		return results
+
+
+	def 

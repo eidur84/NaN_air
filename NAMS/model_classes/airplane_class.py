@@ -19,14 +19,8 @@ class Airplane:
 		self.set_valid(self)
 
 	def set_valid(self):
-		if self.__seat_count_int.isdecimal and seat_count_int > 0 \
-		and self.__PlaneID_int.isdecimal \
-		and self.__PlaneName_str.replace(" ", "").isalpha() and len(__PlaneName_str) > 0 and len(__PlaneName_str) > 0 \
-		and self.type_str.replace(" ", "").isalpha() and len(type_str) > 0 \
-		and self.__manuf_str(" ", "").isalpha() and len(type_str) > 0:
-			self.__valid_bool = True
-		else:
-			self.__valid_bool = False
+		self.__valid_bool = True
+
 
 	def set_name(self, name):
 		if name.replace(" ", "").isalpha() and len(name) == 6:
