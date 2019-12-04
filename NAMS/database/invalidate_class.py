@@ -1,4 +1,6 @@
-class Invalidate():
+from database.DBLayer_class import DBLayer
+
+class Invalidate(DBLayer):
 	invalidate_staff_str = ""
 	invalidate_airplane_str = ""
 	invalidate_dest_str = ""
