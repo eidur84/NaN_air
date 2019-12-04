@@ -1,8 +1,10 @@
-from database.DBLayer import DBLayer
+from database.database_layer import DBLayer
 from model_classes import *
 from csv import DictWriter
 from pathlib import Path
 
+
+######## VANTAR AÐ IMPLEMENTA SERIAL CODES I CSV FILES #######
 
 class Create(DBLayer):
 	new_data_str = ""
@@ -14,33 +16,43 @@ class Create(DBLayer):
 	def update_new_data_str():
 		pass
 
-	def update_create_staff_str():
+	def create_staff(employee):
 		path = DBLayer.path.joinpath("Staff.csv")
 
 		with open(path, "a", newline='') as file:
 
-			writer = DictWriter(file)
-			new_row_dict = Employee.getattributes()
+			new_row_dict = employee.getattributes()
+			fields = list(new_row_dict.keys())
+			writer = DictWriter(file, fields)
 			writer.writerow(new_row_dict)
 
-	def update_create_airplane_str():
+	def create_airplane(airplane):
 		path = DBLayer.path.joinpath("Airplanes.csv")
 		with open(path, "a", newline='') as file:
-			writer = DictWriter(file)
-			new_row_dict = Airplane.getattributes()
+
+			new_row_dict = airplane.getattributes()
+			fields = list(new_row_dict.keys())
+
+			writer = DictWriter(file, fields)
 			writer.writerow(new_row_dict)
 
-	def update_create_dest_str():
+	def create_destination(destination):
 		path = DBLayer.path.joinpath("Destinations.csv")
 		with open(path, "a", newline='') as file:
-			writer = DictWriter(file)
-			new_row_dict = Destination.getattributes()
+
+			new_row_dict = destination.getattributes()
+			fields = list(new_row_dict.keys())
+
+			writer = DictWriter(file, fields)
 			writer.writerow(new_row_dict)
 
-	def update_rtrip_str():
+	def create_rtrip(rtrip):
 		path = DBLayer.path.joinpath("RoundTrips.csv")
 		with open(path, "a", newline='') as file:
-			writer = DictWriter(file)
-			new_row_dict = Rtrip.getattributes()
+
+			new_row_dict = rtrip.getattributes()
+			fields = list(new_row_dict.keys())
+			writer = DictWriter(file, fields)
+
 			writer.writerow(new_row_dict)
 

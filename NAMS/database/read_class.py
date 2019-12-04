@@ -1,5 +1,5 @@
 from csv import DictReader
-from database.DBLayer import DBLayer
+from database.DBLayer_class import DBLayer
 
 class Read(DBLayer):
 	read_staff_str = ""
