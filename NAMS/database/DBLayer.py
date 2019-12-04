@@ -1,4 +1,3 @@
-
 from csv import DictReader
 from pathlib import Path
 
@@ -50,9 +49,10 @@ class DBLayer:
 		csv_dict = DictReader(csv_file)
 		if row[filter_column] == key_word:
 			key_word[key_word] = action
-		else :
+		else:
 			with open(filename, 'a', newline='') as file:
     			writer = csv.DictWriter(file)
     			writer.writerow({key_word : action})
 
+		csv_file.close()
 		return results
