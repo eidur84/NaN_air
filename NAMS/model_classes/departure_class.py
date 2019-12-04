@@ -1,18 +1,21 @@
+from model_classes.rtrip_class import Rtrip
+
+
 class Departure(Rtrip):
 	def __init__(self):
-		self.__start_time_int = 0
-		self.__end_time_int = 0
-	
-	def set_start_time_int(self, start_time_int)
+		self.__dep_start_str = ""
+		self.__dep_end_str = ""
+
+	def set_start_time_int(self, start_time_int):
 		if start_time_int.isdecimal():
 			self.__start_time_int = start_time_int
 			return True
 		else:
 			return False
-	
+
 	def get_start_time_int(self):
 		return self.__start_time_int
-	
+
 	def set_end_time_int(self, end_time_int):
 		if end_time_int.isdecimal():
 			self.__end_time_int = end_time_int
@@ -33,11 +36,11 @@ class Departure(Rtrip):
 			self.__rtime_int,
 			"KEF",
 			self.__dest_str,
-			self.__start_time_str,
-			self.__return_time_str,
+			self.__dep_start_str,
+			self.__dep_end_str,
 			self.__airplane_type,
 		]
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
-		
+

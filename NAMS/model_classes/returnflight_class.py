@@ -1,7 +1,10 @@
+from model_classes.rtrip_class import Rtrip
+
+
 class Returnflight(Rtrip):
 	def __init__(self):
-		self.__start_time = 0
-		self.__end_time = 0
+		self.__ret_start_str = ""
+		self.__ret_end_str = ""
 
 	def set_start_time(self, number_int):
 		self.__start_time += number_int
@@ -22,11 +25,10 @@ class Returnflight(Rtrip):
 			False,
 			"inbound",
 			10,
-			self.__rtime_int,
 			self.__dest_str,
 			"KEF",
-			self.__start_time_str,
-			self.__return_time_str,
+			self.__ret_start_str,
+			self.__ret_end_str,
 			self.__airplane_type,
 		]
 

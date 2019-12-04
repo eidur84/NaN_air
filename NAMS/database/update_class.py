@@ -4,6 +4,7 @@ from model_classes import *
 from csv import DictWriter
 from pathlib import Path
 
+
 class Update(DBLayer):
 
 	new_data = {}

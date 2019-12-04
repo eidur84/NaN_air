@@ -1,9 +1,11 @@
+
 class Rtrip:
 	"""
 	Model class for round trips (flight from Iceland and flight back to Iceland).
 	"""
 	def __init__(self):
 		self.__valid_bool = False
+		self.__past = False
 		self.__dest_str = ""
 		self.__rtime_int = 0
 		self.__airplane_type = ""		# Instance of class Airplane

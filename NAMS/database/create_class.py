@@ -67,13 +67,12 @@ class Create(DBLayer):
 		return finished
 
 '''
-	## Flóknara
 	def create_rtrip(rtrip):
 		"""
 		Adds new round trip (voyage), using append_db_row function.
 		"""
 		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
-
-		finished = Create.append_db_row(csv_file, rtrip)
+		
+		finished = Create.append_db_row(csv_file, )
 		return finished
 '''
