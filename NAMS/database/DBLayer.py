@@ -1,4 +1,4 @@
-from csv import DictReader
+from csv import DictReader, DictWriter
 from pathlib import Path
 
 
@@ -9,7 +9,7 @@ class DBLayer:
 	search_column = ''
 	result_column = ''
 	filenames = []
-	path = Path.cwd().joinpath(database).joinpath(csv_files)
+	path = Path.cwd().joinpath("database").joinpath("csv_files")
 
 	def search():
 		pass
@@ -20,7 +20,7 @@ class DBLayer:
 		Returns value in specified result_column for each matched row.
 		Returns all values in row if result_column is "all" (default value).
 		"""
-		filename = path.joinpath(filename)
+		filename = DBLayer.path.joinpath(filename)
 
 		csv_file = open(filename, "r")
 		csv_dict = DictReader(csv_file)  # Loads rows into dictionary with column names as keys.
@@ -43,7 +43,7 @@ class DBLayer:
 
 	def generic_add_update(filename, filter_column, key_word):
 
-		filename = path.joinpath(filename)
+		filename = DBLayer.path.joinpath(filename)
 		results = [ ]
 		csv_file = open(filename, "a")
 		csv_dict = DictReader(csv_file)
@@ -51,8 +51,15 @@ class DBLayer:
 			key_word[key_word] = action
 		else:
 			with open(filename, 'a', newline='') as file:
-				writer = csv.DictWriter(file)
+				writer = DictWriter(file)
 				writer.writerow({key_word: action})
 
 		csv_file.close()
 		return results
+
+
+	def update_backup(filename):
+		path = DBLayer.
+
+
+
