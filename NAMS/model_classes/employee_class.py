@@ -12,7 +12,20 @@ class Employee:
 		self.__gsm_str = ""
 		self.__email_str = ""
 		self.__job_str = ""
-		self.__allowed_plane_str = ""
+		self.__license_str = ""
+
+	def initialize(self, attribute_dict):
+		self.__valid_bool = attribute_dict["valid"]
+		self.__name_str = attribute_dict["name"]
+		self.__ssn_str = attribute_dict["ssn"]
+		self.__address_str = attribute_dict["home"]
+		self.__landline_str = attribute_dict["landline"]
+		self.__gsm_str = attribute_dict["gsm"]
+		self.__email_str = attribute_dict["email"]
+		self.__job_str = attribute_dict["job"]
+		self.__license_str = attribute_dict["license"]
+		return self
+
 
 	def set_valid(self):
 		self.__valid_bool = True
@@ -102,28 +115,35 @@ class Employee:
 	def get_job(self):
 		return self.__job_str
 
-	def set_allowed_planes(self, airplane_type):
+	def set_license(self, airplane_type):
 		# IMPLEMENT CHECK
-		self.__allowed_plane_str = airplane_type
+		self.__license_str = airplane_type
 		return True
 
-	def get_allowed_planes(self):
-		return self.__allowed_plane_str
+	def get_license(self):
+		return self.__license_str
 
 	def getattributes(self):
-		column_names = ["valid", "ssn", "staffID", "name", "job", "home", "landline", "gsm", "email", "license"]
+		column_names = ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 		attributes = [
 			self.__valid_bool,
 			self.__ssn_str,
-			10,
 			self.__name_str,
 			self.__job_str,
 			self.__address_str,
 			self.__landline_str,
 			self.__gsm_str,
 			self.__email_str,
-			self.__allowed_plane_str,
+			self.__license_str,
 		]
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
+
+		def __str__(self):
+			a = f"{self.__valid_bool}, {self.__ssn_str}, {self.__name_str}, {self.__job_str}, "
+			b = f"{self.__address_str}, {self.__landline_str}, {self.__gsm_str}, {self.__license_str}"
+			return a+b
+
+
+

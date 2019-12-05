@@ -8,13 +8,23 @@ class Destination:
 		self.__city_name_str = ""
 		self.__ID_str = ""
 		self.__airport_name_str = ""
-		self.__distance_int = ""
-		self.__flight_time_int = ""
+		self.__distance_int = 0
+		self.__flight_time_int = 0
 		self.__contact_name_str = ""
 		self.__contact_phone_str = ""
 		self.__valid_bool = False
 
-	# Tjekk hvort öll helstu attribute seu sett og innan lengar-/staerdartakmarkana áður en þau eru acceptuð inn í database
+	def initialize(self, attribute_dict):
+		self.__country_name_str = attribute_dict["country"]
+		self.__city_name_str = attribute_dict["city"]
+		self.__ID_str = attribute_dict["ID"]
+		self.__airport_name_str = attribute_dict["airport"]
+		self.__distance_int = int(attribute_dict["distance"])
+		self.__flight_time_int = int(attribute_dict["flight_time"])
+		self.__contact_name_str = attribute_dict["contact_name"]
+		self.__contact_phone_str = attribute_dict["contact_phone"]
+		self.__valid_bool = attribute_dict["valid"]
+		return self
 
 	def set_valid(self):
 		self.__valid_bool = True
@@ -119,3 +129,11 @@ class Destination:
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
+
+	def __str__(self):
+		a = f"{self.__valid_bool}, {self.__ID_str}, {self.__country_name_str}, {self.__city_name_str}, {self.__airport_name_str}, "
+		b = f"{self.__flight_time_int}, {self.__distance_int}, {self.__contact_name_str}, {self.__contact_phone_str}"
+		return a + b
+
+
+
