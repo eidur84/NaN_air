@@ -1,42 +1,4 @@
 class Destination:
-<<<<<<< HEAD
-    """
-    Model class for destinations.
-    """
-
-    # Klasabreytur
-
-    __valid_bool = False
-    __country_name_str = ''
-    __city_name_str = ''
-    __airport_name_str = ''
-    __distance_int = 0
-    __flight_time_int = 0
-    __contact_name_str = ''
-    __contact_phone_str = ''
-
-    # Constructor
-
-    def __init__(self, country, city, airport, distance, flight_time, contact_name, contact_phone):
-        self.__country_name_str = set_country
-        self.__city_name_str = city
-        self.__airport_name_str = airport
-        self.__distance_int = distance
-        self.__flight_time_int = flight_time
-        self.__contact_name_str = contact_name
-        self.__contact_phone_str = contact_phone
-        self.set_valid(self)
-
-    # Tjekk hvort öll helstu attribute seu sett og innan lengar-/staerdartakmarkana áður en þau eru acceptuð inn í database
-
-    def set_valid(self):
-        if self.__country_name_str.isalpha() == True and len(country_name_str) <= 60 and len(country_name_str) > 0 \
-		and self.__city_name_str.isalpha() == True and len(city_name_str) <= 60 and len(city_name_str) > 0 \
-		and self.__airport_name_str.isalpha() == True and len(airport_name_str) <= 60 and len(airport_name_str) > 0 \
-		and isinstance(__distance_int,int) and __distance_int > 0 \
-        and isinstance(__flight_time_int,int) and __flight_time_int > 0:	
-        	self.__valid_bool = True
-=======
 	"""
 	Model class for destinations.
 	"""
@@ -65,7 +27,6 @@ class Destination:
 		if name_str.replace(" ", "").isalpha() and len(name_str) <= 60:
 			self.__country_name_str = name_str
 			return True
->>>>>>> 6a82a579c2d1da4198142fb7d453c8a7ce7fadc8
 		else:
 			return False
 
@@ -158,3 +119,5 @@ class Destination:
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
+
+
