@@ -47,5 +47,5 @@ class Read(DBLayer):
 
 	def read_rtrip(filter_column, key_word):
 		rtrip_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
-
+		
 		return rtrip_dict_list

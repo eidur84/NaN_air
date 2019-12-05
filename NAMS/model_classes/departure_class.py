@@ -42,9 +42,9 @@ class Departure:
 
 
 
-	def calc_arrival(self, arrival):
-		return False
-	## VANTAR CALL I DB READ() FINNA TIMA TIL AFANGASTAÐAR
+	def set_arrival(self, arrival):
+		self.__dep_end_str =
+	
 
 
 	def get_arrival(self):
