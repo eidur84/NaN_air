@@ -3,17 +3,17 @@ from logic.BLLayer import BLLayer
 
 class RTripHandler():
 
-	def create_flight(self):
+	def create_flight():
 		pass
 
-	def calculate_flight_time(self):
+	def calculate_flight_time():
 		pass
 
-	def update_flight(self):
+	def update_flight():
 		pass
 
-	def read_flight(self):
+	def read_flight():
 		pass
 
-	def invalidate_flight(self):
+	def invalidate_flight():
 		pass
