@@ -1,5 +1,6 @@
 from csv import DictWriter
 from logic.BLLayer import BLLayer
+from model_classes.rtrip_class import Rtrip
 
 class RTripHandler():
 
