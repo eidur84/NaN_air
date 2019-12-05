@@ -28,7 +28,7 @@ class Returnflight(Rtrip):
 			self.__valid_bool,
 			False,
 			"inbound",
-			10,
+			100,
 			self.__dest_str,
 			"KEF",
 			self.__ret_start_str,

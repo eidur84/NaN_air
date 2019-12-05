@@ -4,8 +4,6 @@ from csv import DictWriter
 from pathlib import Path
 
 
-######## VANTAR AÐ IMPLEMENTA SERIAL CODES I CSV FILES? #######
-
 class Create(DBLayer):
 	"""
 	Class for handling Create functionality of database layer.
@@ -78,3 +76,7 @@ class Create(DBLayer):
 
 		finished = bool1 and bool2
 		return finished
+
+
+
+
