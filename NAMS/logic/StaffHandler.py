@@ -31,13 +31,19 @@ class StaffHandler():
 		return bool
 
 	def license_check():
+		if Employee.get_allowed_planes == '':
+			return False
+		else:
+			return True
+
+	def update_staff(DATA):
 		pass
 
-	def update_staff():
-		pass
+	def read_staff(DATA1, DATA2):
+		#Þessu ætti að breyta í eitthvað sem BLLayer sér um því þessi klasi ætti ekki að tala við
+		# Database layer
+		DBLayer.generic_search('Staff.csv', DATA1, DATA2)
 
-	def read_staff():
-		pass
-
-	def invalidate_staff():
-		pass
+	def invalidate_staff(DATA):
+		#Þessu ætti að breyta Invalidate klasin ætti ekki að vera í beinni samræðu við StaffHandler
+		Invalidate.invalidate_staff(DATA)
