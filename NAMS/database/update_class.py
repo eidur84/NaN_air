@@ -7,7 +7,6 @@ from pathlib import Path
 
 class Update(DBLayer):
 
-	new_data = {}
 
 	def update_staff(employee, change_column, new_value):
 
