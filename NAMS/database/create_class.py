@@ -4,52 +4,74 @@ from csv import DictWriter
 from pathlib import Path
 
 
-######## VANTAR AÐ IMPLEMENTA SERIAL CODES I CSV FILES #######
+######## VANTAR AÐ IMPLEMENTA SERIAL CODES I CSV FILES? #######
 
 class Create(DBLayer):
-	new_data_str = ""
-	create_staff_str = ""
-	create_airplane_str = ""
-	create_dest_str = ""
-	create_rtrip_str = ""
+	"""
+	Class for handling Create functionality of database layer.
+	Functions return True if creation was successful.
+
+	Methods:
+		append_db_row(filename, object_instance)
+		create_staff(employee_instance)
+		create_airplane(airplane_instance)
+		create_destination(destination_instance)
+		create_rtrip(rtrip_instance)
+	"""
+
+	def append_db_row(filename, obj_instance):
+		"""
+		Appends the data from an object instance to given file.
+		"""
+
+		filestream = open(filename, "a")
+
+		new_row_dict = obj_instance.getattributes()
+		column_names = list(new_row_dict.keys())
+
+		writer = DictWriter(filestream, column_names)
+
+		writer.writerow(new_row_dict)
+
+		filestream.close()
+		return True
+
 
 	def create_staff(employee):
-		path = DBLayer.path.joinpath("Staff.csv")
+		"""
+		Adds new staff member, using append_db_row function.
+		"""
+		csv_file = DBLayer.path.joinpath("Staff.csv")
 
-		with open(path, "a", newline='') as file:
+		finished = Create.append_db_row(csv_file, employee)
+		return finished
 
-			new_row_dict = employee.getattributes()
-			fields = list(new_row_dict.keys())
-			writer = DictWriter(file, fields)
-			writer.writerow(new_row_dict)
 
 	def create_airplane(airplane):
-		path = DBLayer.path.joinpath("Airplanes.csv")
-		with open(path, "a", newline='') as file:
+		"""
+		Adds new airplane, using append_db_row function.
+		"""
+		csv_file = DBLayer.path.joinpath("Airplanes.csv")
 
-			new_row_dict = airplane.getattributes()
-			fields = list(new_row_dict.keys())
+		finished = Create.append_db_row(csv_file, airplane)
+		return finished
 
-			writer = DictWriter(file, fields)
-			writer.writerow(new_row_dict)
 
 	def create_destination(destination):
-		path = DBLayer.path.joinpath("Destinations.csv")
-		with open(path, "a", newline='') as file:
+		"""
+		Adds new destination, using append_db_row function.
+		"""
+		csv_file = DBLayer.path.joinpath("Destinations.csv")
 
-			new_row_dict = destination.getattributes()
-			fields = list(new_row_dict.keys())
+		finished = Create.append_db_row(csv_file, destination)
+		return finished
 
-			writer = DictWriter(file, fields)
-			writer.writerow(new_row_dict)
 
-	def create_rtrip(rtrip):
-		path = DBLayer.path.joinpath("RoundTrips.csv")
-		with open(path, "a", newline='') as file:
-
-			new_row_dict = rtrip.getattributes()
-			fields = list(new_row_dict.keys())
-			writer = DictWriter(file, fields)
-
-			writer.writerow(new_row_dict)
-
+	def create_rtrip(departure, returnflight):
+		"""
+		Adds new round trip (voyage), using append_db_row function.
+		"""
+		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
+		
+		finished = Create.append_db_row(csv_file, )
+		return finished

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Returnflight:
 
 	Klasabreytur
@@ -18,6 +19,19 @@ class Returnflight(Rtrip):
 		self.__start_time = 0
 		self.__end_time = 0
 >>>>>>> 6a82a579c2d1da4198142fb7d453c8a7ce7fadc8
+=======
+from model_classes.rtrip_class import Rtrip
+
+
+class Returnflight(Rtrip):
+	def __init__(self):
+		self.__ret_start_str = ""
+		self.__ret_end_str = ""
+
+	def initialize():
+		pass
+		#### BÚA BARA TIL DEPARTURE KLASA OG SLEPPA RTRIP? REIKNA RETURN FLIGHT UTFRA ÞVI ####
+>>>>>>> 72ddcbf3d83a7d3022f0efd1f2a68223614eef12
 
 	def set_start_time(self, number_int):
 		self.__start_time += number_int
@@ -38,11 +52,10 @@ class Returnflight(Rtrip):
 			False,
 			"inbound",
 			10,
-			self.__rtime_int,
 			self.__dest_str,
 			"KEF",
-			self.__start_time_str,
-			self.__return_time_str,
+			self.__ret_start_str,
+			self.__ret_end_str,
 			self.__airplane_type,
 		]
 
