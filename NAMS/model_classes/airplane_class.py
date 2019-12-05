@@ -4,13 +4,29 @@ class Airplane:
 	Model class for airplanes.
 	"""
 
+<<<<<<< HEAD
 	def __init__(self, name = "", seats = 0, planetype = "", manuf = ""):
 		self.__PlaneName_str = self.set_name(name)
 		self.__seat_count_int = self.set_seat_count(seats)
 		self.__type_str = self.set_type(planetype)
 		self.__manuf_str = self.set_manuf(manuf)
 		self.__valid_bool = False
+=======
+	def __init__(self):
+		self.__valid_bool = False
+		self.__PlaneName_str = ""
+		self.__seat_count_int = 0
+		self.__type_str = ""
+		self.__manuf_str = ""
+>>>>>>> 218355e866ad74d96967fcd05864d8b622323c52
 
+	def initialize(self, attribute_dict):
+		self.__PlaneName_str = attribute_dict["name"]
+		self.__seat_count_int = attribute_dict["seat_count"]
+		self.__type_str = attribute_dict["type"]
+		self.__manuf_str = attribute_dict["manufacturer"]
+		self.__valid_bool = attribute_dict["valid"]
+		return self
 
 	def set_valid(self):
 		self.__valid_bool = True
@@ -54,9 +70,8 @@ class Airplane:
 		return self.__manuf_str
 
 	def getattributes(self):
-		column_names = ["airplaneID", "manufacturer", "name", "type", "seat_count", "valid"]
+		column_names = ["manufacturer", "name", "type", "seat_count", "valid"]
 		attributes = [
-			10,
 			self.__manuf_str,
 			self.__PlaneName_str,
 			self.__type_str,
@@ -66,3 +81,6 @@ class Airplane:
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
+
+	def __str__(self):
+		return f"{self.__valid_bool}, {self.__manuf_str}, {self.__PlaneName_str}, {self.__type_str}, {self.__seat_count_int}"

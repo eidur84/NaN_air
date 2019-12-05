@@ -4,8 +4,6 @@ from csv import DictWriter
 from pathlib import Path
 
 
-######## VANTAR AÐ IMPLEMENTA SERIAL CODES I CSV FILES? #######
-
 class Create(DBLayer):
 	"""
 	Class for handling Create functionality of database layer.
@@ -72,6 +70,13 @@ class Create(DBLayer):
 		Adds new round trip (voyage), using append_db_row function.
 		"""
 		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
-		
-		finished = Create.append_db_row(csv_file, )
+
+		bool1 = Create.append_db_row(csv_file, departure)
+		bool2 = Create.append_db_row(csv_file, returnflight)
+
+		finished = bool1 and bool2
 		return finished
+
+
+
+

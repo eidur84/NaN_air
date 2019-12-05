@@ -31,8 +31,6 @@ class Departure(Rtrip):
 			self.__end_time_int = end_time_int
 =======
 
-from model_classes.rtrip_class import Rtrip
-
 
 class Departure:
 
@@ -45,6 +43,7 @@ class Departure:
 
 		self.__dep_start_str = ""
 		self.__dep_end_str = ""
+
 
 	def set_valid(self):
 		self.__valid_bool = True
@@ -61,6 +60,8 @@ class Departure:
 	def get_destination(self):
 		return self.__dest_str
 
+
+
 	def set_departure(self, departure):
 		if departure.replace("-", "").replace(":", "").isalnum():
 			self.__dep_start_str = departure
@@ -71,13 +72,17 @@ class Departure:
 	def get_departure(self):
 		return self.__dep_start_str
 
-	def calc_arrival(self, arrival):
-		pass
-	## VANTAR CALL I DB READ() FINNA TIMA TIL AFANGASTAÐAR
+
+
+	def set_arrival(self, arrival):
+		self.__dep_end_str =
+	
 
 
 	def get_arrival(self):
 		return self.__dep_end_str
+
+
 
 	def set_airplane(self, airplane_str):
 		if airplane_str.replace("-", "").isalpha():
@@ -99,6 +104,8 @@ class Departure:
 		return self.__airplane_name
 >>>>>>> 72ddcbf3d83a7d3022f0efd1f2a68223614eef12
 
+
+
 	def getattributes(self):
 		column_names = [
 			"valid",
@@ -116,7 +123,7 @@ class Departure:
 			self.__valid_bool,
 			False,
 			"outbound",
-			10,
+			100,
 			"KEF",
 			self.__dest_str,
 			self.__dep_start_str,
