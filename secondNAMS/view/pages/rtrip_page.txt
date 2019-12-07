@@ -1,5 +1,5 @@
 Vinnuferðir
-#––––––––––––––––––––––––––––– header end
+#----------------------------- header end
 Vinsamlegast veldu aðgerð:
 
     1) Nýskrá vinnuferð

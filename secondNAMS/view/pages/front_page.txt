@@ -1,5 +1,5 @@
 Velkomin/n í NAMS kerfið
-#––––––––––––––––––––––––––––– header end
+#------------------------ header end
 Vinsamlegast veldu aðgerð:
 
 # Manually indented with spaces

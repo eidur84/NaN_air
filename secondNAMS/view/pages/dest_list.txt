@@ -1,5 +1,5 @@
 Áfangastaðir
-#–––––––––––––––––– header ends
+#-------------------- header ends
 
 1-5) Breyta upplýsingum um áfangastað
   n) Næstu 5 áfangastaðir

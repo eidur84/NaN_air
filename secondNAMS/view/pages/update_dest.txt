@@ -1,2 +1,2 @@
 Upplýsingar um áfangastað
-#–––––––––––––––––––––––––– header end
+#--------------------------- header end

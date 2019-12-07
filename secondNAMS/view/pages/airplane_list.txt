@@ -1,5 +1,5 @@
 Flugvélar
-#–––––––––––––––––– header ends
+#--------------------- header ends
 
 1-5) Breyta upplýsingum um flugvél
   n) Næstu 5 flugvélar

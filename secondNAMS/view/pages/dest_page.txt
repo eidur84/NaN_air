@@ -1,5 +1,5 @@
 Áfangastaðir
-#––––––––––––––––––––––––––––– header end
+#---------------------------- header end
 Vinsamlegast veldu aðgerð:
 
     1) Nýskrá áfangastað
