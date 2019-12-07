@@ -87,7 +87,7 @@ class Form(UILayer):
 				jump = len(screen) - (line_number + 1)
 				action = UILayer.get_action(input_line, jump)
 
-				if action.lower() == "q":
+				if action.lower() == "q" or action == "0":
 					return "back"
 
 				if action != "":
