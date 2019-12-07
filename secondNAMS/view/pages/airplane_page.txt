@@ -1,0 +1,9 @@
+Flugvélar
+#––––––––––––––––––––––––––––– header end
+Vinsamlegast veldu aðgerð:
+
+    1) Nýskrá flugvél
+    2) Sjá flugvélar
+
+
+            Aðgerð (1/2): _

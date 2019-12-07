@@ -2,10 +2,6 @@ from csv import DictReader, DictWriter
 from pathlib import Path
 # Children imported at bottom of file
 
-# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-# PARENT CLASS
-# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
 class DBLayer:
 	"""
 	Class for main/shared functionality of database layer.
@@ -18,17 +14,19 @@ class DBLayer:
 	def request_create(data_type, instance):
 		if data_type == "staff":
 			valid = Create.create_staff(instance)
-			return valid
+
 		elif data_type == "dest":
 			valid = Create.create_dest(instance)
-			return valid
+
 		elif data_type == "airplane":
 			valid = Create.create_airplane(instance)
-			return valid
+
 		elif data_type == "rtrip":
 			valid = Create.create_rtrip(instance[0], instance[1])
 		else:
 			return False
+
+		return valid
 
 	def generic_search(filename, filter_column, key_word, result_column="all"):
 		"""
@@ -58,7 +56,6 @@ class DBLayer:
 		filestream.close()
 		return results
 
-	#### MAYBE IMPLEMENT APPEND/UPDATE FUNCTION ####
 
 	def update_backup(filename):
 		"""
@@ -101,6 +98,7 @@ class DBLayer:
 		if len(dict_list) == 0:
 			return False
 
+
 		column_names = list(dict_list[0].keys())
 
 		filestream = open(filename, "w")
@@ -133,7 +131,6 @@ class DBLayer:
 
 # IMPORTS AT BOTTOM OF FILE TO PREVENT CIRCULAR IMPORTS (X imports Y and Y starts by importing X)
 from database.create_class import Create
-from database.read_class import Read
 from database.update_class import Update
 from database.invalidate_class import Invalidate
 # See http://effbot.org/zone/import-confusion.htm#circular-imports for explanation

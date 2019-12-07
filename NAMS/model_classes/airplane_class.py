@@ -4,21 +4,12 @@ class Airplane:
 	Model class for airplanes.
 	"""
 
-<<<<<<< HEAD
-	def __init__(self, name = "", seats = 0, planetype = "", manuf = ""):
-		self.__PlaneName_str = self.set_name(name)
-		self.__seat_count_int = self.set_seat_count(seats)
-		self.__type_str = self.set_type(planetype)
-		self.__manuf_str = self.set_manuf(manuf)
-		self.__valid_bool = False
-=======
 	def __init__(self):
 		self.__valid_bool = False
 		self.__PlaneName_str = ""
 		self.__seat_count_int = 0
 		self.__type_str = ""
 		self.__manuf_str = ""
->>>>>>> 218355e866ad74d96967fcd05864d8b622323c52
 
 	def initialize(self, attribute_dict):
 		self.__PlaneName_str = attribute_dict["name"]

@@ -24,8 +24,9 @@ class Create(DBLayer):
 
 		filestream = open(filename, "a")
 
-		new_row_dict = obj_instance.getattributes()
+		new_row_dict = obj_instance.get_attributes()
 		column_names = list(new_row_dict.keys())
+
 
 		writer = DictWriter(filestream, column_names)
 

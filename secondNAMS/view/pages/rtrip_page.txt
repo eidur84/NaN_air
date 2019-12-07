@@ -1,0 +1,9 @@
+Vinnuferðir
+#––––––––––––––––––––––––––––– header end
+Vinsamlegast veldu aðgerð:
+
+    1) Nýskrá vinnuferð
+    2) Sjá upplýsingar um flugferðir
+
+
+            Aðgerð (1/2): _

@@ -1,0 +1,9 @@
+Áfangastaðir
+#––––––––––––––––––––––––––––– header end
+Vinsamlegast veldu aðgerð:
+
+    1) Nýskrá áfangastað
+    2) Sjá áfangastaði
+
+
+            Aðgerð (1/2): _

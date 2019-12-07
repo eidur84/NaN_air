@@ -1,3 +1,4 @@
+'''
 <<<<<<< HEAD
 <<<<<<< HEAD
 class Departure():
@@ -30,7 +31,7 @@ class Departure(Rtrip):
 		if end_time_int.isdecimal():
 			self.__end_time_int = end_time_int
 =======
-
+'''
 
 class Departure:
 
@@ -41,8 +42,8 @@ class Departure:
 		self.__dest_str = ""
 		self.__airplane_name = ""
 
-		self.__dep_start_str = ""
-		self.__dep_end_str = ""
+		self.__dep_departure = ""
+		self.__dep_arrival = ""
 
 
 	def set_valid(self):
@@ -64,45 +65,43 @@ class Departure:
 
 	def set_departure(self, departure):
 		if departure.replace("-", "").replace(":", "").isalnum():
-			self.__dep_start_str = departure
+			self.__dep_departure = departure
 			return True
 		else:
 			return False
 
 	def get_departure(self):
-		return self.__dep_start_str
+		return self.__dep_departure
 
 
 
-	def set_arrival(self, arrival):
-		self.__dep_end_str =
-	
+	#def set_arrival(self, arrival):
+	#	self.__dep_arrival =
+
 
 
 	def get_arrival(self):
-		return self.__dep_end_str
+		return self.__dep_arrival
 
 
 
 	def set_airplane(self, airplane_str):
 		if airplane_str.replace("-", "").isalpha():
 			self.__airplane_name = airplane_str
->>>>>>> 72ddcbf3d83a7d3022f0efd1f2a68223614eef12
 			return True
 		else:
 			return False
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	def get_end_time(self):
 		return self.__end_time_int
-=======
+
 	def get_end_time_int(self):
 		return self.__end_time_int
-=======
+
 	def get_airplane(self):
 		return self.__airplane_name
->>>>>>> 72ddcbf3d83a7d3022f0efd1f2a68223614eef12
+
 
 
 
@@ -126,16 +125,12 @@ class Departure:
 			100,
 			"KEF",
 			self.__dest_str,
-			self.__dep_start_str,
-			self.__dep_end_str,
+			self.__dep_departure,
+			self.__dep_arrival,
 			self.__airplane_type,
 		]
 
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
-<<<<<<< HEAD
-		
->>>>>>> 6a82a579c2d1da4198142fb7d453c8a7ce7fadc8
-=======
 
->>>>>>> 72ddcbf3d83a7d3022f0efd1f2a68223614eef12
+

@@ -1,6 +1,6 @@
 from model_classes.airplane_class import Airplane
 
-class Airplane_handler():
+class AirplaneHandler():
 
     def create_airplane():
         pass

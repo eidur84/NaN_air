@@ -33,7 +33,7 @@ class Read(DBLayer):
 
 		return airplane_dict
 
-	def read_destination(filter_column, key_word):
+	def read_dest(filter_column, key_word):
 		dest_dict_list = DBLayer.generic_search('Destinations.csv', filter_column, key_word)
 		dest_dict = {}
 		dest_dict_list = enumerate(dest_dict_list)
@@ -47,5 +47,5 @@ class Read(DBLayer):
 
 	def read_rtrip(filter_column, key_word):
 		rtrip_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
-		
+
 		return rtrip_dict_list

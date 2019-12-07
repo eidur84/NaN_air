@@ -130,13 +130,9 @@ class Destination:
 		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
 
-<<<<<<< HEAD
-=======
 	def __str__(self):
 		a = f"{self.__valid_bool}, {self.__ID_str}, {self.__country_name_str}, {self.__city_name_str}, {self.__airport_name_str}, "
 		b = f"{self.__flight_time_int}, {self.__distance_int}, {self.__contact_name_str}, {self.__contact_phone_str}"
 		return a + b
 
-
->>>>>>> 218355e866ad74d96967fcd05864d8b622323c52
 
