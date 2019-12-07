@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import datetime as dt
 
 from database.read_class import Read

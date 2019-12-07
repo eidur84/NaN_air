@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from view.user_interface import UILayer
 from controller.logic_layer import BLLayer
 

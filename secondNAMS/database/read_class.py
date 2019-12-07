@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from csv import DictReader
 from database.database_layer import DBLayer
 from model_classes.employee_class import Employee

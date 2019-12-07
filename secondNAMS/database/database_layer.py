@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from csv import DictReader, DictWriter
 from pathlib import Path
 # Children imported at bottom of file
@@ -37,7 +38,7 @@ class DBLayer:
 
 		csv_file = DBLayer.path.joinpath(filename)
 
-		filestream = open(csv_file, "r")
+		filestream = open(csv_file, "r" , encoding="utf-8")
 		csv_dict = DictReader(filestream)  # Loads rows into dictionary with column names as keys.
 
 		results = [ ]
@@ -77,7 +78,7 @@ class DBLayer:
 			Key: column name, Value: each rows corresponding value.
 		"""
 
-		filestream = open(filename, "r")
+		filestream = open(filename, "r", encoding="utf-8")
 		csv_reader = DictReader(filestream)
 
 		dict_list = [ ]
@@ -101,7 +102,7 @@ class DBLayer:
 
 		column_names = list(dict_list[0].keys())
 
-		filestream = open(filename, "w")
+		filestream = open(filename, "w", encoding="utf-8")
 		writer = DictWriter(filestream, fieldnames=column_names)
 
 		writer.writeheader()

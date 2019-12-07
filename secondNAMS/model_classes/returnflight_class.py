@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 class ReturnFlight:
 	empty_attribute_dict = {

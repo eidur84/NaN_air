@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from time import localtime, strftime
 from controller.logic_layer import BLLayer
 
@@ -132,7 +132,7 @@ class UILayer:
 
 	def get_text(filename):
 		""" Fetches text for display on screen from files."""
-		f = open(f'view/pages/{filename}', "r")
+		f = open(f'view/pages/{filename}', "r", encoding="utf-8")
 		text = [ line.rstrip("\n") for line in f if line[0] != "#"]
 		f.close()
 		return text

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from database.database_layer import DBLayer
 from model_classes import *
 from csv import DictWriter
@@ -22,7 +23,7 @@ class Create(DBLayer):
 		Appends the data from an object instance to given file.
 		"""
 
-		filestream = open(filename, "a")
+		filestream = open(filename, "a", encoding="utf-8")
 
 		new_row_dict = obj_instance.get_attributes()
 		column_names = list(new_row_dict.keys())

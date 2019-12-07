@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from database.database_layer import DBLayer
 from model_classes.destination_class import Destination
 from model_classes.airplane_class import Airplane
