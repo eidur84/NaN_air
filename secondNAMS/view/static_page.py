@@ -71,7 +71,7 @@ class StaticOptions(UILayer):
 
 			elif state == "rtrip_page":
 				if action == "1":
-					return "new_rtip"
+					return "new_rtrip"
 				elif action == "2":
 					return "rtrip_list"
 
@@ -87,7 +87,7 @@ class StaticOptions(UILayer):
 				elif action == "2":
 					return "airplane_list"
 
-			elif state == "employee_info":	
+			elif state == "employee_info":
 				if action == "1":
 					return "employee_schedule"
 				elif action == "2":

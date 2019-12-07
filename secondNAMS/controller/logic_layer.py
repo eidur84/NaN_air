@@ -78,6 +78,11 @@ class BLLayer:
 		# Add 1 hour wait time
 		departure_time = arrival_time + dt.timedelta(hours=1)
 		attribute_dict["departure"] = departure_time.isoformat()
+		attribute_dict["year"] = departure_time.year
+		attribute_dict["month"] = departure_time.month
+		attribute_dict["day"] = departure_time.day
+		attribute_dict["hour"] = departure_time.hour
+		attribute_dict["minute"] = departure_time.minute
 
 		# Calculate arrival time back to KEF
 		arrival_time = departure_time + dt.timedelta(minutes = flight_time)
