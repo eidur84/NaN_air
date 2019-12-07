@@ -44,5 +44,6 @@ class Airplane:
 	def dict_keys(self):
 		return ["valid", "name", "manufacturer", "type", "seat_count"]
 
-	def __str__(self):
+
+	def short_display(self):
 		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
