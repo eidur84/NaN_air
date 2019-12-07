@@ -101,6 +101,9 @@ class UILayer:
 					fcntl.ioctl(0, termios.TIOCGWINSZ,
 					struct.pack('HHHH', 0, 0, 0, 0)))
 		except ModuleNotFoundError:
+			import os
+			os.system('')
+			os.system('mode con: cols=120 lines=40')
 			tw = 120
 			th = 40
 		return tw - 2, th - 2
