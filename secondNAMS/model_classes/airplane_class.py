@@ -30,5 +30,19 @@ class Airplane:
 
 		return attribute_dict
 
+	def attribute_translation(self):
+		return [
+			("Nafn", self.__name),
+			("Framleiðandi", self.__manufacturer),
+			("Tegund", self.__type),
+			("Sætisfjöldi", self.__seat_count)
+		]
+
+	def set_valid(self):
+		self.__valid = True
+
+	def dict_keys(self):
+		return ["valid", "name", "manufacturer", "type", "seat_count"]
+
 	def __str__(self):
-		return f"Nafn: {self.__name}. Tegund: {self.__type}. Framleiðandi: {self.__manufacturer}. Sætafjöldi: {self.__seat_count}."
+		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
