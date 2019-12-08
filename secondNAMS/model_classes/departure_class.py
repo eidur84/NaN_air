@@ -18,6 +18,7 @@ class Departure:
 	}
 
 	def __init__(self, attribute_dict = empty_attribute_dict):
+
 		self.__valid = attribute_dict["valid"]
 		self.__flightID = attribute_dict["flightID"]
 		self.__direction = "outbound"
