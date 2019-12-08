@@ -1,0 +1,8 @@
+Starfsmenn
+#-------------------- header ends
+
+1-5) Breyta upplýsingum um starfsmann
+  n) Næstu 5 starfsmenn
+  p) Síðustu 5 starfsmenn
+
+            Aðgerð (1-5/n/p): _

@@ -4,7 +4,9 @@ from database.database_layer import DBLayer
 from model_classes.employee_class import Employee
 from model_classes.airplane_class import Airplane
 from model_classes.destination_class import Destination
-
+from model_classes.departure_class import Departure
+from model_classes.returnflight_class import ReturnFlight
+from model_classes.rtrip_class import RTrip
 
 
 class Read(DBLayer):
@@ -41,6 +43,21 @@ class Read(DBLayer):
 
 
 	def read_rtrip(filter_column, key_word):
-		rtrip_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
+		attribute_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
+		rtrip_list = [ ]
+		count = 0
+		for attribute_dict in attribute_dict_list:
 
-		return rtrip_dict_list
+			if attribute_dict["direction"] == "outbound":
+				departure = Departure(attribute_dict)
+				count += 1
+			elif attribute_dict["direction"] == "inbound":
+				returnflight = ReturnFlight(attribute_dict)
+				count += 1
+
+			if count == 2:
+				rtrip = RTrip(departure, returnflight)
+				count = 0
+				rtrip_list.append(rtrip)
+
+		return rtrip_list

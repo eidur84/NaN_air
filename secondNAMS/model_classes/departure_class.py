@@ -6,12 +6,12 @@ class Departure:
 		"valid": False,
 		"past": False,
 		"flightID": "",
-		"arrivingAt": 0,
-		"year": 1,
-		"month": 1,
-		"day": 1,
-		"hour": 0,
-		"minute": 0,
+		"arrivingAt": "",
+		"year": "",
+		"month": "",
+		"day": "",
+		"hour": "",
+		"minute": "",
 		"departure": "",
 		"arrival": "",
 		"aircraft_name": ""
@@ -20,41 +20,81 @@ class Departure:
 	def __init__(self, attribute_dict = empty_attribute_dict):
 		self.__valid = attribute_dict["valid"]
 		self.__flightID = attribute_dict["flightID"]
+		self.__direction = "outbound"
 		self.__departingFrom = "KEF"
 		self.__arrivingAt = attribute_dict["arrivingAt"]
-		self.__year = int(attribute_dict["year"])
-		self.__month = int(attribute_dict["month"])
-		self.__day = int(attribute_dict["day"])
-		self.__hour = int(attribute_dict["hour"])
-		self.__minute = int(attribute_dict["minute"])
-		try:
-			self.__departure = dt.datetime(self.__year, self.__month, self.__day, self.__hour, self.__minute).isoformat()
-			self.__past = dt.datetime.today() > self.__departure
-		except ValueError:
-			self.__departure = "ERROR"
-			self.__past = False
 
+		self.__departure = attribute_dict["departure"]
+		if "year" in attribute_dict:
+			self.__year = str(attribute_dict["year"])
+		if "month" in attribute_dict:
+			self.__month = str(attribute_dict["month"])
+		if "day" in attribute_dict:
+			self.__day = str(attribute_dict["day"])
+		if "hour" in attribute_dict:
+			self.__hour = str(attribute_dict["hour"])
+		if "minute" in attribute_dict:
+			self.__minute = str(attribute_dict["minute"])
+
+		self.__past = False
+
+		if self.__year != "" and self.__month != "" and self.__day != "" and self.__hour != "" and self.__minute != "":
+			self.__departure = dt.datetime(
+				int(self.__year),
+				int(self.__month),
+				int(self.__day),
+				int(self.__hour),
+				int(self.__minute)
+			)
+			self.__departure = self.__departure.isoformat()
+
+		if attribute_dict["departure"] != "":
+			self.__departure = dt.datetime.strptime(attribute_dict["departure"], "%Y-%m-%dT%H:%M:%S")
+
+			self.__year = self.__departure.year
+			self.__month = self.__departure.month
+			self.__day = self.__departure.day
+			self.__hour = self.__departure.hour
+			self.__minute = self.__departure.minute
+
+			self.__past = dt.datetime.today() > self.__departure
+			self.__departure = self.__departure.isoformat()
 
 		self.__arrival = attribute_dict["arrival"]
 		self.__aircraft_name = attribute_dict["aircraft_name"]
 
-	def get_attributes(self):
+	def get_attributes(self, for_csv=False):
 		""" Returns dictionary of instances attributes."""
-		attribute_dict = {
-			"valid": self.__valid,
-			"past": self.__past,
-			"flightID": self.__flightID,
-			"departingFrom": self.__departingFrom,
-			"arrivingAt": self.__arrivingAt,
-			"year": self.__year,
-			"month": self.__month,
-			"day": self.__day,
-			"hour": self.__hour,
-			"minute": self.__minute,
-			"departure": self.__departure,
-			"arrival": self.__arrival,
-			"aircraft_name": self.__aircraft_name
-		}
+		if for_csv:
+			attribute_dict = {
+				"valid": self.__valid,
+				"past": self.__past,
+				"direction": "outbound",
+				"flightID": self.__flightID,
+				"departingFrom": self.__departingFrom,
+				"arrivingAt": self.__arrivingAt,
+				"departure": self.__departure,
+				"arrival": self.__arrival,
+				"aircraft_name": self.__aircraft_name
+			}
+
+		else:
+			attribute_dict = {
+				"valid": self.__valid,
+				"past": self.__past,
+				"direction": "outbound",
+				"flightID": self.__flightID,
+				"departingFrom": self.__departingFrom,
+				"arrivingAt": self.__arrivingAt,
+				"departure": self.__departure,
+				"year": self.__year,
+				"month": self.__month,
+				"day": self.__day,
+				"hour": self.__hour,
+				"minute": self.__minute,
+				"arrival": self.__arrival,
+				"aircraft_name": self.__aircraft_name
+			}
 
 		return attribute_dict
 
@@ -77,7 +117,7 @@ class Departure:
 		return ["valid", "arrivingAt", "year", "month", "day", "hour", "minute", "aircraft_name"]
 
 	def short_display(self):
-		first_half = f"{self.__departingFrom} til {self.__arrivingAt}. {self.__departure}"
+		first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Kl: {self.__departure}"
 		return first_half
 
 	def __str__(self):

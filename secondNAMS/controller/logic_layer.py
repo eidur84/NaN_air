@@ -26,9 +26,18 @@ class BLLayer:
 			data = Read.read_staff("valid", "True")
 		elif state == "airplane_list":
 			data = Read.read_airplane("valid", "True")
+		elif state == "employee_list":
+			data = Read.read_staff("valid", "True")
+		elif state == "rtrip_list":
+			data = Read.read_rtrip("valid", "True")
 
 		display_data["data"] = [ instance for instance in data ]
-
+		if state == "date_list":
+			display_data["page_size"] = 7
+		elif state == "rtrip_list":
+			display_data["page_size"] = 3
+		else:
+			display_data["page_size"] = 5
 		display_data["end"] = len(display_data["data"])
 
 		return display_data
@@ -45,11 +54,23 @@ class BLLayer:
 		elif state == "new_airplane":
 			finished = Create.create_airplane(new_instance)
 		elif state == "new_rtrip":
-			finished = Create.create_rtrip(new_instance)
+			finished = BLLayer.create_returnflight(new_instance)
 			# eh meira herna
 
 		return finished
 
+	def form_system(state):
+		form_data = { }
+		if state == "new_dest":
+			form_data["instance"] = Destination()
+		elif state == "new_employee":
+			form_data["instance"] = Employee()
+		elif state == "new_rtrip":
+			form_data["instance"] = Departure()
+		elif state == "new_airplane":
+			form_data["instance"] = Airplane()
+
+		return form_data
 
 	def create_returnflight(departure):
 		attribute_dict = departure.get_attributes()
@@ -58,7 +79,12 @@ class BLLayer:
 		dest = attribute_dict["arrivingAt"]
 
 		# Flight time in minutes (int)
-		flight_time = int(DBLayer.general_search("Destinations.csv", "ID", dest, "flight_time"))
+		flight_time = DBLayer.generic_search("Destinations.csv", "ID", dest, "flight_time")
+		flight_time = int(flight_time[0])
+
+		# Find last serial in csv file and increment
+		serial = int(DBLayer.generic_search("RoundTrips.csv", "valid", "True", "flightID")[-1])
+		attribute_dict["flightID"] = serial + 1
 
 		# Get departure time (iso format string)
 		departure_time = attribute_dict["departure"]
@@ -66,8 +92,8 @@ class BLLayer:
 		# Parse iso format string and add flight time minutes
 		departure_time = dt.datetime.strptime(departure_time, "%Y-%m-%dT%H:%M:%S")
 		arrival_time = departure_time + dt.timedelta(minutes = flight_time)
-
 		attribute_dict["arrival"] = arrival_time.isoformat()
+
 		departure.__init__(attribute_dict)
 
 		# Prepare attribute dict for ReturnFlight class
@@ -78,15 +104,13 @@ class BLLayer:
 		# Add 1 hour wait time
 		departure_time = arrival_time + dt.timedelta(hours=1)
 		attribute_dict["departure"] = departure_time.isoformat()
-		attribute_dict["year"] = departure_time.year
-		attribute_dict["month"] = departure_time.month
-		attribute_dict["day"] = departure_time.day
-		attribute_dict["hour"] = departure_time.hour
-		attribute_dict["minute"] = departure_time.minute
+
+		# Increment serial
+		attribute_dict["flightID"] += 1
 
 		# Calculate arrival time back to KEF
 		arrival_time = departure_time + dt.timedelta(minutes = flight_time)
-		attribute_dict["arrival"] = arrival_time
+		attribute_dict["arrival"] = arrival_time.isoformat()
 
 
 		ret_flight = ReturnFlight(attribute_dict)
@@ -94,12 +118,5 @@ class BLLayer:
 		finished = Create.create_rtrip(departure, ret_flight)
 
 		return finished
-
-
-
-
-
-
-
 
 

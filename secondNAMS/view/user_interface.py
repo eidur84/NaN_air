@@ -28,24 +28,15 @@ class UILayer:
 			page_type = UILayer.page_check(state)
 
 			if page_type == "form":
-				if state == "new_dest":
-					instance = Destination()
-				elif state == "new_employee":
-					instance = Employee()
-				elif state == "new_rtrip":
-					instance = Departure()
-				elif state == "new_airplane":
-					instance = Airplane()
+				form_data = BLLayer.form_system(state)
 
-				new_instance = Form.page(state, instance)
-				if new_instance == "back":
+				form_data = Form.page(state, form_data)
+
+				if form_data["action"] == "back":
 					path.pop()
 
 				else:
-					if state == "new_rtrip":
-						finished = BLLayer.create_returnflight(new_instance)
-					else:
-						finished = BLLayer.create_row(state, new_instance)
+					finished = BLLayer.create_row(state, form_data["instance"])
 
 					path.pop()
 

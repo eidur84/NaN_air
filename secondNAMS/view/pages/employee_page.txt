@@ -3,8 +3,7 @@ Starfsmenn
 Vinsamlegast veldu aðgerð:
 
     1) Nýskrá starfsmann
-    2) Sjá upplýsingar um starfsmann
-    3) Sjá alla starfsmenn
+    2) Sjá alla starfsmenn
 
 
-            Aðgerð (1/2/3): _
+            Aðgerð (1/2): _

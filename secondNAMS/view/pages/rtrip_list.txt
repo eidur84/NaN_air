@@ -1,0 +1,8 @@
+Flugferðir
+#--------------------- header ends
+
+1-5) Breyta upplýsingum um vinnuferð
+  n) Næstu 6 flugferðir
+  p) Síðustu 6 flugferðir
+
+            Aðgerð (1-5/n/p): _

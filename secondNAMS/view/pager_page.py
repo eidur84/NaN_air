@@ -24,7 +24,9 @@ class Pager:
 			counter = 0
 			for instance in display_data["data"][index * 5: index * 5 + 5]:
 				try:
+
 					line_number += 1
+
 					# Calls display function for object and creates string
 					line = str(counter + 1) + ") " + instance.short_display()
 					screen[line_number] = UILayer.aligner(screen[line_number], line, "left")

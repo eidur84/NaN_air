@@ -18,14 +18,17 @@ class Create(DBLayer):
 		create_rtrip(rtrip_instance)
 	"""
 
-	def append_db_row(filename, obj_instance):
+	def append_db_row(filename, obj_instance, rtrip=False):
 		"""
 		Appends the data from an object instance to given file.
 		"""
 
 		filestream = open(filename, "a", encoding="utf-8")
 
-		new_row_dict = obj_instance.get_attributes()
+		if rtrip:
+			new_row_dict = obj_instance.get_attributes(True)
+		else:
+			new_row_dict = obj_instance.get_attributes()
 		column_names = list(new_row_dict.keys())
 
 
@@ -73,8 +76,8 @@ class Create(DBLayer):
 		"""
 		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
 
-		bool1 = Create.append_db_row(csv_file, departure)
-		bool2 = Create.append_db_row(csv_file, returnflight)
+		bool1 = Create.append_db_row(csv_file, departure, True)
+		bool2 = Create.append_db_row(csv_file, returnflight, True)
 
 		finished = bool1 and bool2
 		return finished
