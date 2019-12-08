@@ -68,7 +68,7 @@ class UILayer:
 
 
 
-	def page_check(state: str) -> str:
+	def page_check(state):
 		"""
 		Checks which ui class type should handle given page.
 		"""
@@ -121,7 +121,7 @@ class UILayer:
 
 		return screen
 
-	def get_text(filename) -> list:
+	def get_text(filename):
 		""" Fetches text for display on screen from files."""
 		f = open(f'view/pages/{filename}', "r", encoding="utf-8")
 		text = [ line.rstrip("\n") for line in f if line[0] != "#"]
@@ -132,7 +132,7 @@ class UILayer:
 		print("Window is too small, please make window larger.")
 		action = input()
 
-	def aligner(screen_line, text, align="left") -> str:
+	def aligner(screen_line, text, align="left"):
 		"""
 		Function for aligning text, using slicing. Default alignment is left.
 		"""
@@ -191,7 +191,7 @@ class UILayer:
 
 		return screen, line_number + 1
 
-	def footer(screen, line_number) -> list:
+	def footer(screen, line_number):
 		""" Inserts footer into screen. Returns modified screen."""
 		ascii_art = UILayer.get_text("ascii_art.txt")
 		ascii_art.reverse()
@@ -205,7 +205,7 @@ class UILayer:
 		return screen
 
 
-	def get_action(text, jump) -> str:
+	def get_action(text, jump):
 		""" Jumps up a given number of lines, recieves user input and returns it."""
 		UILayer.move(jump)
 		action = input(text)
