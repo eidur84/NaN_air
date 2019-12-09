@@ -20,14 +20,78 @@ class Destination:
 		"""
 
 		self.__valid = attribute_dict["valid"]
-		self.__id = attribute_dict["ID"]
-		self.__country = attribute_dict["country"]
-		self.__city = attribute_dict["city"]
-		self.__airport = attribute_dict["airport"]
-		self.__flight_time = attribute_dict["flight_time"]
-		self.__distance = attribute_dict["distance"]
-		self.__contact_name = attribute_dict["contact_name"]
-		self.__contact_phone = attribute_dict["contact_phone"]
+		self.__id = Destination.id_check(attribute_dict["ID"])
+		self.__country = Destination.country_check(attribute_dict["country"])
+		self.__city = Destination.city_check(attribute_dict["city"])
+		self.__airport = Destination.airport_check(attribute_dict["airport"])
+		self.__flight_time = Destination.flighttime_check(attribute_dict["flight_time"])
+		self.__distance = Destination.distance_check(attribute_dict["distance"])
+		self.__contact_name = Destination.contactname_check(attribute_dict["contact_name"])
+		self.__contact_phone = Destination.contactphone_check(attribute_dict["contact_phone"])
+
+	def id_check(id):							#Skoða að breyta id í uppercase frekar en að gefa villu
+		if id == "":
+			return id
+		elif len(id) == 3 and id.isalpha():
+			return id.upper()
+		else:
+			return "Villa"
+
+	def country_check(country): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
+		if country == "":
+			return country
+		elif country.replace(" ", "").isalpha():
+			return country.capitalize()
+		else:
+			return "Villa "
+
+	def city_check(city): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
+		if city == "":
+			return city
+		elif city.isalpha():
+			return city
+		else:
+			return "Villa"
+
+	def airport_check(airport): 				
+		if airport == "":
+			return airport
+		elif airport.isalpha():
+			return airport
+		else:
+			return "Villa"
+
+	def flighttime_check(flighttime): 			
+		if flighttime == 0:
+			return flighttime
+		elif isinstance(flighttime, int):
+			return flighttime
+		else:
+			return "Villa"
+
+	def distance_check(distance): 				
+		if distance == 0:
+			return distance
+		elif isinstance(distance, int):
+			return distance
+		else:
+			return "Villa"
+
+	def contactname_check(name): 				
+		if name == "":
+			return name
+		elif name.replace(" ", "").isalpha():
+			return name
+		else:
+			return "Villa"
+
+	def contactphone_check(phone): 				
+		if phone == "":
+			return phone
+		elif phone.isdecimal():
+			return phone
+		else:
+			return "Villa"
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
