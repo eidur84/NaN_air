@@ -42,8 +42,15 @@ class Destination:
 			return "Villa "
 
 	def city_check(city): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
+<<<<<<< HEAD
 		if city == "" or city.isalpha():
 			return city
+=======
+		if city == "":
+			return city
+		elif city.isalpha():
+			return city.capitalize()
+>>>>>>> refs/remotes/origin/master
 		else:
 			return "Villa"
 

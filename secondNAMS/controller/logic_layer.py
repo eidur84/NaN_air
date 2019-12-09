@@ -123,11 +123,13 @@ class BLLayer:
 
 
 		ret_flight = ReturnFlight(attribute_dict)
+
 		if instant_write:
 			finished = Create.create_rtrip(departure, ret_flight)
 			return finished
 		else:
 			return ret_flight
+
 
 	def dategenerator():
 		display_data = {"data": []}
