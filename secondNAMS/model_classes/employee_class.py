@@ -19,9 +19,7 @@ class Employee:
 		self.__valid = attribute_dict["valid"]
 		self.__ssn = ssn_check(attribute_dict["ssn"])
 		self.__name = name_check(attribute_dict["name"])
-		self.__job = attribute_dict["job"]
-		if self.__job not in ["Flugmaður", "Flugþjónn", ""]:
-			self.__job = "ERROR"
+		self.__job = job_check(attribute_dict["job"])
 		self.__home = home_check(attribute_dict["home"])
 		self.__landline = landline_check(attribute_dict["landline"])
 		self.__gsm = gsm_check(attribute_dict["gsm"])
@@ -55,7 +53,7 @@ class Employee:
 				else:
 					if int(ssn_str[:2]) <= 31:
 						return self.__ssn
-		return "Kennitala er ekki viðurkennd "
+		return "Kennitala er ekki viðurkennd"
 
 	def job_check(self):
 		if self.__job in ["Flugmaður", "Flugþjónn", ""]:
