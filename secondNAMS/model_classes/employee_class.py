@@ -65,7 +65,7 @@ class Employee:
 	def home_check(home):
 		if home == "":
 			return home
-		elif home.replace(" ", "").isalpha():
+		elif len(home) > 4:
 			return home
 		else:
 			return "Óþekkt heimili"
@@ -73,7 +73,7 @@ class Employee:
 	def landline_check(landline):
 		if landline == "":
 			return landline
-		elif landline.isnumeric():
+		elif landline.isnumeric() and len(landline) == 7:
 			return landline
 		else:
 			return "Óleyfilegt símanúmer"
@@ -81,7 +81,7 @@ class Employee:
 	def gsm_check(gsm):
 		if gsm == "":
 			return gsm
-		elif gsm.isnumeric():
+		elif gsm.isnumeric() and len(gsm) == 7:
 			return gsm
 		else:
 			return "Óleyfilegt símanúmer"
@@ -137,8 +137,7 @@ class Employee:
 		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
 	def short_display(self):
-		#first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
-		first_half = "{}, {}. {}, {}. {}, {}.".format(self.__ssn, self.__name, self.__job, self.__license, self.__landline, self.__gsm)
+		first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
 		return first_half
 
 	def __str__(self):
