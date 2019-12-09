@@ -20,23 +20,27 @@ class Pager:
 			screen, line_number = UILayer.header(screen, state)      # Create header
 			text = UILayer.get_text(state + ".txt")      # Recieve text for current screen
 
+			page_size = display_data["page_size"]
+			if "rtrip" in display_data:
+				screen, line_number, screen_too_small = Pager.format_rtrips(screen, line_number, display_data, index)
 
-			counter = 0
-			for instance in display_data["data"][index * 5: index * 5 + 5]:
-				try:
+			else:
+				counter = 0
+				for instance in display_data["data"][index * page_size: index * page_size + page_size]:
+					try:
 
-					line_number += 1
+						line_number += 1
 
-					# Calls display function for object and creates string
-					line = str(counter + 1) + ") " + instance.short_display()
-					screen[line_number] = UILayer.aligner(screen[line_number], line, "left")
-					counter += 1
-					screen_too_small = False
+						# Calls display function for object and creates string
+						line = str(counter + 1) + ") " + instance.short_display()
+						screen[line_number] = UILayer.aligner(screen[line_number], line, "left")
+						counter += 1
+						screen_too_small = False
 
-				except IndexError:      # If screen is too small
-					UILayer.error_screen()
-					screen_too_small = True
-					break
+					except IndexError:      # If screen is too small
+						UILayer.error_screen()
+						screen_too_small = True
+						break
 
 			if screen_too_small:
 				continue
@@ -68,7 +72,7 @@ class Pager:
 			action = UILayer.get_action(input_line, jump)
 
 			if action.lower() == "n":
-				if (index + 1) * 5 <= display_data["end"]:
+				if (index + 1) * page_size <= display_data["end"]:
 					index += 1
 			elif action.lower() == "p":
 				if index > 0:
@@ -79,15 +83,41 @@ class Pager:
 					return display_data
 				else:
 					try:
-						display_data["instance"] = display_data["data"][(index * 5) + int(action) - 1]
-						return display_data
+						display_data["instance"] = display_data["data"][(index * page_size) + int(action) - 1]
+						if "rtrip" in display_data:
+							display_data["departure"] = display_data["instance"].get_departure()
+							display_data["returnflight"] = display_data["instance"].get_returnflight()
+
+						else:
+							return display_data
+
 					except IndexError:
 						pass
 
 
+	def format_rtrips(screen, line_number, display_data, index):
+		counter = 0
+		page_size = display_data["page_size"]
+		for instance in display_data["data"][index * page_size: index * page_size + page_size]:
+			try:
 
+				line_number += 1
 
+				# Calls display function for object and creates string
+				line = str(counter + 1) + ") " + instance.display1()
+				screen[line_number] = UILayer.aligner(screen[line_number], line, "left")
+				line_number += 1
+				line = "   " + instance.display2()
+				screen[line_number] = UILayer.aligner(screen[line_number], line, "left")
+				counter += 1
+				screen_too_small = False
 
+			except IndexError:      # If screen is too small
+				UILayer.error_screen()
+				screen_too_small = True
+				break
+
+		return screen, line_number, screen_too_small
 
 
 

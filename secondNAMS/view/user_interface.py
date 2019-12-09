@@ -52,7 +52,11 @@ class UILayer:
 				else:
 					old_dict = display_data["instance"].get_attributes()
 					display_data = Form.page(state, display_data)
-					finished = BLLayer.update_row(old_dict, display_data["instance"])
+					if "rtrip" in display_data:
+						finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
+
+					else:
+						finished = BLLayer.update_row(old_dict, display_data["instance"])
 
 			elif page_type == "static":
 				state = StaticOptions.page(state)

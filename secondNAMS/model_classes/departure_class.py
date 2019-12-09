@@ -28,14 +28,24 @@ class Departure:
 		self.__departure = attribute_dict["departure"]
 		if "year" in attribute_dict:
 			self.__year = str(attribute_dict["year"])
+		else:
+			self.__year = ""
 		if "month" in attribute_dict:
 			self.__month = str(attribute_dict["month"])
+		else:
+			self.__month = ""
 		if "day" in attribute_dict:
 			self.__day = str(attribute_dict["day"])
+		else:
+			self.__day = ""
 		if "hour" in attribute_dict:
 			self.__hour = str(attribute_dict["hour"])
+		else:
+			self.__hour = ""
 		if "minute" in attribute_dict:
 			self.__minute = str(attribute_dict["minute"])
+		else:
+			self.__minute = ""
 
 		self.__past = False
 

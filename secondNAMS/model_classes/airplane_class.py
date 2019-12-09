@@ -10,6 +10,7 @@ class Airplane:
 		"seat_count": 0
 	}
 
+
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
