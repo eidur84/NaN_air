@@ -97,6 +97,7 @@ class Form(UILayer):
 
 				if action.lower() == "q" or action == "0":
 					form_data["action"] = "back"
+					return form_data
 
 				if action != "":
 					form_dict[dict_keys[index]] = action

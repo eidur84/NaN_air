@@ -38,8 +38,9 @@ class DBLayer:
 
 		csv_file = DBLayer.path.joinpath(filename)
 
-		filestream = open(csv_file, "r" , encoding="utf-8")
+		filestream = open(csv_file, "r", encoding="utf-8")
 		csv_dict = DictReader(filestream)  # Loads rows into dictionary with column names as keys.
+
 
 		results = [ ]
 

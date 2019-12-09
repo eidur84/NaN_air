@@ -36,11 +36,18 @@ class BLLayer:
 			display_data["page_size"] = 7
 		elif state == "rtrip_list":
 			display_data["page_size"] = 3
+			display_data["rtrip"] = True
 		else:
 			display_data["page_size"] = 5
 		display_data["end"] = len(display_data["data"])
 
 		return display_data
+
+
+	def update_rtrip(departure, returnflight):
+		finished = Update.replace_rtrip_row(departure, returnflight)
+		return finished
+
 
 	def update_row(old_attributes, new_instance):
 		finished = Update.replace_row(old_attributes, new_instance)

@@ -20,22 +20,32 @@ class Departure:
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
-		self.__flightID = attribute_dict["flightID"]
+		self.__flightID = Departure.flightID_check(attribute_dict["flightID"])
 		self.__direction = "outbound"
 		self.__departingFrom = "KEF"
-		self.__arrivingAt = attribute_dict["arrivingAt"]
+		self.__arrivingAt = Departure.arrivingAt_check(attribute_dict["arrivingAt"])
 
 		self.__departure = attribute_dict["departure"]
 		if "year" in attribute_dict:
 			self.__year = str(attribute_dict["year"])
+		else:
+			self.__year = ""
 		if "month" in attribute_dict:
 			self.__month = str(attribute_dict["month"])
+		else:
+			self.__month = ""
 		if "day" in attribute_dict:
 			self.__day = str(attribute_dict["day"])
+		else:
+			self.__day = ""
 		if "hour" in attribute_dict:
 			self.__hour = str(attribute_dict["hour"])
+		else:
+			self.__hour = ""
 		if "minute" in attribute_dict:
 			self.__minute = str(attribute_dict["minute"])
+		else:
+			self.__minute = ""
 
 		self.__past = False
 
@@ -62,7 +72,25 @@ class Departure:
 			self.__departure = self.__departure.isoformat()
 
 		self.__arrival = attribute_dict["arrival"]
-		self.__aircraft_name = attribute_dict["aircraft_name"]
+		self.__aircraft_name = Departure.aircraft_name_check(attribute_dict["aircraft_name"])
+
+	def flightID_check(flightID):
+		if flightID.isdecimal() or flightID == "":
+			return flightID
+		else:
+			return "Óþekkt flugnúmer"
+
+	def arrivingAt_check(arrival):
+		if len(arrival) == 3 and arrival.isupper() or arrival == "":
+			return arrival
+		else:
+			return "Óþekkur aðkomustaður"
+
+	def aircraft_name_check(name):
+		if len(name) >= 4 or name == "":
+			return name
+		else:
+			return "Óþekkt flugvélanafn"
 
 	def get_attributes(self, for_csv=False):
 		""" Returns dictionary of instances attributes."""

@@ -9,7 +9,12 @@ class Airplane:
 		"type": "",
 		"seat_count": ""
 	}
+<<<<<<< HEAD
 	
+=======
+
+
+>>>>>>> c897b671af41d53b9444e538f12beccbddfcde5f
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]

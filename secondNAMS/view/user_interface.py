@@ -44,16 +44,19 @@ class UILayer:
 			elif page_type == "pager":
 				display_data = BLLayer.paging_system(state)
 
-				action = Pager.page(state, display_data)
+				display_data = Pager.page(state, display_data)
 
-				if action == "back":
-					path.pop()
+				if "action" in display_data:
+					if display_data["action"] == "back":
+						path.pop()
 				else:
-					instance = action
-					old_dict = instance.get_attributes()
-					new_instance = Form.page(state, instance)
-					finished = BLLayer.update_row(old_dict, new_instance)
+					old_dict = display_data["instance"].get_attributes()
+					display_data = Form.page(state, display_data)
+					if "rtrip" in display_data:
+						finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
 
+					else:
+						finished = BLLayer.update_row(old_dict, display_data["instance"])
 
 			elif page_type == "static":
 				state = StaticOptions.page(state)
