@@ -12,3 +12,6 @@ class FlightDate:
 	def short_display(self):
 		printobject = f"{self.datetime}"
 		return printobject
+
+	def get_datetime(self):
+		return self.datetime
