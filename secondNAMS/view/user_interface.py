@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from time import localtime, strftime
 from controller.logic_layer import BLLayer
+from pathlib import Path
 
 from model_classes.airplane_class import Airplane
 from model_classes.departure_class import Departure
@@ -123,7 +124,8 @@ class UILayer:
 
 	def get_text(filename):
 		""" Fetches text for display on screen from files."""
-		f = open(f'view/pages/{filename}', "r", encoding="utf-8")
+		filename = Path.cwd().joinpath("view").joinpath("pages").joinpath(filename)
+		f = open(filename, "r", encoding="utf-8")
 		text = [ line.rstrip("\n") for line in f if line[0] != "#"]
 		f.close()
 		return text
