@@ -26,6 +26,8 @@ class Employee:
 		self.__email = Employee.email_check(attribute_dict["email"])
 		self.__license = Employee.license_check(attribute_dict["license"])
 
+
+	#--------------------- Basic check functions
 	def name_check(name):
 		if name == "":
 			return name
@@ -99,6 +101,7 @@ class Employee:
 			return license
 		else:
 			return "Villa"
+	#--------------------- Basic check functions end
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
@@ -117,6 +120,7 @@ class Employee:
 		return attribute_dict
 
 	def attribute_translation(self):
+		""" Returns names of attributes in Icelandic."""
 		return [
 			("Kennitala", self.__ssn),
 			("Nafn", self.__name),
@@ -132,6 +136,7 @@ class Employee:
 		self.__valid = True
 
 	def dict_keys(self):
+		""" Returns list of keys in attribute dict"""
 		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
 	def short_display(self):

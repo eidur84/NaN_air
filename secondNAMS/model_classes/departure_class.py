@@ -2,6 +2,10 @@
 import datetime as dt
 
 class Departure:
+	"""
+	Class for handling information regarding outbound flights. Return flights are generated automatically in logic layer.
+	"""
+
 	empty_attribute_dict = {
 		"valid": False,
 		"past": False,

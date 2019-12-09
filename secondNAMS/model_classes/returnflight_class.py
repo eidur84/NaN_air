@@ -2,6 +2,9 @@
 import datetime as dt
 
 class ReturnFlight:
+	"""
+	Class for flight back from destination to KEF. Created automatically from departure by logic layer.
+	"""
 	empty_attribute_dict = {
 		"valid": False,
 		"past": False,
@@ -18,6 +21,7 @@ class ReturnFlight:
 	}
 
 	def __init__(self, attribute_dict = empty_attribute_dict):
+
 		self.__valid = attribute_dict["valid"]
 		self.__flightID = attribute_dict["flightID"]
 		self.__direction = "inbound"

@@ -14,6 +14,7 @@ class Pager:
 				"data": list of strings to print to screen.
 				"end": length of data list
 		"""
+
 		index = 0
 		while True:
 			screen = UILayer.frame()        # Create border and line list (screen)

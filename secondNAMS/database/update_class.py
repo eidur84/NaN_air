@@ -11,8 +11,17 @@ from pathlib import Path
 
 
 class Update(DBLayer):
+	"""
+	Class for updating rows in csv files.
+	"""
 
 	def replace_row(old_attributes, new_instance):
+		"""
+		Rewrites line matching old_attibutes with attributes of new_instance.
+		Args:
+			old_attributes: dict containing old info to search for in csv file.
+			new_instance: instance of a given updated object.
+		"""
 		if type(new_instance) is Destination:
 			filename = Update.path.joinpath("Destinations.csv")
 		elif type(new_instance) is Employee:
@@ -39,6 +48,12 @@ class Update(DBLayer):
 
 
 	def replace_rtrip_row(departure, returnflight):
+		"""
+		Function for updating rows in round trip csv file. Edits two lines instead of one.
+		Args:
+			departure: updated instance of Departure class
+			returnflight: updated instance of ReturnFlight class
+		"""
 		new_dep_attributes = departure.get_attributes(for_csv=True)
 		new_ret_attributes = returnflight.get_attributes(for_csv=True)
 

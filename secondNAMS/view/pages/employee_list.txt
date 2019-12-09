@@ -5,4 +5,7 @@ Starfsmenn
   n) Næstu 5 starfsmenn
   p) Síðustu 5 starfsmenn
 
+  l) Sjá lausa starfsmenn
+  u) Sjá upptekna starfsmenn
+
             Aðgerð (1-5/n/p): _

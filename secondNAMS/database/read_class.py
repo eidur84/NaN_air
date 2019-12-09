@@ -15,6 +15,10 @@ class Read(DBLayer):
 	"""
 
 	def read_staff(filter_column, key_word):
+		"""
+		Looks in staff csv file for rows matching given conditions.
+		Returns list of instances.
+		"""
 		attribute_dict_list = DBLayer.generic_search('Staff.csv', filter_column, key_word)
 		staff_list = [ ]
 		for attribute_dict in attribute_dict_list:
@@ -24,6 +28,10 @@ class Read(DBLayer):
 		return staff_list
 
 	def read_airplane(filter_column, key_word):
+		"""
+		Looks in airplane csv file for rows matching given conditions.
+		Returns list of instances.
+		"""
 		attribute_dict_list = DBLayer.generic_search('Airplanes.csv', filter_column, key_word)
 		airplane_list = [ ]
 		for attribute_dict in attribute_dict_list:
@@ -33,6 +41,10 @@ class Read(DBLayer):
 		return airplane_list
 
 	def read_dest(filter_column, key_word):
+		"""
+		Looks in destination csv file for rows matching given conditions.
+		Returns list of instances.
+		"""
 		attribute_dict_list = DBLayer.generic_search('Destinations.csv', filter_column, key_word)
 		dest_list = [ ]
 		for attribute_dict in attribute_dict_list:
@@ -43,6 +55,10 @@ class Read(DBLayer):
 
 
 	def read_rtrip(filter_column, key_word):
+		"""
+		Looks in rtrip csv file for rows matching given conditions.
+		Returns list of instances.
+		"""
 		attribute_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
 		rtrip_list = [ ]
 		count = 0
@@ -55,6 +71,8 @@ class Read(DBLayer):
 				returnflight = ReturnFlight(attribute_dict)
 				count += 1
 
+			# Collects two rows, creates Departure and ReturnFlight instances in order
+			# Creates RTrip instance containing the two connected instances
 			if count == 2:
 				rtrip = RTrip(departure, returnflight)
 				count = 0

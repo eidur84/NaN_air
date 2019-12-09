@@ -19,6 +19,7 @@ class Airplane:
 		self.__type = Airplane.type_check(attribute_dict["type"])
 		self.__seat_count = Airplane.seat_count_check(attribute_dict["seat_count"])
 
+
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
 		attribute_dict = {
@@ -32,6 +33,7 @@ class Airplane:
 		return attribute_dict
 
 	def attribute_translation(self):
+		""" Returns attribute names in Icelandic."""
 		return [
 			("Nafn", self.__name),
 			("Framleiðandi", self.__manufacturer),
@@ -43,12 +45,11 @@ class Airplane:
 		self.__valid = True
 
 	def dict_keys(self):
+		""" Returns list of keys to attribute dict"""
 		return ["valid", "name", "manufacturer", "type", "seat_count"]
 
 
-	def short_display(self):
-		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
-
+	#--------------------- Basic check functions
 	def name_check(name):
 		if name.replace("-", "").isalpha() and len(name) == 6 or name == "":
 			return name
@@ -72,5 +73,12 @@ class Airplane:
 			return manuf_str
 		else:
 			return "Villa"
+	#--------------------- Basic check functions end
+
+
+	def short_display(self):
+		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
+
+
 
 

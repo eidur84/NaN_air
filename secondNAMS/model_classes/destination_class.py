@@ -8,8 +8,8 @@ class Destination:
 		"country": "",
 		"city": "",
 		"airport": "",
-		"flight_time": 0,
-		"distance": 0,
+		"flight_time": "",
+		"distance": "",
 		"contact_name": "",
 		"contact_phone": ""
 	}
@@ -29,6 +29,8 @@ class Destination:
 		self.__contact_name = Destination.contactname_check(attribute_dict["contact_name"])
 		self.__contact_phone = Destination.contactphone_check(attribute_dict["contact_phone"])
 
+
+	#--------------------- Basic check functions
 	def id_check(dest_id):
 		if len(dest_id) == 3 and dest_id.isalpha() or dest_id == "":
 			return dest_id.upper()
@@ -41,16 +43,9 @@ class Destination:
 		else:
 			return "Villa "
 
-	def city_check(city): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
-<<<<<<< HEAD
+	def city_check(city):
 		if city == "" or city.isalpha():
 			return city
-=======
-		if city == "":
-			return city
-		elif city.isalpha():
-			return city.capitalize()
->>>>>>> refs/remotes/origin/master
 		else:
 			return "Villa"
 
@@ -83,6 +78,8 @@ class Destination:
 			return phone
 		else:
 			return "Villa"
+	#--------------------- Basic check functions end
+
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
@@ -101,6 +98,7 @@ class Destination:
 		return attribute_dict
 
 	def attribute_translation(self):
+		""" Returns attribute names in Icelandic"""
 		return [
 			("Auðkenni", self.__id),
 			("Land", self.__country),
@@ -116,6 +114,7 @@ class Destination:
 		self.__valid = True
 
 	def dict_keys(self):
+		""" Returns list keys for attribute dict."""
 		return ["valid", "ID", "country", "city", "airport", "flight_time", "distance", "contact_name", "contact_phone"]
 
 	def short_display(self):

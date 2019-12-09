@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 class RTrip:
+	"""
+	Class for handling connected instances of Departure and ReturnFlight.
+	"""
 
 	def __init__(self, departure, returnflight):
 		self.__departure = departure

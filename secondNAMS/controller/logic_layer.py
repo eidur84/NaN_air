@@ -131,8 +131,8 @@ class BLLayer:
 			return ret_flight
 
 
-	def dategenerator():
-		display_data = {"data": []}
+	def dategenerator(display_data):
+		display_data["data"] = []
 
 		datet_obj = dt.datetime(2019, 12, 24, 14, 0)
 
