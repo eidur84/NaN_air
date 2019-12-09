@@ -137,8 +137,7 @@ class Employee:
 		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
 	def short_display(self):
-		#first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
-		first_half = "{}, {}. {}, {}. {}, {}.".format(self.__ssn, self.__name, self.__job, self.__license, self.__landline, self.__gsm)
+		first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
 		return first_half
 
 	def __str__(self):
