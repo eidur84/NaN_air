@@ -17,24 +17,93 @@ class Employee:
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
-		self.__ssn = attribute_dict["ssn"]
-		self.__name = attribute_dict["name"]
+		self.__ssn = ssn_check(attribute_dict["ssn"])
+		self.__name = name_check(attribute_dict["name"])
 		self.__job = attribute_dict["job"]
 		if self.__job not in ["Flugmaður", "Flugþjónn", ""]:
 			self.__job = "ERROR"
-		self.__home = attribute_dict["home"]
-		self.__landline = attribute_dict["landline"]
-		self.__gsm = attribute_dict["gsm"]
-		self.__email = attribute_dict["email"]
-		self.__license = attribute_dict["license"]
+		self.__home = home_check(attribute_dict["home"])
+		self.__landline = landline_check(attribute_dict["landline"])
+		self.__gsm = gsm_check(attribute_dict["gsm"])
+		self.__email = email_check(attribute_dict["email"])
+		self.__license = license_check(attribute_dict["license"])
 
-	def name_check(self,name):
-		if name == "":
-			return name
-		elif name.remove(" ","").isalpha():
-			return name
+	def name_check(self):
+		if self.__name == "":
+			return self.__name
+		elif self.__name.replace(" ", "").isalpha():
+			return self.__name
 		else:
 			return "Nafn er ekki viðurkennt"
+
+	def ssn_check(self):
+		ssn_str = self.__ssn
+		if ssn_str.isdecimal() and len(ssn_str) == 10:
+
+			if int(ssn_str[2:4]) <= 12:
+
+				if ssn_str[2:4] == "02":  # February
+
+					if int(ssn_str[:2]) <= 29:
+						return self.__ssn
+
+				elif ssn_str[2:4] in ["04", "06", "09", "11"]:
+
+					if int(ssn_str[:2]) <= 30:
+						return self.__ssn
+
+				else:
+					if int(ssn_str[:2]) <= 31:
+						return self.__ssn
+		return "Kennitala er ekki viðurkennd "
+
+	def job_check(self):
+		if self.__job in ["Flugmaður", "Flugþjónn", ""]:
+			return self.__job
+		elif self.__job == "ERROR":
+			return "Starfsheiti er ekki þekkt"
+		else:
+			return "Starfsheiti er ekki þekkt"
+
+	def home_check(self):
+		if self.__home == "":
+			return self.__home
+		elif self.__home.replace(" ", "").isalpha():
+			return self.__home
+		else:
+			return "Heimili er ekki þekkt"
+
+	def landline_check(self):
+		if self.__landline == "":
+			return self.__landline
+		try:
+			int(self.__landline)
+		except ValueError:
+			return "Símanúmer má aðeins innihalda tölustafi"
+
+	def gsm_check(self):
+		if self.__gsm == "":
+			return self.__gsm
+		try:
+			int(self.__gsm)
+		except ValueError:
+			return "Símanúmer má aðeins innihalda tölustafi"
+
+	def email_check(self):
+		if self.__email == "":
+			return self.__email
+		elif "@" in self.__email and "." in self.__email and len(self.__email.replace("@", "").replace(".", "")) >= 4:
+			return self.__email
+		else:
+			"Tölvupóstfang er ekki þekkt"
+
+	def license_check(self):
+		if self.__license == "":
+			return self.__license
+		elif len(self.__license) >= 4:
+			return self.__license
+		else:
+			"Flugvélaleyfi er ekki þekkt"
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
@@ -51,7 +120,6 @@ class Employee:
 		}
 
 		return attribute_dict
-
 
 	def attribute_translation(self):
 		return [
@@ -72,7 +140,8 @@ class Employee:
 		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
 	def short_display(self):
-		first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
+		#first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
+		first_half = "{},{}.{},{}.{},{}.".format(self.__ssn, self.__name, self.__job, self.__license, self.__landline, self.__gsm)
 		return first_half
 
 	def __str__(self):
