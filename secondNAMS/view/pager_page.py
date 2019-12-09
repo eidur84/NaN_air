@@ -75,11 +75,12 @@ class Pager:
 					index -= 1
 			elif action in ["0", "1", "2", "3", "4", "5"]:
 				if action == "0":
-					return "back"
+					display_data["action"] = "back"
+					return display_data
 				else:
 					try:
-						instance = display_data["data"][(index * 5) + int(action) - 1]
-						return instance
+						display_data["instance"] = display_data["data"][(index * 5) + int(action) - 1]
+						return display_data
 					except IndexError:
 						pass
 
