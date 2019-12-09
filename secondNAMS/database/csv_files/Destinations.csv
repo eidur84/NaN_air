@@ -1,7 +1,7 @@
-valid,ID,country,city,airport,flight_time,distance,contact_name,contact_phone
-True,LYR,Svalbarði,Longyearbyean,Svalbard Airport,158,2018,John Svalbard,5885522
-True,GOH,Grænland,Nuuk,Nuuk Airport,116,1402,John Nuuk,5885522
-True,KUS,Grænland,Kulusuk,Kulusuk Airport,80,712,John Kulusk,5885522
-True,FAE,Færeyjar,Þórshöfn,Vágar Airport,80,794,John Torshavn,5885522
-True,LWK,Hjaltlandseyjar,Tingwall,Tingwall Airport,100,996,John Tingwall,5885522
-True,KEF,Ísland,Keflavík,Keflavík Airport,0,0,Jón Jónsson,5885522
+valid,ID,country,city,airport,flight_time,distance,contact_name,contact_phone
+True,LYR,Svalbarði,Longyearbyean,Svalbard Airport,158,2018,John Svalbard,5885522
+True,GOH,Grænland,Nuuk,Nuuk Airport,116,1402,John Nuuk,5885522
+True,KUS,Grænland,Kulusuk,Kulusuk Airport,80,712,John Kulusk,5885522
+True,FAE,Færeyjar,Þórshöfn,Vágar Airport,80,794,John Torshavn,5885522
+True,LWK,Hjaltlandseyjar,Tingwall,Tingwall Airport,100,996,John Tingwall,5885522
+True,KEF,Ísland,Keflavík,Keflavík Airport,0,0,Jón Jónsson,5885522
