@@ -49,7 +49,7 @@ class Destination:
 		if city == "":
 			return city
 		elif city.isalpha():
-			return city
+			return city.capitalize()
 		else:
 			return "Villa"
 

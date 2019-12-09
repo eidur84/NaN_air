@@ -126,4 +126,19 @@ class BLLayer:
 
 		return finished
 
+	def dategenerator():
+    
+    	display_data = {"data": []}
+    
+    	datet_obj = datetime.datetime(2019, 12, 24, 14, 0)
+    
+    	for _ in range (365):
+        
+        	datet_obj = datet_obj + datetime.timedelta(days = 1)
+        	display_data["data"].append(datet_obj)
+    
+    	return display_data
+
+
+
 
