@@ -9,12 +9,8 @@ class Airplane:
 		"type": "",
 		"seat_count": ""
 	}
-<<<<<<< HEAD
-	
-=======
 
 
->>>>>>> c897b671af41d53b9444e538f12beccbddfcde5f
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
@@ -57,22 +53,22 @@ class Airplane:
 		if name.replace("-", "").isalpha() and len(name) == 6:
 			return name
 		else:
-			return "error name not valid"
+			return "Ógilt nafn"
 
 	def seat_count_check(seat_count):
 		if seat_count.isdecimal():
 			return seat_count
 		else:
-			return "Seat count not valid"
+			return "Ógildur sætisfjöldi"
 
 	def type_check(type_str):
 		if type_str.replace(" ", "").isalnum():
 			return type_str
 		else:
-			return "Type is not valid"
+			return "Ógild tegund"
 
 	def manufacturer_check(manuf_str):
 		if manuf_str.replace(" ", "").isalnum():
 			return manuf_str
 		else:
-			return "Manufacturer not valid"
+			return "Ógildur framleiðandi"

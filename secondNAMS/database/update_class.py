@@ -23,6 +23,7 @@ class Update(DBLayer):
 			filename = Update.path.joinpath("RoundTrips.csv")
 
 		dict_list = Update.get_csv_data(filename)
+
 		try:
 			index = dict_list.index(old_attributes)
 			if type(new_instance) is Departure or type(new_instance) is ReturnFlight:
@@ -30,7 +31,7 @@ class Update(DBLayer):
 			else:
 				dict_list[index] = new_instance.get_attributes()
 
-		except IndexError:
+		except ValueError:
 			return False
 
 		finished = Update.write_csv_file(filename, dict_list)
@@ -41,8 +42,8 @@ class Update(DBLayer):
 		new_dep_attributes = departure.get_attributes(for_csv=True)
 		new_ret_attributes = returnflight.get_attributes(for_csv=True)
 
-		old_departure_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_dep_attributes["ID"])[0]
-		old_returnflight_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_ret_attributes["ID"])[0]
+		old_departure_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_dep_attributes["flightID"])[0]
+		old_returnflight_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_ret_attributes["flightID"])[0]
 
 		bool1 = Update.replace_row(old_departure_dict, departure)
 		bool2 = Update.replace_row(old_returnflight_dict, returnflight)
