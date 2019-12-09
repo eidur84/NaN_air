@@ -1,5 +1,6 @@
 import datetime as dt
 
+
 class FlightDate:
 
 	def __init__(self, datetime):
