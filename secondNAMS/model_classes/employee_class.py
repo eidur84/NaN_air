@@ -82,10 +82,10 @@ class Employee:
 	def gsm_check(self):
 		if self.__gsm == "":
 			return self.__gsm
-		try:
-			int(self.__gsm)
-		except ValueError:
-			return "Símanúmer má aðeins innihalda tölustafi"
+		elif self.__gsm.isnumeric():
+			return self.__gsm
+		else:
+			return"Símanúmer má aðeins innihalda tölustafi"
 
 	def email_check(self):
 		if self.__email == "":
