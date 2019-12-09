@@ -87,9 +87,7 @@ class Pager:
 						if "rtrip" in display_data:
 							display_data["departure"] = display_data["instance"].get_departure()
 							display_data["returnflight"] = display_data["instance"].get_returnflight()
-
-						else:
-							return display_data
+						return display_data
 
 					except IndexError:
 						pass

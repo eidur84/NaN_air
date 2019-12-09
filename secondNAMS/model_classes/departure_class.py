@@ -113,11 +113,11 @@ class Departure:
 	def attribute_translation(self):
 		return [
 			("Auðkenni áfangastaðar", self.__arrivingAt),
-			("Ár", self.__year),
-			("Mánuður", self.__month),
-			("Dagur", self.__day),
-			("Klukkustund", self.__hour),
-			("Mínútur", self.__minute),
+			("Ár", str(self.__year)),
+			("Mánuður", str(self.__month)),
+			("Dagur", str(self.__day)),
+			("Klukkustund", str(self.__hour)),
+			("Mínútur", str(self.__minute)),
 			("Nafn flugvélar", self.__aircraft_name)
 		]
 

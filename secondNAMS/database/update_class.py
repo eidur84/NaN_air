@@ -38,34 +38,13 @@ class Update(DBLayer):
 
 
 	def replace_rtrip_row(departure, returnflight):
-		new_dep_attributes = departure.get_attributes(True)
-		new_ret_attributes = returnflight.get_attributes(True)
+		new_dep_attributes = departure.get_attributes(for_csv=True)
+		new_ret_attributes = returnflight.get_attributes(for_csv=True)
 
-		old_departure_dict = DBLayer.generic_search("RoundTrips.csv", "ID", new_dep_attributes["ID"])[0]
-		old_returnflight_dict = DBLayer.generic_search("RoundTrips.csv", "ID", new_ret_attributes["ID"])[0]
+		old_departure_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_dep_attributes["ID"])[0]
+		old_returnflight_dict = DBLayer.generic_search("RoundTrips.csv", "flightID", new_ret_attributes["ID"])[0]
 
 		bool1 = Update.replace_row(old_departure_dict, departure)
 		bool2 = Update.replace_row(old_returnflight_dict, returnflight)
 
 		return bool1 and bool2
-
-
-	'''
-	def update_staff(employee, change_column, new_value):
-
-		search_ssn = employee.get_ssn()
-		finished = Update.update_db_row("Staff.csv", change_column, new_value, "ssn", search_ssn)
-		return finished
-
-	def update_airplane(airplane, change_column, new_value):
-
-		search_name = airplane.get_name()
-		finished = Update.update_db_row("Airplanes.csv", change_column, new_value, "name", search_name)
-		return finished
-
-
-	def update_dest(destination, change_column, new_value):
-		search_ID = destination.get_ID()
-		finished = Update.update_db_row("Destinations.csv", change_column, new_value, "ID", search_ID)
-		return finished
-	'''

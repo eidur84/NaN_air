@@ -63,14 +63,16 @@ class Form(UILayer):
 			screen, line_number = UILayer.header(screen, state)      # Create header
 			text = UILayer.get_text(state + ".txt")      # Recieve text for last page in given path
 
-			form_fields = form_data["instance"].attribute_translation()
-			form_dict = form_data["instance"].get_attributes()
-			dict_keys = form_data["instance"].dict_keys()
+			form_fields = form_data["instance"].attribute_translation()  # Retrieves icelandic translations of form fields
+			form_dict = form_data["instance"].get_attributes()  # Retrieve dict of attributes
+			dict_keys = form_data["instance"].dict_keys()  # Retreive keys to attribute dictionary
 
+			# Create frame for form fields
 			screen, line_number, screen_too_small = Form.form_outline(screen, line_number, form_fields)
 
 			if screen_too_small:
 				continue
+
 
 			line_number += 1
 			screen = UILayer.footer(screen, line_number)
@@ -95,7 +97,11 @@ class Form(UILayer):
 				jump = len(screen) - (line_number + 1)
 				action = UILayer.get_action(input_line, jump)
 
-				if action.lower() == "q" or action == "0":
+				if action.lower() == "q":
+					form_data["action"] = "back"
+					return form_data
+
+				if action == "0" and key != "Klukkustund":
 					form_data["action"] = "back"
 					return form_data
 

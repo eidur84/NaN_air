@@ -33,12 +33,13 @@ class UILayer:
 
 				form_data = Form.page(state, form_data)
 
+				# Go back
 				if form_data["action"] == "back":
 					path.pop()
 
+				# Create instance with data from user input
 				else:
 					finished = BLLayer.create_row(state, form_data["instance"])
-
 					path.pop()
 
 			elif page_type == "pager":
@@ -46,17 +47,38 @@ class UILayer:
 
 				display_data = Pager.page(state, display_data)
 
+				# Go back
 				if "action" in display_data:
 					if display_data["action"] == "back":
 						path.pop()
-				else:
-					old_dict = display_data["instance"].get_attributes()
-					display_data = Form.page(state, display_data)
-					if "rtrip" in display_data:
-						finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
 
+				# If an instance is chosen from list
+				else:
+
+					# If instance is a round trip instance, convert "instance" to departure instance instead
+					if "rtrip" in display_data:
+						display_data["instance"] = display_data["departure"]
+
+					# Other object types
 					else:
-						finished = BLLayer.update_row(old_dict, display_data["instance"])
+						old_dict = display_data["instance"].get_attributes()
+
+					# Put user into form mode for editing instance
+					display_data = Form.page(state, display_data)
+
+					# Go back
+					if display_data["action"] == "back":
+						path.pop()
+
+					# Update instance
+					else:
+
+						# If instance is a round trip call different update function
+						if "rtrip" in display_data:
+							finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
+
+						else:
+							finished = BLLayer.update_row(old_dict, display_data["instance"])
 
 			elif page_type == "static":
 				state = StaticOptions.page(state)
