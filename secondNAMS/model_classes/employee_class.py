@@ -32,7 +32,7 @@ class Employee:
 		elif name.replace(" ", "").isalpha():
 			return name
 		else:
-			return "Nafn er ekki viðurkennt"
+			return "Óleyfilegt nafn"
 
 	def ssn_check(ssn):
 		if ssn.isdecimal() and len(ssn) == 10:
@@ -52,15 +52,15 @@ class Employee:
 				else:
 					if int(ssn[:2]) <= 31:
 						return ssn
-		return "Kennitala er ekki viðurkennd"
+		elif ssn == "":
+			return ssn
+		return "Óleyfileg kennitala"
 
 	def job_check(job):
 		if job in ["Flugmaður", "Flugþjónn", ""]:
 			return job
-		elif job == "ERROR":
-			return "Starfsheiti er ekki þekkt"
 		else:
-			return "Starfsheiti er ekki þekkt"
+			return "Óþekkt starfsheiti"
 
 	def home_check(home):
 		if home == "":
@@ -68,7 +68,7 @@ class Employee:
 		elif home.replace(" ", "").isalpha():
 			return home
 		else:
-			return "Heimili er ekki þekkt"
+			return "Óþekkt heimili"
 
 	def landline_check(landline):
 		if landline == "":
@@ -76,7 +76,7 @@ class Employee:
 		elif landline.isnumeric():
 			return landline
 		else:
-			return "Símanúmer má aðeins innihalda tölustafi"
+			return "Óleyfilegt símanúmer"
 
 	def gsm_check(gsm):
 		if gsm == "":
@@ -84,7 +84,7 @@ class Employee:
 		elif gsm.isnumeric():
 			return gsm
 		else:
-			return"Símanúmer má aðeins innihalda tölustafi"
+			return "Óleyfilegt símanúmer"
 
 	def email_check(email):
 		if email == "":
@@ -92,7 +92,7 @@ class Employee:
 		elif "@" in email and "." in email and len(email.replace("@", "").replace(".", "")) >= 4:
 			return email
 		else:
-			"Tölvupóstfang er ekki þekkt"
+			return "Óleyfilegt tölvupóstfang"
 
 	def license_check(license):
 		if license == "":
@@ -100,7 +100,7 @@ class Employee:
 		elif len(license) >= 4:
 			return license
 		else:
-			"Flugvélaleyfi er ekki þekkt"
+			return "Óþekkt flugvélaleyfi"
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
