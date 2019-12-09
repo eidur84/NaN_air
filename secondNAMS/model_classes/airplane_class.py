@@ -7,16 +7,16 @@ class Airplane:
 		"name": "",
 		"manufacturer": "",
 		"type": "",
-		"seat_count": 0
+		"seat_count": ""
 	}
-
+	
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
-		self.__name = attribute_dict["name"]
-		self.__manufacturer = attribute_dict["manufacturer"]
-		self.__type = attribute_dict["type"]
-		self.__seat_count = attribute_dict["seat_count"]
+		self.__name = Airplane.name_check(attribute_dict["name"])
+		self.__manufacturer = Airplane.manufacturer_check(attribute_dict["manufacturer"])
+		self.__type = Airplane.type_check(attribute_dict["type"])
+		self.__seat_count = Airplane.seat_count_check(attribute_dict["seat_count"])
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
@@ -47,3 +47,27 @@ class Airplane:
 
 	def short_display(self):
 		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
+
+	def name_check(name):
+		if name.replace("-", "").isalpha() and len(name) == 6:
+			return name
+		else:
+			return "error name not valid"
+
+	def seat_count_check(seat_count):
+		if seat_count.isdecimal():
+			return seat_count
+		else:
+			return "Seat count not valid"
+
+	def type_check(type_str):
+		if type_str.replace(" ", "").isalnum():
+			return type_str
+		else:
+			return "Type is not valid"
+
+	def manufacturer_check(manuf_str):
+		if manuf_str.replace(" ", "").isalnum():
+			return manuf_str
+		else:
+			return "Manufacturer not valid"
