@@ -1,11 +1,11 @@
-valid,manufacturer,name,type,seat_count
-True,Fokker,TF-EPG,NAFokkerF100,100
-True,Fokker,TF-UFR,NAFokkerF28,80
-True,British Aerospace,TF-XZR,NABAE146,100
-True,British Aerospace,TF-XZM,NABAE146,100
-True,Fokker,TF-IZE,NAFokkerF100,100
-True,Fokker,TF-PGK,NABAE146,100
-True,Fokker,TF-TYQ,NAFokkerF100,100
-True,British Aerospace,TF-LNQ,NABAE146,100
-True,Fokker,TF-XUP,NAFokkerF100,100
-True,TZ-GHA,Boeng,NAFokker100,60
+valid,name,manufacturer,type,seat_count
+True,0,0,0,0
+True,TF-UFR,Fokker,NAFokkerF28,80
+True,TF-XZR,British Aerospace,NABAE146,100
+True,TF-XZM,British Aerospace,NABAE146,100
+True,TF-IZE,Fokker,NAFokkerF100,100
+True,TF-PGK,Fokker,NABAE146,100
+True,TF-TYQ,Fokker,NAFokkerF100,100
+True,TF-LNQ,British Aerospace,NABAE146,100
+True,TF-XUP,Fokker,NAFokkerF100,100
+True,Boeng,TZ-GHA,NAFokker100,60
