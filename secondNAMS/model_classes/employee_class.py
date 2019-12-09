@@ -17,89 +17,88 @@ class Employee:
 	def __init__(self, attribute_dict = empty_attribute_dict):
 
 		self.__valid = attribute_dict["valid"]
-		self.__ssn = ssn_check(attribute_dict["ssn"])
-		self.__name = name_check(attribute_dict["name"])
-		self.__job = job_check(attribute_dict["job"])
-		self.__home = home_check(attribute_dict["home"])
-		self.__landline = landline_check(attribute_dict["landline"])
-		self.__gsm = gsm_check(attribute_dict["gsm"])
-		self.__email = email_check(attribute_dict["email"])
-		self.__license = license_check(attribute_dict["license"])
+		self.__ssn = Employee.ssn_check(attribute_dict["ssn"])
+		self.__name = Employee.name_check(attribute_dict["name"])
+		self.__job = Employee.job_check(attribute_dict["job"])
+		self.__home = Employee.home_check(attribute_dict["home"])
+		self.__landline = Employee.landline_check(attribute_dict["landline"])
+		self.__gsm = Employee.gsm_check(attribute_dict["gsm"])
+		self.__email = Employee.email_check(attribute_dict["email"])
+		self.__license = Employee.license_check(attribute_dict["license"])
 
-	def name_check(self):
-		if self.__name == "":
-			return self.__name
-		elif self.__name.replace(" ", "").isalpha():
-			return self.__name
+	def name_check(name):
+		if name == "":
+			return name
+		elif name.replace(" ", "").isalpha():
+			return name
 		else:
 			return "Nafn er ekki viðurkennt"
 
-	def ssn_check(self):
-		ssn_str = self.__ssn
-		if ssn_str.isdecimal() and len(ssn_str) == 10:
+	def ssn_check(ssn):
+		if ssn.isdecimal() and len(ssn) == 10:
 
-			if int(ssn_str[2:4]) <= 12:
+			if int(ssn[2:4]) <= 12:
 
-				if ssn_str[2:4] == "02":  # February
+				if ssn[2:4] == "02":  # February
 
-					if int(ssn_str[:2]) <= 29:
-						return self.__ssn
+					if int(ssn[:2]) <= 29:
+						return ssn
 
-				elif ssn_str[2:4] in ["04", "06", "09", "11"]:
+				elif ssn[2:4] in ["04", "06", "09", "11"]:
 
-					if int(ssn_str[:2]) <= 30:
-						return self.__ssn
+					if int(ssn[:2]) <= 30:
+						return ssn
 
 				else:
-					if int(ssn_str[:2]) <= 31:
-						return self.__ssn
+					if int(ssn[:2]) <= 31:
+						return ssn
 		return "Kennitala er ekki viðurkennd"
 
-	def job_check(self):
-		if self.__job in ["Flugmaður", "Flugþjónn", ""]:
-			return self.__job
-		elif self.__job == "ERROR":
+	def job_check(job):
+		if job in ["Flugmaður", "Flugþjónn", ""]:
+			return job
+		elif job == "ERROR":
 			return "Starfsheiti er ekki þekkt"
 		else:
 			return "Starfsheiti er ekki þekkt"
 
-	def home_check(self):
-		if self.__home == "":
-			return self.__home
-		elif self.__home.replace(" ", "").isalpha():
-			return self.__home
+	def home_check(home):
+		if home == "":
+			return home
+		elif home.replace(" ", "").isalpha():
+			return home
 		else:
 			return "Heimili er ekki þekkt"
 
-	def landline_check(self):
-		if self.__landline == "":
-			return self.__landline
-		try:
-			int(self.__landline)
-		except ValueError:
+	def landline_check(landline):
+		if landline == "":
+			return landline
+		elif landline.isnumeric():
+			return landline
+		else:
 			return "Símanúmer má aðeins innihalda tölustafi"
 
-	def gsm_check(self):
-		if self.__gsm == "":
-			return self.__gsm
-		try:
-			int(self.__gsm)
-		except ValueError:
-			return "Símanúmer má aðeins innihalda tölustafi"
+	def gsm_check(gsm):
+		if gsm == "":
+			return gsm
+		elif gsm.isnumeric():
+			return gsm
+		else:
+			return"Símanúmer má aðeins innihalda tölustafi"
 
-	def email_check(self):
-		if self.__email == "":
-			return self.__email
-		elif "@" in self.__email and "." in self.__email and len(self.__email.replace("@", "").replace(".", "")) >= 4:
-			return self.__email
+	def email_check(email):
+		if email == "":
+			return email
+		elif "@" in email and "." in email and len(email.replace("@", "").replace(".", "")) >= 4:
+			return email
 		else:
 			"Tölvupóstfang er ekki þekkt"
 
-	def license_check(self):
-		if self.__license == "":
-			return self.__license
-		elif len(self.__license) >= 4:
-			return self.__license
+	def license_check(license):
+		if license == "":
+			return license
+		elif len(license) >= 4:
+			return license
 		else:
 			"Flugvélaleyfi er ekki þekkt"
 
@@ -139,7 +138,7 @@ class Employee:
 
 	def short_display(self):
 		#first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
-		first_half = "{},{}.{},{}.{},{}.".format(self.__ssn, self.__name, self.__job, self.__license, self.__landline, self.__gsm)
+		first_half = "{}, {}. {}, {}. {}, {}.".format(self.__ssn, self.__name, self.__job, self.__license, self.__landline, self.__gsm)
 		return first_half
 
 	def __str__(self):
