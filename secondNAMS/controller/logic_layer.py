@@ -45,9 +45,7 @@ class BLLayer:
 
 
 	def update_rtrip(departure, returnflight):
-		new_dep_attributes = departure.get_attributes(True)
-		new_ret_attributes = returnflight.get_attributes(True)
-		finished = Update.replace_rtrip_row(new_dep_attributes, new_ret_attributes)
+		finished = Update.replace_rtrip_row(departure, returnflight)
 		return finished
 
 
