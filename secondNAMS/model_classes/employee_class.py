@@ -28,6 +28,14 @@ class Employee:
 		self.__email = attribute_dict["email"]
 		self.__license = attribute_dict["license"]
 
+	def name_check(self,name):
+		if name == "":
+			return name
+		elif name.remove(" ","").isalpha():
+			return name
+		else:
+			return "Nafn er ekki viðurkennt"
+
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""
 		attribute_dict = {
