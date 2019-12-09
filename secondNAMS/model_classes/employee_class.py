@@ -32,7 +32,7 @@ class Employee:
 		elif name.replace(" ", "").isalpha():
 			return name
 		else:
-			return "Óleyfilegt nafn"
+			return "Villa"
 
 	def ssn_check(ssn):
 		if ssn.isdecimal() and len(ssn) == 10:
@@ -54,13 +54,13 @@ class Employee:
 						return ssn
 		elif ssn == "":
 			return ssn
-		return "Óleyfileg kennitala"
+		return "Villa"
 
 	def job_check(job):
 		if job in ["Flugmaður", "Flugþjónn", ""]:
 			return job
 		else:
-			return "Óþekkt starfsheiti"
+			return "Villa"
 
 	def home_check(home):
 		if home == "":
@@ -68,7 +68,7 @@ class Employee:
 		elif len(home) > 4:
 			return home
 		else:
-			return "Óþekkt heimili"
+			return "Villa"
 
 	def landline_check(landline):
 		if landline == "":
@@ -76,7 +76,7 @@ class Employee:
 		elif landline.isnumeric() and len(landline) == 7:
 			return landline
 		else:
-			return "Óleyfilegt símanúmer"
+			return "Villa"
 
 	def gsm_check(gsm):
 		if gsm == "":
@@ -84,7 +84,7 @@ class Employee:
 		elif gsm.isnumeric() and len(gsm) == 7:
 			return gsm
 		else:
-			return "Óleyfilegt símanúmer"
+			return "Villa"
 
 	def email_check(email):
 		if email == "":
@@ -92,15 +92,13 @@ class Employee:
 		elif "@" in email and "." in email and len(email.replace("@", "").replace(".", "")) >= 4:
 			return email
 		else:
-			return "Óleyfilegt tölvupóstfang"
+			return "Villa"
 
 	def license_check(license):
-		if license == "":
-			return license
-		elif len(license) >= 4:
+		if license == "" or len(license) == 6:
 			return license
 		else:
-			return "Óþekkt flugvélaleyfi"
+			return "Villa"
 
 	def get_attributes(self):
 		""" Returns dictionary of instances attributes."""

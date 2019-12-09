@@ -29,66 +29,50 @@ class Destination:
 		self.__contact_name = Destination.contactname_check(attribute_dict["contact_name"])
 		self.__contact_phone = Destination.contactphone_check(attribute_dict["contact_phone"])
 
-	def id_check(id):							#Skoða að breyta id í uppercase frekar en að gefa villu
-		if id == "":
-			return id
-		elif len(id) == 3 and id.isalpha():
-			return id.upper()
+	def id_check(dest_id):
+		if len(dest_id) == 3 and dest_id.isalpha() or dest_id == "":
+			return dest_id.upper()
 		else:
 			return "Villa"
 
-	def country_check(country): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
-		if country == "":
-			return country
-		elif country.replace(" ", "").isalpha():
+	def country_check(country):
+		if country == "" or country.replace(" ", "").isalpha():
 			return country.capitalize()
 		else:
 			return "Villa "
 
 	def city_check(city): 				#Skoða að skila fyrsta staf capitalized ef hann er það ekki
-		if city == "":
-			return city
-		elif city.isalpha():
+		if city == "" or city.isalpha():
 			return city
 		else:
 			return "Villa"
 
 	def airport_check(airport): 				
-		if airport == "":
-			return airport
-		elif airport.isalpha():
+		if airport == "" or airport.replace(" ", "").isalpha():
 			return airport
 		else:
 			return "Villa"
 
 	def flighttime_check(flighttime): 			
-		if flighttime == 0:
-			return flighttime
-		elif isinstance(flighttime, int):
+		if flighttime == "" or flighttime.isdecimal():
 			return flighttime
 		else:
 			return "Villa"
 
 	def distance_check(distance): 				
-		if distance == 0:
-			return distance
-		elif isinstance(distance, int):
+		if distance == "" or distance.isdecimal():
 			return distance
 		else:
 			return "Villa"
 
 	def contactname_check(name): 				
-		if name == "":
-			return name
-		elif name.replace(" ", "").isalpha():
+		if name == "" or name.replace(" ", "").isalpha():
 			return name
 		else:
 			return "Villa"
 
 	def contactphone_check(phone): 				
-		if phone == "":
-			return phone
-		elif phone.isdecimal():
+		if phone == "" or phone.isdecimal():
 			return phone
 		else:
 			return "Villa"

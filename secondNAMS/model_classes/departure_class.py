@@ -67,13 +67,13 @@ class Departure:
 		if len(arrival) == 3 and arrival.isupper() or arrival == "":
 			return arrival
 		else:
-			return "Óþekkur aðkomustaður"
+			return "Villa"
 
 	def aircraft_name_check(name):
 		if len(name) >= 4 or name == "":
 			return name
 		else:
-			return "Óþekkt flugvélanafn"
+			return "Villa"
 
 	def get_attributes(self, for_csv=False):
 		""" Returns dictionary of instances attributes."""

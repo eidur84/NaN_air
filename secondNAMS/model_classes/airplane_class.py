@@ -50,25 +50,27 @@ class Airplane:
 		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
 
 	def name_check(name):
-		if name.replace("-", "").isalpha() and len(name) == 6:
+		if name.replace("-", "").isalpha() and len(name) == 6 or name == "":
 			return name
 		else:
-			return "Ógilt nafn"
+			return "Villa"
 
 	def seat_count_check(seat_count):
-		if seat_count.isdecimal():
+		if seat_count.isdecimal() or seat_count == "":
 			return seat_count
 		else:
-			return "Ógildur sætisfjöldi"
+			return "Villa"
 
 	def type_check(type_str):
-		if type_str.replace(" ", "").isalnum():
+		if type_str.replace(" ", "").isalnum() or type_str == "":
 			return type_str
 		else:
-			return "Ógild tegund"
+			return "Villa"
 
 	def manufacturer_check(manuf_str):
-		if manuf_str.replace(" ", "").isalnum():
+		if manuf_str.replace(" ", "").isalnum() or manuf_str == "":
 			return manuf_str
 		else:
-			return "Ógildur framleiðandi"
+			return "Villa"
+
+
