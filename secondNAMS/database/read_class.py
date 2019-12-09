@@ -49,7 +49,7 @@ class Read(DBLayer):
 		for attribute_dict in attribute_dict_list:
 
 			if attribute_dict["direction"] == "outbound":
-				departure = Departure(attribute_dict)
+				departure = Departure(attribute_dict, from_csv=True)
 				count += 1
 			elif attribute_dict["direction"] == "inbound":
 				returnflight = ReturnFlight(attribute_dict)

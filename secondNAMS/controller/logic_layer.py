@@ -45,6 +45,7 @@ class BLLayer:
 
 
 	def update_rtrip(departure, returnflight):
+		returnflight = BLLayer.create_returnflight(departure, instant_write=False, make_serial=False)
 		finished = Update.replace_rtrip_row(departure, returnflight)
 		return finished
 
@@ -79,7 +80,7 @@ class BLLayer:
 
 		return form_data
 
-	def create_returnflight(departure):
+	def create_returnflight(departure, instant_write=True, make_serial=True):
 		attribute_dict = departure.get_attributes()
 
 		# Get destination ID
@@ -89,9 +90,10 @@ class BLLayer:
 		flight_time = DBLayer.generic_search("Destinations.csv", "ID", dest, "flight_time")
 		flight_time = int(flight_time[0])
 
-		# Find last serial in csv file and increment
-		serial = int(DBLayer.generic_search("RoundTrips.csv", "valid", "True", "flightID")[-1])
-		attribute_dict["flightID"] = serial + 1
+		if make_serial:
+			# Find last serial in csv file and increment
+			serial = int(DBLayer.generic_search("RoundTrips.csv", "valid", "True", "flightID")[-1])
+			attribute_dict["flightID"] = serial + 1
 
 		# Get departure time (iso format string)
 		departure_time = attribute_dict["departure"]
@@ -113,7 +115,7 @@ class BLLayer:
 		attribute_dict["departure"] = departure_time.isoformat()
 
 		# Increment serial
-		attribute_dict["flightID"] += 1
+		attribute_dict["flightID"] = str(int(attribute_dict["flightID"]) + 1)
 
 		# Calculate arrival time back to KEF
 		arrival_time = departure_time + dt.timedelta(minutes = flight_time)
@@ -121,6 +123,7 @@ class BLLayer:
 
 
 		ret_flight = ReturnFlight(attribute_dict)
+<<<<<<< HEAD
 
 		finished = Create.create_rtrip(departure, ret_flight)
 
@@ -141,4 +144,11 @@ class BLLayer:
 
 
 
+=======
+		if instant_write:
+			finished = Create.create_rtrip(departure, ret_flight)
+			return finished
+		else:
+			return ret_flight
+>>>>>>> 098d5f13bbaf90208e10c630857adbde9eb65e9c
 

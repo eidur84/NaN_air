@@ -17,49 +17,17 @@ class Departure:
 		"aircraft_name": ""
 	}
 
-	def __init__(self, attribute_dict = empty_attribute_dict):
+	def __init__(self, attribute_dict = empty_attribute_dict, from_csv=False):
 
 		self.__valid = attribute_dict["valid"]
-		self.__flightID = Departure.flightID_check(attribute_dict["flightID"])
+		self.__flightID = attribute_dict["flightID"]
+		self.__past = False
 		self.__direction = "outbound"
 		self.__departingFrom = "KEF"
+		self.__departure = ""
 		self.__arrivingAt = Departure.arrivingAt_check(attribute_dict["arrivingAt"])
 
-		self.__departure = attribute_dict["departure"]
-		if "year" in attribute_dict:
-			self.__year = str(attribute_dict["year"])
-		else:
-			self.__year = ""
-		if "month" in attribute_dict:
-			self.__month = str(attribute_dict["month"])
-		else:
-			self.__month = ""
-		if "day" in attribute_dict:
-			self.__day = str(attribute_dict["day"])
-		else:
-			self.__day = ""
-		if "hour" in attribute_dict:
-			self.__hour = str(attribute_dict["hour"])
-		else:
-			self.__hour = ""
-		if "minute" in attribute_dict:
-			self.__minute = str(attribute_dict["minute"])
-		else:
-			self.__minute = ""
-
-		self.__past = False
-
-		if self.__year != "" and self.__month != "" and self.__day != "" and self.__hour != "" and self.__minute != "":
-			self.__departure = dt.datetime(
-				int(self.__year),
-				int(self.__month),
-				int(self.__day),
-				int(self.__hour),
-				int(self.__minute)
-			)
-			self.__departure = self.__departure.isoformat()
-
-		if attribute_dict["departure"] != "":
+		if from_csv:
 			self.__departure = dt.datetime.strptime(attribute_dict["departure"], "%Y-%m-%dT%H:%M:%S")
 
 			self.__year = self.__departure.year
@@ -71,14 +39,29 @@ class Departure:
 			self.__past = dt.datetime.today() > self.__departure
 			self.__departure = self.__departure.isoformat()
 
+		else:
+			self.__year = str(attribute_dict["year"])
+			self.__month = str(attribute_dict["month"])
+			self.__day = str(attribute_dict["day"])
+			self.__hour = str(attribute_dict["hour"])
+			self.__minute = str(attribute_dict["minute"])
+
+			if self.__year != "" and self.__month != "" and self.__day != "" and self.__hour != "" and self.__minute != "":
+				self.__departure = dt.datetime(
+					int(self.__year),
+					int(self.__month),
+					int(self.__day),
+					int(self.__hour),
+					int(self.__minute)
+				)
+				self.__past = dt.datetime.today() > self.__departure
+				self.__departure = self.__departure.isoformat()
+
+
+
 		self.__arrival = attribute_dict["arrival"]
 		self.__aircraft_name = Departure.aircraft_name_check(attribute_dict["aircraft_name"])
 
-	def flightID_check(flightID):
-		if flightID.isdecimal() or flightID == "":
-			return flightID
-		else:
-			return "Óþekkt flugnúmer"
 
 	def arrivingAt_check(arrival):
 		if len(arrival) == 3 and arrival.isupper() or arrival == "":
@@ -131,11 +114,11 @@ class Departure:
 	def attribute_translation(self):
 		return [
 			("Auðkenni áfangastaðar", self.__arrivingAt),
-			("Ár", self.__year),
-			("Mánuður", self.__month),
-			("Dagur", self.__day),
-			("Klukkustund", self.__hour),
-			("Mínútur", self.__minute),
+			("Ár", str(self.__year)),
+			("Mánuður", str(self.__month)),
+			("Dagur", str(self.__day)),
+			("Klukkustund", str(self.__hour)),
+			("Mínútur", str(self.__minute)),
 			("Nafn flugvélar", self.__aircraft_name)
 		]
 
