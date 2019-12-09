@@ -10,6 +10,7 @@ class FlightDate:
 		self.__datetime_obj = datetime_obj
 		self.__isodate = datetime_obj.isoformat()
 
+
 	def short_display(self):
 		return f"{self.__datetime.day}, {self.__datetime.month}, {self.__datetime.year}"
 
