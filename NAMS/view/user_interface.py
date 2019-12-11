@@ -63,7 +63,8 @@ class UILayer:
 						# If user created a flight and wants to staff it immediately
 						if form_data["action"] == "staff_flight":
 
-							staff_data = BLLayer.show_available_staff(form_data)
+							form_data = BLLayer.show_available_staff(form_data)
+							staff_data = {**form_data}  # Make a copy of the dict in different memory location
 							staff_data["rtrip"] = False
 							staff_data = Pager.page("staff_flight", staff_data)
 

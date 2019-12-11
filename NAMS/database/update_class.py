@@ -57,6 +57,7 @@ class Update(DBLayer):
 
 		flightID = departure.get_attributes()["flightID"]
 
+
 		for row in dict_list:
 			if row["flightID"] == flightID:
 				row["valid"] = False

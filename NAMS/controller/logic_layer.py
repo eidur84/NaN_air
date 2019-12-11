@@ -390,7 +390,43 @@ class BLLayer:
 	def update_crew(departure, employee_list):
 		crew_list = BLLayer.create_crew_members(departure, employee_list, instant_write=False)
 
-		finished = Update.replace_crew(departure, crew_list)
+		# ** Remove selected employees from other flights on same day **
+
+		dep_str = departure.get_attributes()["departure"][0:10]
+
+		# Get flights on same day
+		departures_on_date = Read.departures_on_date(dep_str)
+
+		# Get ssns for all busy employees on given date and corresponding flightID
+		busy_ssn_list = [ ]
+		for departure in departures_on_date:
+
+			flightID = departure.get_attributes()["flightID"]
+			crew = Read.flight_crew(flightID)
+
+			for member in crew:
+				busy_ssn_list.append(member.get_attributes()["ssn"])
+				busy_ssn_list.append(member.get_attributes()["flightID"])
+
+		# Get employees which have been selected to man current departure and are also assigned another flight on same day
+		busy_employees = [ ]
+		for employee in employee_list:
+			ssn = employee.get_attributes()["ssn"]
+
+			if ssn in busy_ssn_list:
+				flightID = busy_ssn_list[busy_ssn_list.index(ssn) + 1]
+
+				employee_id_tuple = (employee, flightID)
+
+				busy_employees.append(employee_id_tuple)
+
+		# Function changes old flight assignment validity to False
+		bool1 = DBLayer.invalidate_crew_members(busy_employees)
+
+		# Replace crew for the current departure instance
+		bool2 = Update.replace_crew(departure, crew_list)
+		finished = bool1 and bool2
+
 		return finished
 
 

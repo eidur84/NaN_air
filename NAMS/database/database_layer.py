@@ -132,6 +132,21 @@ class DBLayer:
 		return finished
 
 
+	@staticmethod
+	def invalidate_crew_members(tuple_list):
+		"""
+		Function receives list of tuples (ssn, flightID) and changes validity of matching lines in Crew.csv file to False
+		"""
+		crew_dict_list = DBLayer.get_csv_data("Crew.csv")
+		for ssn, flightid in tuple_list:
+			for row in crew_dict_list:
+				if row["ssn"] == ssn and row["flightID"] == flightid:
+					row["valid"] = "False"
+					break
+
+		finished = DBLayer.write_csv_file("Crew.csv", crew_dict_list)
+		return finished
+
 # IMPORTS AT BOTTOM OF FILE TO PREVENT CIRCULAR IMPORTS (X imports Y and Y starts by importing X)
 from database.create_class import Create
 from database.update_class import Update
