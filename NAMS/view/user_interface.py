@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from time import localtime, strftime
+import datetime as dt
 from controller.logic_layer import BLLayer
 from pathlib import Path
 
@@ -263,8 +263,11 @@ class UILayer:
 			line_number += 1
 
 		header_text = UILayer.get_text(state + ".txt")
-		date = strftime("%A %x", localtime())
-		clock = strftime("%H:%M", localtime())
+
+		today = dt.datetime.today()
+		weekday_list = ["Mánudagur", "Þriðjudagur", "Miðvikudagur", "Fimmtudagur", "Föstudagur", "Laugardagur", "Sunnudagur"]
+		date = weekday_list[today.weekday()] + " " + today.strftime("%d/").lstrip("0") + today.strftime("%m/").lstrip("0") + today.strftime("%Y")
+		clock = today.strftime("%H:%M")
 
 		screen[line_number] = UILayer.aligner(screen[line_number], header_text[0], "left")
 
