@@ -12,6 +12,7 @@ class DBLayer:
 	# pathlib.Path used for system agnostic directory paths.
 	path = Path.cwd().joinpath("database").joinpath("csv_files")
 
+	@staticmethod
 	def request_create(data_type, instance):
 		if data_type == "staff":
 			valid = Create.create_staff(instance)
@@ -29,6 +30,7 @@ class DBLayer:
 
 		return valid
 
+	@staticmethod
 	def generic_search(filename, filter_column, key_word, result_column="all"):
 		"""
 		Function which searches a csv file for key_word in filter_column.
@@ -58,7 +60,7 @@ class DBLayer:
 		filestream.close()
 		return results
 
-
+	@staticmethod
 	def update_backup(filename):
 		"""
 		Writes changes in main csv files to backup csv files.
@@ -71,7 +73,7 @@ class DBLayer:
 
 		return finished
 
-
+	@staticmethod
 	def get_csv_data(filename):
 		"""
 		Reads data from given csv file into list of dictionaries.
@@ -89,7 +91,7 @@ class DBLayer:
 		filestream.close()
 		return dict_list
 
-
+	@staticmethod
 	def write_csv_file(filename, dict_list):
 		"""
 		Overwrites a given csv file with data from a given list of dictionaries.
@@ -113,7 +115,7 @@ class DBLayer:
 		filestream.close()
 		return True
 
-
+	@staticmethod
 	def update_db_row(filename, column_name, new_data, PK_column, key_word):
 		"""
 		Searches PK_column in csv file for key_word, changes data in column_name to new_data.

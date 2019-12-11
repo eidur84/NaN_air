@@ -14,7 +14,7 @@ class Update(DBLayer):
 	"""
 	Class for updating rows in csv files.
 	"""
-
+	@staticmethod
 	def replace_row(old_attributes, new_instance, filename=""):
 		"""
 		Rewrites line matching old_attibutes with attributes of new_instance.
@@ -46,7 +46,7 @@ class Update(DBLayer):
 		finished = Update.write_csv_file(filename, dict_list)
 		return finished
 
-
+	@staticmethod
 	def replace_crew(departure, new_crew_list):
 		"""
 		Updates crew info for given flight. 
@@ -68,7 +68,7 @@ class Update(DBLayer):
 		finished = Update.write_csv_file(filename, dict_list)
 		return finished
 
-
+	@staticmethod
 	def replace_rtrip_row(departure, returnflight):
 		"""
 		Function for updating rows in round trip csv file. Edits two lines instead of one.

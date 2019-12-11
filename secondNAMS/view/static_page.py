@@ -4,6 +4,7 @@ from view.user_interface import UILayer
 
 class StaticOptions(UILayer):
 
+	@staticmethod
 	def page(state):
 		"""
 		Page function for static page type.

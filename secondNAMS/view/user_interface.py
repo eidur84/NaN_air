@@ -15,7 +15,7 @@ class UILayer:
 	#–––––––––––––––––––––––#
 	# MAIN PROGRAM LOOP	    #
 	#–––––––––––––––––––––––#
-
+	@staticmethod
 	def main():
 		"""
 		NAMS main program loop.
@@ -155,7 +155,7 @@ class UILayer:
 
 
 
-
+	@staticmethod
 	def page_check(state):
 		"""
 		Checks which ui class type should handle given page.
@@ -170,7 +170,7 @@ class UILayer:
 	#–––––––––––––––––––––––#
 	# UI RELATED FUNCTIONS  #
 	#–––––––––––––––––––––––#
-
+	@staticmethod
 	def terminal_size():
 		# Returns width and height of terminal screen (on mac and linux).
 		# Code gotten from https://www.w3resource.com/python-exercises/python-basic-exercise-56.php
@@ -187,13 +187,14 @@ class UILayer:
 			th = 40
 		return tw - 2, th - 2
 
+	@staticmethod
 	def move(y, direction="A"):
 		# Moves cursor by default up by y number of rows.
 		# If direction is set to "B", cursor moves down.
 		# Got idea for function from http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 		print(f"\u001b[{y + 1}{direction}")
 
-
+	@staticmethod
 	def frame():
 		"""
 		Creates list of lines on screen (screen) and creates the screen border.
@@ -209,6 +210,7 @@ class UILayer:
 
 		return screen
 
+	@staticmethod
 	def get_text(filename):
 		""" Fetches text for display on screen from files."""
 		filename = Path.cwd().joinpath("view").joinpath("pages").joinpath(filename)
@@ -217,10 +219,12 @@ class UILayer:
 		f.close()
 		return text
 
+	@staticmethod
 	def error_screen():
 		print("Window is too small, please make window larger.")
 		action = input()
 
+	@staticmethod
 	def aligner(screen_line, text, align="left"):
 		"""
 		Function for aligning text, using slicing. Default alignment is left.
@@ -237,6 +241,7 @@ class UILayer:
 		else:
 			return screen_line[:2] + text + screen_line[len(text) + 2:]
 
+	@staticmethod
 	def header(screen, state):
 		"""
 		Inserts header into screen. Returns modified screen.
@@ -280,6 +285,7 @@ class UILayer:
 
 		return screen, line_number + 1
 
+	@staticmethod
 	def footer(screen, line_number):
 		""" Inserts footer into screen. Returns modified screen."""
 		ascii_art = UILayer.get_text("ascii_art.txt")
@@ -293,7 +299,7 @@ class UILayer:
 
 		return screen
 
-
+	@staticmethod
 	def get_action(text, jump):
 		""" Jumps up a given number of lines, recieves user input and returns it."""
 		UILayer.move(jump)

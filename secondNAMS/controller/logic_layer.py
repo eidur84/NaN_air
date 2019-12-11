@@ -21,7 +21,7 @@ class BLLayer:
 	"""
 	Business logic layer, handles communcaction betwwen UI and DB layers and does calculations relating to time.
 	"""
-
+	@staticmethod
 	def paging_system(state, display_data={}):
 		"""
 		Creates a key,value pair in display_Data dict, key: "data", value: list of object instances. 
@@ -76,6 +76,7 @@ class BLLayer:
 
 		return display_data
 
+	@staticmethod
 	def create_schedule(display_data):
 		"""
 		Creates one week from last monday, finds flights in week
@@ -126,8 +127,7 @@ class BLLayer:
 
 
 
-
-
+	@staticmethod
 	def filter_busy_staff(display_data, busy=False):
 
 		# If no date set, use today as starting point
@@ -177,6 +177,7 @@ class BLLayer:
 		return display_data, data
 
 
+	@staticmethod
 	def form_input_check(state, instance):
 		"""
 		Checks if primary keys in each new form are unique.
@@ -221,6 +222,8 @@ class BLLayer:
 		instance.__init__(attribute_dict)
 		return instance
 
+
+	@staticmethod
 	def runway_check(new_dep_time):
 		""" Checks if new planned departure takes off within 10 minutes of another departure."""
 		dep_str = new_dep_time.isoformat()[0:10]
@@ -234,6 +237,8 @@ class BLLayer:
 
 		return runway_empty
 
+
+	@staticmethod
 	def create_rtrip_list(attribute_dict_list):
 		"""
 		Creates list of flights for Pager, marks departing flight as manned or unmanned and returns list.
@@ -282,6 +287,7 @@ class BLLayer:
 		return rtrip_list
 
 
+	@staticmethod
 	def create_crew_members(departure, employee_list, instant_write = True):
 		"""
 		Creates crew info for crew csv file.
@@ -349,6 +355,7 @@ class BLLayer:
 			return crew_list
 
 
+	@staticmethod
 	def update_crew(departure, employee_list):
 		crew_list = BLLayer.create_crew_members(departure, employee_list, instant_write=False)
 
@@ -356,17 +363,20 @@ class BLLayer:
 		return finished
 
 
+	@staticmethod
 	def update_rtrip(departure, returnflight):
 		returnflight = BLLayer.create_returnflight(departure, instant_write=False, make_serial=False)
 		finished = Update.replace_rtrip_row(departure, returnflight)
 		return finished
 
 
+	@staticmethod
 	def update_row(old_attributes, new_instance):
 		finished = Update.replace_row(old_attributes, new_instance)
 		return finished
 
 
+	@staticmethod
 	def create_row(state, new_instance):
 		""" Makes DBLayer add row to a file."""
 		if state == "new_dest":
@@ -381,6 +391,7 @@ class BLLayer:
 		return finished
 
 
+	@staticmethod
 	def form_system(state, form_data={}):
 		""" Creates empty instance for Form page."""
 		if form_data == {}:
@@ -396,6 +407,7 @@ class BLLayer:
 		return form_data
 
 
+	@staticmethod
 	def create_returnflight(departure, instant_write=True, make_serial=True):
 		"""
 		Creates an instance of ReturnFlight from a Departure instance.

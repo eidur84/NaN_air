@@ -77,7 +77,7 @@ class Airplane:
 
 
 	def short_display(self):
-		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer} {self.__type}. Sætafjöldi: {self.__seat_count}."
+		return f"Nafn: {self.__name}. Tegund: {self.__manufacturer}, {self.__type}. Sætafjöldi: {self.__seat_count}."
 
 
 

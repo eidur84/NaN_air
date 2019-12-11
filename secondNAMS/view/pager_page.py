@@ -5,6 +5,7 @@ from model_classes.flightdate_class import FlightDate
 
 class Pager:
 
+	@staticmethod
 	def page(state, display_data):
 		"""
 		Displays 5 lines of data from display_data and allows for paging forwards or backwards through data.
@@ -169,7 +170,7 @@ class Pager:
 					except IndexError:
 						pass
 
-
+	@staticmethod
 	def format_rtrips(screen, line_number, display_data, index):
 		""" Function for displaying roundtrips (departure and returning flight)."""
 		counter = 0
@@ -195,7 +196,7 @@ class Pager:
 
 		return screen, line_number, screen_too_small
 
-
+	@staticmethod
 	def format_staff(screen, line_number, display_data, index, busy=False):
 		""" Function for displaying filtered staff list (busy/non-busy)."""
 		page_size = display_data["page_size"]
@@ -241,6 +242,7 @@ class Pager:
 		return screen, line_number, screen_too_small
 
 
+	@staticmethod
 	def format_schedule(screen, line_number, display_data, index):
 
 		page_size = display_data["page_size"]

@@ -11,6 +11,7 @@ class Read(DBLayer):
 	Class for read functionality of database layer. Searches files and returns list of instances of requested object.
 	"""
 
+	@staticmethod
 	def read_staff(filter_column, key_word):
 		"""
 		Looks in staff csv file for rows matching given conditions.
@@ -24,6 +25,7 @@ class Read(DBLayer):
 
 		return staff_list
 
+	@staticmethod
 	def read_airplane(filter_column="valid", key_word="True"):
 		"""
 		Looks in airplane csv file for rows matching given conditions.
@@ -38,6 +40,7 @@ class Read(DBLayer):
 
 		return airplane_list
 
+	@staticmethod
 	def read_dest(filter_column="valid", key_word="True"):
 		"""
 		Looks in destination csv file for rows matching given conditions.
@@ -51,7 +54,7 @@ class Read(DBLayer):
 
 		return dest_list
 
-
+	@staticmethod
 	def read_rtrip(filter_column="valid", key_word="True"):
 		"""
 		Looks in rtrip csv file for rows matching given conditions.
@@ -61,7 +64,7 @@ class Read(DBLayer):
 
 		return attribute_dict_list
 
-
+	@staticmethod
 	def flight_crew(flightID = "all"):
 		"""
 		Finds crew members for a given flightID. Returns list of Crew instances (rows in csv file).
@@ -86,7 +89,7 @@ class Read(DBLayer):
 
 		return crew_list
 
-
+	@staticmethod
 	def departures_on_date(date_str):
 		""" Finds departures on same day as date_str (format: YYYY-MM-DD)."""
 

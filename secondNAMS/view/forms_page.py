@@ -4,6 +4,7 @@ from controller.logic_layer import BLLayer
 
 class Form(UILayer):
 
+	@staticmethod
 	def form_outline(screen, line_number, attribute_list):
 		"""
 		Creates frame for input fields and inserts filled fields into screen.
@@ -43,7 +44,7 @@ class Form(UILayer):
 		return screen, line_number, screen_too_small
 
 
-
+	@staticmethod
 	def page(state, form_data):
 		"""
 		Page function for form page type.

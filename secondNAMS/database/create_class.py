@@ -15,7 +15,7 @@ class Create(DBLayer):
 		create_rtrip(rtrip_instance)
 		create_crew(crew_instance)
 	"""
-
+	@staticmethod
 	def append_db_row(filename, obj_instance, rtrip=False):
 		"""
 		Appends the data from an object instance to given file.
@@ -37,7 +37,7 @@ class Create(DBLayer):
 		filestream.close()
 		return True
 
-
+	@staticmethod
 	def create_rtrip(departure, returnflight):
 		"""
 		Adds new round trip (voyage), using append_db_row function.
@@ -49,7 +49,7 @@ class Create(DBLayer):
 		finished = bool1 and bool2
 		return finished
 
-
+	@staticmethod
 	def create_crew(crew_row):
 		""" Adds row to Crew.csv"""
 
