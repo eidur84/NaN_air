@@ -244,6 +244,9 @@ class BLLayer:
 			if attribute_dict["aircraft_name"] not in airplane_names:
 				attribute_dict["aircraft_name"] = "Villa"
 
+			else:
+				pass
+
 			departure = dt.datetime.strptime(attribute_dict["departure"], "%Y-%m-%dT%H:%M:%S")
 
 			runway_empty = BLLayer.runway_check(departure)
@@ -252,6 +255,12 @@ class BLLayer:
 
 		instance.__init__(attribute_dict)
 		return instance
+
+	@staticmethod
+	def available_airplane_check(departure, airplane):
+
+		departures_on_date = 0
+		
 
 
 	@staticmethod
