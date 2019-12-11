@@ -27,11 +27,11 @@ The program starts by running the main() function in the class UILayer which is 
 
 There are three main different types of pages in NAMS, each handled by a different class in the view/UI layer:
 
-The most simple pages, static pages, such as the front page are handled by the **StaticOptions** class. The class reads a text from a txt file, kept in *view/pages/*, displays it on screen and waits for user input.
+The most simple pages, static pages, such as the front page are handled by the **StaticOptions** class. The class reads a text from a txt file, kept in `view/pages/`, displays it on screen and waits for user input.
 
 When a page calls for displaying a list it is handled by the **Pager** class. It receives a dictionary with a key "data" mapped to a list of object instances. The objects all need to have the function short_display(), which should return a string with necessary information regarding the instance. Pager also reads text from a txt file and displays it. The user can then page forwards or backwards (in some cases by date) and see other instances.
 
 When displaying a form for a user to fill out or change, the **Form** class is called upon. It prints a frame for the form fields, goes through them one-by-one and gets user input. It automatically updates the page when information is entered. The user can choose to keep information unchanged by entering nothing or leave the form at any time by entering "0".
 
 ## Model Classes
-Instances of objects such as the Pager displays and the Form creates are the system's model classes. They are kept in the aptly named *model_classes* folder.
+Instances of objects such as the Pager displays and the Form creates are the system's model classes. They are kept in the aptly named `model_classes` folder.
