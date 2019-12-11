@@ -1,138 +1,130 @@
+# -*- coding: utf-8 -*-
+
+
 class Destination:
-	"""
-	Model class for destinations.
-	"""
+	empty_attribute_dict = {
+		"valid": False,
+		"ID": "",
+		"country": "",
+		"city": "",
+		"airport": "",
+		"flight_time": "",
+		"distance": "",
+		"contact_name": "",
+		"contact_phone": ""
+	}
 
-	def __init__(self):
-		self.__country_name_str = ""
-		self.__city_name_str = ""
-		self.__ID_str = ""
-		self.__airport_name_str = ""
-		self.__distance_int = 0
-		self.__flight_time_int = 0
-		self.__contact_name_str = ""
-		self.__contact_phone_str = ""
-		self.__valid_bool = False
+	def __init__(self, attribute_dict = empty_attribute_dict):
+		"""
+		Constructor for class. Initialize attributes with dictionary, default values are empty.
+		"""
 
-	def initialize(self, attribute_dict):
-		self.__country_name_str = attribute_dict["country"]
-		self.__city_name_str = attribute_dict["city"]
-		self.__ID_str = attribute_dict["ID"]
-		self.__airport_name_str = attribute_dict["airport"]
-		self.__distance_int = int(attribute_dict["distance"])
-		self.__flight_time_int = int(attribute_dict["flight_time"])
-		self.__contact_name_str = attribute_dict["contact_name"]
-		self.__contact_phone_str = attribute_dict["contact_phone"]
-		self.__valid_bool = attribute_dict["valid"]
-		return self
+		self.__valid = attribute_dict["valid"]
+		self.__id = Destination.id_check(attribute_dict["ID"])
+		self.__country = Destination.country_check(attribute_dict["country"])
+		self.__city = Destination.city_check(attribute_dict["city"])
+		self.__airport = Destination.airport_check(attribute_dict["airport"])
+		self.__flight_time = Destination.flighttime_check(attribute_dict["flight_time"])
+		self.__distance = Destination.distance_check(attribute_dict["distance"])
+		self.__contact_name = Destination.contactname_check(attribute_dict["contact_name"])
+		self.__contact_phone = Destination.contactphone_check(attribute_dict["contact_phone"])
 
-	def set_valid(self):
-		self.__valid_bool = True
-		return True
 
-	def get_valid(self):
-		return self.__valid_bool
-
-	def set_country_name(self, name_str):
-		if name_str.replace(" ", "").isalpha() and len(name_str) <= 60:
-			self.__country_name_str = name_str
-			return True
+	#--------------------- Basic check functions
+	def id_check(dest_id):
+		if len(dest_id) == 3 and dest_id.isalpha() or dest_id == "":
+			return dest_id.upper()
 		else:
-			return False
+			return "Villa"
 
-	def get_country_name(self):
-		return self.__country_name_str
-
-	def set_city_name(self, name_str):
-		if name_str.replace(" ", "").isalpha() and len(name_str) <= 60:
-			self.__city_name_str = name_str
-			return True
+	def country_check(country):
+		if country == "" or country.replace(" ", "").isalpha():
+			return country.title()
 		else:
-			return False
+			return "Villa "
 
-	def get_city_name(self):
-		return self.__city_name_str
-
-	def set_ID(self, id_str):
-		if len(id_str) == 3 and id_str.isalpha():
-			self.__ID_str = id_str
-			return True
+	def city_check(city):
+		if city == "" or city.isalpha():
+			return city.title()
 		else:
-			return False
+			return "Villa"
 
-	def get_ID(self):
-		return self.__ID_str
-
-	def set_airport_name(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__airport_name_str = name_str
-			return True
+	def airport_check(airport): 				
+		if airport == "" or airport.replace(" ", "").isalpha():
+			return airport.title()
 		else:
-			return False
+			return "Villa"
 
-	def get_airport_name(self):
-		return self.__airport_name_str
-
-	def set_distance(self, km_count_int):
-		if km_count_int.isdecimal():
-			self.__distance_int = km_count_int
-			return True
+	def flighttime_check(flighttime): 			
+		if flighttime == "" or flighttime.isdecimal():
+			return flighttime
 		else:
-			return False
+			return "Villa"
 
-	def get_distance(self):
-		return self.__distance_int
-
-	def set_flight_time(self, min_count_int):
-		if min_count_int.isdecimal():
-			self.__flight_time_int = min_count_int
-			return True
+	def distance_check(distance): 				
+		if distance == "" or distance.isdecimal():
+			return distance
 		else:
-			return False
+			return "Villa"
 
-	def get_flight_time(self):
-		return self.__flight_time_int
-
-	def set_contact_name(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__contact_name_str = name_str
-			return True
+	def contactname_check(name): 				
+		if name == "" or name.replace(" ", "").isalpha():
+			return name.title()
 		else:
-			return False
+			return "Villa"
 
-	def get_contact_name(self):
-		return self.__contact_name_str
-
-	def set_contact_number(self, phone_str):
-		if phone_str.isalpha():
-			self.__contact_phone_str = phone_str
-			return True
+	def contactphone_check(phone): 				
+		if phone == "" or phone.isdecimal() and len(phone) >= 7:
+			return phone
 		else:
-			return False
+			return "Villa"
+	#--------------------- Basic check functions end
 
-	def get_contact_number(self):
-		return self.__contact_phone_str
 
-	def getattributes(self):
-		column_names = ["valid", "ID", "country", "city", "airport", "flight_time", "distance", "contact_name", "contact_phone"]
-		attributes = [
-			self.__valid_bool,
-			self.__ID_str,
-			self.__country_name_str,
-			self.__city_name_str,
-			self.__airport_name_str,
-			self.__flight_time_int,
-			self.__distance_int,
-			self.__contact_name_str,
-			self.__contact_phone_str,
-		]
+	def get_attributes(self):
+		""" Returns dictionary of instances attributes."""
+		attribute_dict = {
+			"valid": self.__valid,
+			"ID": self.__id,
+			"country": self.__country,
+			"city": self.__city,
+			"airport": self.__airport,
+			"flight_time": self.__flight_time,
+			"distance": self.__distance,
+			"contact_name": self.__contact_name,
+			"contact_phone": self.__contact_phone
+		}
 
-		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
 
+	def attribute_translation(self):
+		""" Returns attribute names in Icelandic"""
+		return [
+			("Auðkenni", self.__id),
+			("Land", self.__country),
+			("Borg", self.__city),
+			("Flugvöllur", self.__airport),
+			("Flugtími (min)", self.__flight_time),
+			("Fjarlægð (km)", self.__distance),
+			("Tengiliður", self.__contact_name),
+			("Sími tengiliðs", self.__contact_phone)
+		]
+
+	def set_valid(self):
+		self.__valid = True
+
+	def dict_keys(self):
+		""" Returns list keys for attribute dict."""
+		return ["valid", "ID", "country", "city", "airport", "flight_time", "distance", "contact_name", "contact_phone"]
+
+	def short_display(self):
+		first_half = f"{self.__id}: {self.__airport}, {self.__city}, {self.__country}. "
+		second_half = f"{self.__flight_time} min. {self.__distance} km. {self.__contact_name}, {self.__contact_phone}"
+		return first_half + second_half
+
 	def __str__(self):
-		a = f"{self.__valid_bool}, {self.__ID_str}, {self.__country_name_str}, {self.__city_name_str}, {self.__airport_name_str}, "
-		b = f"{self.__flight_time_int}, {self.__distance_int}, {self.__contact_name_str}, {self.__contact_phone_str}"
-		return a + b
 
-
+		first_half = f"Auðkenni: {self.__id}. Flugvöllur: {self.__airport}, {self.__city}, {self.__country}. "
+		second_half = f"Flugtími: {self.__flight_time} min. "
+		third_half = f"Fjarlægð: {self.__distance} km. Tengiliður: {self.__contact_name}, {self.__contact_phone}"
+		return first_half + second_half + third_half

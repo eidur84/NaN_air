@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from database.database_layer import DBLayer
 from model_classes import *
 from csv import DictWriter
@@ -11,21 +12,23 @@ class Create(DBLayer):
 
 	Methods:
 		append_db_row(filename, object_instance)
-		create_staff(employee_instance)
-		create_airplane(airplane_instance)
-		create_destination(destination_instance)
 		create_rtrip(rtrip_instance)
+		create_crew(crew_instance)
 	"""
-
-	def append_db_row(filename, obj_instance):
+	@staticmethod
+	def append_db_row(filename, obj_instance, rtrip=False):
 		"""
 		Appends the data from an object instance to given file.
 		"""
+		filename = DBLayer.path.joinpath(filename)
+		filestream = open(filename, "a", encoding="utf-8")
 
-		filestream = open(filename, "a")
-
-		new_row_dict = obj_instance.getattributes()
+		if rtrip:
+			new_row_dict = obj_instance.get_attributes(True)
+		else:
+			new_row_dict = obj_instance.get_attributes()
 		column_names = list(new_row_dict.keys())
+
 
 		writer = DictWriter(filestream, column_names)
 
@@ -34,48 +37,25 @@ class Create(DBLayer):
 		filestream.close()
 		return True
 
-
-	def create_staff(employee):
-		"""
-		Adds new staff member, using append_db_row function.
-		"""
-		csv_file = DBLayer.path.joinpath("Staff.csv")
-
-		finished = Create.append_db_row(csv_file, employee)
-		return finished
-
-
-	def create_airplane(airplane):
-		"""
-		Adds new airplane, using append_db_row function.
-		"""
-		csv_file = DBLayer.path.joinpath("Airplanes.csv")
-
-		finished = Create.append_db_row(csv_file, airplane)
-		return finished
-
-
-	def create_dest(destination):
-		"""
-		Adds new destination, using append_db_row function.
-		"""
-		csv_file = DBLayer.path.joinpath("Destinations.csv")
-
-		finished = Create.append_db_row(csv_file, destination)
-		return finished
-
-
+	@staticmethod
 	def create_rtrip(departure, returnflight):
 		"""
 		Adds new round trip (voyage), using append_db_row function.
 		"""
-		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
 
-		bool1 = Create.append_db_row(csv_file, departure)
-		bool2 = Create.append_db_row(csv_file, returnflight)
+		bool1 = Create.append_db_row("RoundTrips.csv", departure, rtrip=True)
+		bool2 = Create.append_db_row("RoundTrips.csv", returnflight, rtrip=True)
 
 		finished = bool1 and bool2
 		return finished
+
+	@staticmethod
+	def create_crew(crew_row):
+		""" Adds row to Crew.csv"""
+
+		finished = Create.append_db_row("Crew.csv", crew_row)
+		return finished
+
 
 
 

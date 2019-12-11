@@ -1,4 +1,5 @@
+# -*- coding: utf-8 -*-
+from view.user_interface import UILayer
 
-from ui.user_interface import UILayer
-from ui.static_page import StaticOptions
-from ui.forms import Form
+if __name__ == '__main__':
+	UILayer.main()

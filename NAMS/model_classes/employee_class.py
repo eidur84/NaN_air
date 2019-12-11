@@ -1,157 +1,148 @@
+# -*- coding: utf-8 -*-
+
 
 class Employee:
-	"""
-	Model class for employees.
-	"""
+	empty_attribute_dict = {
+		"valid": False,
+		"ssn": "",
+		"name": "",
+		"job": "",
+		"home": "",
+		"landline": "",
+		"gsm": "",
+		"email": "",
+		"license": ""
+	}
 
-	def __init__(self):
-		self.__valid_bool = False
-		self.__name_str = ""
-		self.__ssn_str = ""
-		self.__address_str = ""
-		self.__landline_str = ""
-		self.__gsm_str = ""
-		self.__email_str = ""
-		self.__job_str = ""
-		self.__license_str = ""
+	def __init__(self, attribute_dict = empty_attribute_dict):
 
-	def initialize(self, attribute_dict):
-		self.__valid_bool = attribute_dict["valid"]
-		self.__name_str = attribute_dict["name"]
-		self.__ssn_str = attribute_dict["ssn"]
-		self.__address_str = attribute_dict["home"]
-		self.__landline_str = attribute_dict["landline"]
-		self.__gsm_str = attribute_dict["gsm"]
-		self.__email_str = attribute_dict["email"]
-		self.__job_str = attribute_dict["job"]
-		self.__license_str = attribute_dict["license"]
-		return self
+		self.__valid = attribute_dict["valid"]
+		self.__ssn = Employee.ssn_check(attribute_dict["ssn"])
+		self.__name = Employee.name_check(attribute_dict["name"])
+		self.__job = Employee.job_check(attribute_dict["job"])
+		self.__home = Employee.home_check(attribute_dict["home"])
+		self.__landline = Employee.landline_check(attribute_dict["landline"])
+		self.__gsm = Employee.gsm_check(attribute_dict["gsm"])
+		self.__email = Employee.email_check(attribute_dict["email"])
+		self.__license = Employee.license_check(attribute_dict["license"])
 
 
-	def set_valid(self):
-		self.__valid_bool = True
-		return True
-
-	def set_name(self, name_str):
-		if name_str.replace(" ", "").isalpha() and 0 < len(name_str) < 60:
-			self.__name_str = name_str
-			return True
+	#--------------------- Basic check functions
+	def name_check(name):
+		if name == "" or name.replace(" ", "").isalpha():
+			return name.title()
 		else:
-			return False
+			return "Villa"
 
-	def get_name(self):
-		return self.__name_str
+	def ssn_check(ssn):
+		if ssn.isdecimal() and len(ssn) == 10:
 
-	def set_ssn(self, ssn_str):
-		if ssn_str.isdecimal() and len(ssn_str) == 10:
+			if int(ssn[2:4]) <= 12:
 
-			if int(ssn_str[2:4]) <= 12:
+				if ssn[2:4] == "02":  # February
 
-				if ssn_str[2:4] == "02":  # February
+					if int(ssn[:2]) <= 29:
+						return ssn
 
-					if int(ssn_str[:2]) <= 29:
-						self.__ssn_str = ssn_str
-						return True
+				elif ssn[2:4] in ["04", "06", "09", "11"]: # April, June, Sept., Nov.
 
-				elif ssn_str[2:4] in ["04", "06", "09", "11"]:
-
-					if int(ssn_str[:2]) <= 30:
-						self.__ssn_str = ssn_str
-						return True
+					if int(ssn[:2]) <= 30:
+						return ssn
 
 				else:
-					if int(ssn_str[:2]) <= 31:
-						self.__ssn_str = ssn_str
-						return True
-		return False
+					if int(ssn[:2]) <= 31:
+						return ssn
+		elif ssn == "":
+			return ssn
 
-	def get_ssn(self):
-		return self.__ssn_str
+		return "Villa"
 
-	def set_address(self, address_str):
-		if len(address_str) < 60:
-			self.__address_str = address_str
-			return True
+	def job_check(job):
+		if job in ["Flugmaður", "Flugþjónn", ""]:
+			return job
 		else:
-			return False
+			return "Villa"
 
-	def get_address(self):
-		return self.__address_str
-
-	def set_landline(self, landline_str):
-		if landline_str.isdecimal():
-			self.__landline_str = landline_str
-			return True
+	def home_check(home):
+		if home == "" or  len(home) > 4:
+			return home.title()
 		else:
-			return False
+			return "Villa"
 
-	def get_landline(self):
-		return self.__landline_str
-
-	def set_gsm(self, gsm_str):
-		if gsm_str.isdecimal():
-			self.__gsm_str = gsm_str
-			return True
+	def landline_check(landline):
+		if landline == "" or landline.isnumeric() and len(landline) >= 7:
+			return landline
 		else:
-			return False
+			return "Villa"
 
-	def get_gsm(self):
-		return self.__gsm_str
-
-	def set_email(self, email_str):
-		if "@" in email_str and "." in email_str:
-			if email_str.replace("@", "").replace(".", "").isalnum():
-				self.__email_str = email_str
-				return True
-
-		return False
-
-	def get_email(self):
-		return self.__email_str
-
-	def set_job(self, job_str):
-		if job_str in ["Flugmaður", "Flugþjónn"]:
-			self.__job_str = job_str
-			return True
-		elif job_str == "1":
-			self.__job_str = "Flugmaður"
-		elif job_str == "2":
-			self.__job_str = "Flugþjónn"
+	def gsm_check(gsm):
+		if gsm == "" or gsm.isnumeric() and len(gsm) == 7:
+			return gsm
 		else:
-			return False
+			return "Villa"
 
-	def get_job(self):
-		return self.__job_str
+	def email_check(email):
+		if email == "":
+			return email
+		elif "@" in email and "." in email and len(email) >= 5:
+			return email
+		else:
+			return "Villa"
 
-	def set_license(self, airplane_type):
-		# IMPLEMENT CHECK
-		self.__license_str = airplane_type
-		return True
+	def license_check(license):
+		if license == "" or len(license) == 6:
+			return license.upper()
+		else:
+			return "Villa"
+	#--------------------- Basic check functions end
 
-	def get_license(self):
-		return self.__license_str
+	def get_attributes(self):
+		""" Returns dictionary of instances attributes."""
+		attribute_dict = {
+			"valid": self.__valid,
+			"ssn": self.__ssn,
+			"name": self.__name,
+			"job": self.__job,
+			"home": self.__home,
+			"landline": self.__landline,
+			"gsm": self.__gsm,
+			"email": self.__email,
+			"license": self.__license
+		}
 
-	def getattributes(self):
-		column_names = ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
-		attributes = [
-			self.__valid_bool,
-			self.__ssn_str,
-			self.__name_str,
-			self.__job_str,
-			self.__address_str,
-			self.__landline_str,
-			self.__gsm_str,
-			self.__email_str,
-			self.__license_str,
-		]
-
-		attribute_dict = dict(zip(column_names, attributes))
 		return attribute_dict
 
-		def __str__(self):
-			a = f"{self.__valid_bool}, {self.__ssn_str}, {self.__name_str}, {self.__job_str}, "
-			b = f"{self.__address_str}, {self.__landline_str}, {self.__gsm_str}, {self.__license_str}"
-			return a+b
+	def attribute_translation(self):
+		""" Returns names of attributes in Icelandic."""
+		return [
+			("Kennitala", self.__ssn),
+			("Nafn", self.__name),
+			("Starf", self.__job),
+			("Heimilisfang", self.__home),
+			("Heimasími", self.__landline),
+			("GSM sími", self.__gsm),
+			("Tölvupóstur", self.__email),
+			("Leyfi", self.__license)
+		]
 
+	def set_valid(self):
+		self.__valid = True
 
+	def dict_keys(self):
+		""" Returns list of keys in attribute dict"""
+		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
+	def short_display(self):
+		first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
+		return first_half
+
+	def __str__(self):
+
+		first_half = f"{self.__ssn}, {self.__name}. Starf: {self.__job}. Leyfi: {self.__license}. "
+		if self.__landline == "":
+			second_half = f"Farsími: {self.__gsm}. Tölvupóstur: {self.__email}"
+		elif self.__gsm == "":
+			second_half = f"Heimasími: {self.__landline}. Tölvupóstur: {self.__email}"
+		else:
+			second_half = f"Símanúmer: {self.__landline}, {self.__gsm}. Tölvupóstur: {self.__email}"
+		return first_half + second_half

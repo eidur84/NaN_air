@@ -6,7 +6,6 @@ from database.create_class import Create
 from database.update_class import Update
 from database.database_layer import DBLayer
 
-
 from model_classes.airplane_class import Airplane
 from model_classes.departure_class import Departure
 from model_classes.destination_class import Destination
@@ -24,7 +23,7 @@ class BLLayer:
 	@staticmethod
 	def paging_system(state, display_data={}):
 		"""
-		Creates a key,value pair in display_Data dict, key: "data", value: list of object instances. 
+		Creates a key,value pair in display_Data dict, key: "data", value: list of object instances.
 		"""
 
 		if state == "dest_list":

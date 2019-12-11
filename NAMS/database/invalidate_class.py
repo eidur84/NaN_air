@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from database.database_layer import DBLayer
 from model_classes import *
 from csv import DictWriter
@@ -17,7 +17,7 @@ class Invalidate(DBLayer):
 		"""
 		csv_file = DBLayer.path.joinpath("Staff.csv")
 
-		employee_ssn = employee.get_ssn()
+		employee_ssn = employee.get_attributes()["name"]
 		finished = Invalidate.update_db_row(csv_file, "valid", "False", "ssn", employee_ssn)
 		return finished
 
@@ -28,7 +28,7 @@ class Invalidate(DBLayer):
 		"""
 		csv_file = DBLayer.path.joinpath("Airplanes.csv")
 
-		airplane_name = airplane.get_name()
+		airplane_name = airplane.get_attributes()["name"]
 		finished = Invalidate.update_db_row(csv_file, "valid", "False", "name", airplane_name)
 		return finished
 
@@ -39,18 +39,8 @@ class Invalidate(DBLayer):
 		"""
 		csv_file = DBLayer.path.joinpath("Destinations.csv")
 
-		dest_id = destination.get_ID()
+		dest_id = destination.get_attributes()["ID"]
 		finished = Invalidate.update_db_row(csv_file, "valid", "False", "ID", dest_id)
 		return finished
 
-'''
-	#### Aðeins flóknara, tvær færslur fyrir hvert round trip.
-	def invalidate_rtrip(rtrip):
-		"""
-		Sets valid value for given round trip to False.
-		"""
-		csv_file = DBLayer.path.joinpath("RoundTrips.csv")
-
-		#finished = Invalidate.update_db_row(csv_file, "valid", "False", "flightID", )
-		return finished
-'''
+	##### Vantar fyrir round trip #####

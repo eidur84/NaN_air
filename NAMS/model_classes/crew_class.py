@@ -1,48 +1,31 @@
+
 class Crew:
 	"""
-	Model class containing staff members for a particular flight.
+	Class containing information for a row in crew csv file.
 	"""
 
-	def __init__(self):
-		self.__flightID_str = ""		# vantar get/set methods
-		self.__headpilot = ''
-		self.__copilot = ''
-		self.__headsteward = ''
-		self.__otherstewards = []
+	def __init__(self, attribute_dict):
+		self.__valid = True
+		self.__flightID = attribute_dict["flightID"]
+		self.__ssn = attribute_dict["ssn"]
+		self.__role = attribute_dict["role"]
+		self.__rank = attribute_dict["rank"]
 
-	def set_headpilot(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__headpilot = name_str
-			return True
-		else:
-			return False
 
-	def get_headpilot(self):
-		return self.__headpilot
+	def get_attributes(self):
+		return {
+			"valid": self.__valid,
+			"flightID": self.__flightID,
+			"ssn": self.__ssn,
+			"role": self.__role,
+			"rank": self.__rank
+		}
 
-	def set_copilot(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__copilot = name_str
-			return True
-		else:
-			return False
 
-	def get_copilot(self):
-		return self.__copilot
+	def get_rank(self):
+		return self.__rank
 
-	def set_headsteward(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__headsteward = name_str
-			return True
-		else:
-			return False
 
-	def get_headsteward(self):
-		return self.__headsteward
+	def __str__(self):
+		return f"{self.__flightID}, {self.__ssn}: {self.__rank}"
 
-	def set_stewards(self, name_str):
-		if name_str.replace(' ', '').isalpha() and len(name_str) <= 60:
-			self.__otherstewards.append(name_str)
-			return True
-		else:
-			return False

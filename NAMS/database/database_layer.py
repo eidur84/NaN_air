@@ -1,10 +1,7 @@
+# -*- coding: utf-8 -*-
 from csv import DictReader, DictWriter
 from pathlib import Path
 # Children imported at bottom of file
-
-# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-# PARENT CLASS
-# ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 class DBLayer:
 	"""
@@ -15,21 +12,25 @@ class DBLayer:
 	# pathlib.Path used for system agnostic directory paths.
 	path = Path.cwd().joinpath("database").joinpath("csv_files")
 
+	@staticmethod
 	def request_create(data_type, instance):
 		if data_type == "staff":
 			valid = Create.create_staff(instance)
-			return valid
+
 		elif data_type == "dest":
 			valid = Create.create_dest(instance)
-			return valid
+
 		elif data_type == "airplane":
 			valid = Create.create_airplane(instance)
-			return valid
+
 		elif data_type == "rtrip":
 			valid = Create.create_rtrip(instance[0], instance[1])
 		else:
 			return False
 
+		return valid
+
+	@staticmethod
 	def generic_search(filename, filter_column, key_word, result_column="all"):
 		"""
 		Function which searches a csv file for key_word in filter_column.
@@ -39,8 +40,9 @@ class DBLayer:
 
 		csv_file = DBLayer.path.joinpath(filename)
 
-		filestream = open(csv_file, "r")
+		filestream = open(csv_file, "r", encoding="utf-8")
 		csv_dict = DictReader(filestream)  # Loads rows into dictionary with column names as keys.
+
 
 		results = [ ]
 
@@ -58,8 +60,7 @@ class DBLayer:
 		filestream.close()
 		return results
 
-	#### MAYBE IMPLEMENT APPEND/UPDATE FUNCTION ####
-
+	@staticmethod
 	def update_backup(filename):
 		"""
 		Writes changes in main csv files to backup csv files.
@@ -72,7 +73,7 @@ class DBLayer:
 
 		return finished
 
-
+	@staticmethod
 	def get_csv_data(filename):
 		"""
 		Reads data from given csv file into list of dictionaries.
@@ -80,7 +81,7 @@ class DBLayer:
 			Key: column name, Value: each rows corresponding value.
 		"""
 
-		filestream = open(filename, "r")
+		filestream = open(filename, "r", encoding="utf-8")
 		csv_reader = DictReader(filestream)
 
 		dict_list = [ ]
@@ -90,7 +91,7 @@ class DBLayer:
 		filestream.close()
 		return dict_list
 
-
+	@staticmethod
 	def write_csv_file(filename, dict_list):
 		"""
 		Overwrites a given csv file with data from a given list of dictionaries.
@@ -101,9 +102,10 @@ class DBLayer:
 		if len(dict_list) == 0:
 			return False
 
+
 		column_names = list(dict_list[0].keys())
 
-		filestream = open(filename, "w")
+		filestream = open(filename, "w", encoding="utf-8")
 		writer = DictWriter(filestream, fieldnames=column_names)
 
 		writer.writeheader()
@@ -113,7 +115,7 @@ class DBLayer:
 		filestream.close()
 		return True
 
-
+	@staticmethod
 	def update_db_row(filename, column_name, new_data, PK_column, key_word):
 		"""
 		Searches PK_column in csv file for key_word, changes data in column_name to new_data.
@@ -133,7 +135,6 @@ class DBLayer:
 
 # IMPORTS AT BOTTOM OF FILE TO PREVENT CIRCULAR IMPORTS (X imports Y and Y starts by importing X)
 from database.create_class import Create
-from database.read_class import Read
 from database.update_class import Update
 from database.invalidate_class import Invalidate
 # See http://effbot.org/zone/import-confusion.htm#circular-imports for explanation
