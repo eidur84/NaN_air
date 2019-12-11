@@ -1,12 +1,14 @@
 # NAMS: NaN Air Management System
-
-**Hópur 49:**  
-  Daníel Páll Smárason,  
-  Eiður Ágúst Egilsson,  
-  Logi Eyjólfsson,  
-  Pétur Daníel Þórðarson  
+<dl>
+  <dt>Hópur 49:</dt>
+  <dd>Daníel Páll Smárason,</dd>
+  <dd>Eiður Ágúst Egilsson,</dd>
+  <dd>Logi Eyjólfsson,</dd>
+  <dd>Pétur Daníel Þórðarson</dd>
+</dl>
 
 Verkefni í 3. vikna verklegum kúrs við HR, haust 2019.
+
 # About
 NAMS is a system for managing the employees, airplanes, destinations and flights of the fictional airline NaN Air.
 
