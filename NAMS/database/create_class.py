@@ -19,6 +19,7 @@ class Create(DBLayer):
 		"""
 		Appends the data from an object instance to given file.
 		"""
+		backup_csv = DBLayer.path.joinpath("backups").joinpath(filename)
 		filename = DBLayer.path.joinpath(filename)
 		filestream = open(filename, "a", encoding="utf-8")
 
@@ -32,8 +33,17 @@ class Create(DBLayer):
 		writer = DictWriter(filestream, column_names)
 
 		writer.writerow(new_row_dict)
-
 		filestream.close()
+
+		# Update backup files
+		updated_file = open(filename, "r", encoding="utf-8")
+		updated_data = updated_file.read()
+		updated_file.close()
+
+		backup_filestream = open(backup_csv, "w", encoding="utf-8")
+		backup_filestream.write(updated_data)
+		backup_filestream.close()
+
 		return True
 
 	@staticmethod

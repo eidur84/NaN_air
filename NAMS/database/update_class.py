@@ -49,7 +49,7 @@ class Update(DBLayer):
 	@staticmethod
 	def replace_crew(departure, new_crew_list):
 		"""
-		Updates crew info for given flight. 
+		Updates crew info for given flight.
 		(Invalidates old crew and writes new crew to csv file.)
 		"""
 		filename = Update.path.joinpath("Crew.csv")
@@ -87,6 +87,28 @@ class Update(DBLayer):
 
 		return bool1 and bool2
 
+	@staticmethod
+	def update_rtrip_csv_file():
+		"""
+		Goes through RoundTrips.csv, and sets "past" column to be True if flight date is before current day, False otherwise.
+		Achieved by changing rows into model classes and writing file again.
+		"""
+		filename = DBLayer.path.joinpath("RoundTrips.csv")
 
+		flight_data = DBLayer.get_csv_data(filename)
+		updated_data = [ ]
+		outbound = True
+		for flight_row in flight_data:
+			if outbound:
+				departure = Departure(flight_row, from_csv=True)
+				updated_data.append(departure.get_attributes(for_csv=True))
+				outbound = False
+			elif not outbound:
+				returnflight = ReturnFlight(flight_row)
+				updated_data.append(returnflight.get_attributes(for_csv=True))
+				outbound = True
+
+		flights_updated_bool = DBLayer.write_csv_file(filename, updated_data)
+		return flights_updated_bool
 
 

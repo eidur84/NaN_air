@@ -29,7 +29,7 @@ class BLLayer:
 		if state == "dest_list":
 			data = Read.read_dest("valid", "True")
 
-		elif state == "staff_list" or state == "staff_flight":
+		elif state == "staff_list":
 			data = Read.read_staff("valid", "True")
 
 		elif state == "airplane_list":
@@ -54,7 +54,8 @@ class BLLayer:
 			display_data["end"] = len(display_data["data"])
 			return display_data
 
-		display_data["data"] = [ instance for instance in data ]
+
+		display_data["data"] = data
 
 		# If showing dates in pager show in weeks
 		if state == "date_list":
@@ -74,6 +75,37 @@ class BLLayer:
 		display_data["end"] = len(display_data["data"])
 
 		return display_data
+
+
+	@staticmethod
+	def show_available_staff(form_data):
+		""" Returns list of staff not flying on departure date."""
+
+		dep_str = form_data["instance"].get_attributes()["departure"][0:10]
+		departure_list = Read.departures_on_date(dep_str)
+
+		flightID_list = [ ]
+		for departure in departure_list:
+			flightID_list.append(departure.get_attributes()["flightID"])
+
+		busy_ssn_list = []
+		for flightID in flightID_list:
+			crew_list = Read.flight_crew(flightID)
+
+			for crew_row in crew_list:
+				busy_ssn_list.append(crew_row.get_attributes()["ssn"])
+
+		all_staff = Read.read_staff("valid", "True")
+		data = []
+		for employee in all_staff:
+			if employee.get_attributes()["ssn"] not in busy_ssn_list:
+				data.append(employee)
+
+		form_data["data"] = data
+		form_data["page_size"] = 7
+		form_data["rtrip"] = False
+		return form_data
+
 
 	@staticmethod
 	def create_schedule(display_data):

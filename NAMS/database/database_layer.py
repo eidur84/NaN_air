@@ -61,19 +61,6 @@ class DBLayer:
 		return results
 
 	@staticmethod
-	def update_backup(filename):
-		"""
-		Writes changes in main csv files to backup csv files.
-		"""
-
-		backup_file = DBLayer.path.joinpath("backups").joinpath("filenames")
-
-		dict_list = DBLayer.get_csv_data(backup_file)
-		finished = DBLayer.write_csv_file(backup_file, dict_list)
-
-		return finished
-
-	@staticmethod
 	def get_csv_data(filename):
 		"""
 		Reads data from given csv file into list of dictionaries.
@@ -112,7 +99,19 @@ class DBLayer:
 		for row in dict_list:
 			writer.writerow(row)
 
+
 		filestream.close()
+
+		# Update backup files
+		updated_file = open(filename, "r", encoding="utf-8")
+		updated_data = updated_file.read()
+		updated_file.close()
+
+		backup_csv = DBLayer.path.joinpath("backups").joinpath(filename)
+		backup_filestream = open(backup_csv, "w", encoding="utf-8")
+		backup_filestream.write(updated_data)
+		backup_filestream.close()
+
 		return True
 
 	@staticmethod

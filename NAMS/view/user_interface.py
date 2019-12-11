@@ -62,7 +62,7 @@ class UILayer:
 						# If user created a flight and wants to staff it immediately
 						if form_data["action"] == "staff_flight":
 
-							staff_data = BLLayer.paging_system("staff_flight")
+							staff_data = BLLayer.show_available_staff(form_data)
 							staff_data["rtrip"] = False
 							staff_data = Pager.page("staff_flight", staff_data)
 
@@ -129,7 +129,7 @@ class UILayer:
 								# If user wants to staff the given round trip
 								if display_data["action"] == "staff_flight":
 
-									staff_data = BLLayer.paging_system("staff_flight")
+									staff_data = BLLayer.paging_system("staff_list")
 									staff_data["rtrip"] = False
 									staff_data = Pager.page("staff_flight", staff_data)
 
