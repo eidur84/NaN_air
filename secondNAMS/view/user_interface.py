@@ -36,6 +36,9 @@ class UILayer:
 				else:
 					form_data = BLLayer.form_system(state, form_data)
 
+				if state == "update_staff":
+					old_dict = display_data["instance"].get_attributes()
+
 				form_data = Form.page(state, form_data)
 
 				# Go back
@@ -45,12 +48,16 @@ class UILayer:
 
 				# Create instance with data from user input
 				else:
-					print(form_data["instance"])
+
 					form_data["instance"] = BLLayer.form_input_check(state, form_data["instance"])
-					print(form_data["instance"])
+
 					form_input = form_data["instance"].get_attributes().values()
 					if "Villa" not in form_input:
-						finished = BLLayer.create_row(state, form_data["instance"])
+
+						if state == "update_staff":
+							finished = BLLayer.update_row(old_dict, display_data["instance"])
+						else:
+							finished = BLLayer.create_row(state, form_data["instance"])
 
 						# If user created a flight and wants to staff it immediately
 						if form_data["action"] == "staff_flight":
