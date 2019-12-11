@@ -67,7 +67,7 @@ class DBLayer:
 		Dict:
 			Key: column name, Value: each rows corresponding value.
 		"""
-
+		filename = DBLayer.path.joinpath(filename)
 		filestream = open(filename, "r", encoding="utf-8")
 		csv_reader = DictReader(filestream)
 
@@ -89,6 +89,8 @@ class DBLayer:
 		if len(dict_list) == 0:
 			return False
 
+		backup_csv = DBLayer.path.joinpath("backups").joinpath(filename)
+		filename = DBLayer.path.joinpath(filename)
 
 		column_names = list(dict_list[0].keys())
 
@@ -107,7 +109,6 @@ class DBLayer:
 		updated_data = updated_file.read()
 		updated_file.close()
 
-		backup_csv = DBLayer.path.joinpath("backups").joinpath(filename)
 		backup_filestream = open(backup_csv, "w", encoding="utf-8")
 		backup_filestream.write(updated_data)
 		backup_filestream.close()
@@ -120,15 +121,14 @@ class DBLayer:
 		Searches PK_column in csv file for key_word, changes data in column_name to new_data.
 		"""
 
-		csv_file = DBLayer.path.joinpath(filename)
-		dict_list = DBLayer.get_csv_data(csv_file)
+		dict_list = DBLayer.get_csv_data(filename)
 
 		for row in dict_list:
 			if row[PK_column] == key_word:
 				row[column_name] = new_data
 				break
 
-		finished = DBLayer.write_csv_file(csv_file, dict_list)
+		finished = DBLayer.write_csv_file(filename, dict_list)
 		return finished
 
 

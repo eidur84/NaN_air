@@ -23,13 +23,13 @@ class Update(DBLayer):
 			new_instance: instance of a given updated object.
 		"""
 		if type(new_instance) is Destination:
-			filename = Update.path.joinpath("Destinations.csv")
+			filename = "Destinations.csv"
 		elif type(new_instance) is Employee:
-			filename = Update.path.joinpath("Staff.csv")
+			filename = "Staff.csv"
 		elif type(new_instance) is Airplane:
-			filename = Update.path.joinpath("Airplanes.csv")
+			filename = "Airplanes.csv"
 		elif type(new_instance) is Departure or type(new_instance) is ReturnFlight:
-			filename = Update.path.joinpath("RoundTrips.csv")
+			filename = "RoundTrips.csv"
 
 		dict_list = Update.get_csv_data(filename)
 
@@ -52,7 +52,7 @@ class Update(DBLayer):
 		Updates crew info for given flight.
 		(Invalidates old crew and writes new crew to csv file.)
 		"""
-		filename = Update.path.joinpath("Crew.csv")
+		filename = "Crew.csv"
 		dict_list = Update.get_csv_data(filename)
 
 		flightID = departure.get_attributes()["flightID"]
@@ -93,9 +93,8 @@ class Update(DBLayer):
 		Goes through RoundTrips.csv, and sets "past" column to be True if flight date is before current day, False otherwise.
 		Achieved by changing rows into model classes and writing file again.
 		"""
-		filename = DBLayer.path.joinpath("RoundTrips.csv")
 
-		flight_data = DBLayer.get_csv_data(filename)
+		flight_data = DBLayer.get_csv_data("RoundTrips.csv")
 		updated_data = [ ]
 		outbound = True
 		for flight_row in flight_data:
@@ -108,7 +107,7 @@ class Update(DBLayer):
 				updated_data.append(returnflight.get_attributes(for_csv=True))
 				outbound = True
 
-		flights_updated_bool = DBLayer.write_csv_file(filename, updated_data)
+		flights_updated_bool = DBLayer.write_csv_file("RoundTrips.csv", updated_data)
 		return flights_updated_bool
 
 
