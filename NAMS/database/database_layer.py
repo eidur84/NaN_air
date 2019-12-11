@@ -66,7 +66,7 @@ class DBLayer:
 		Writes changes in main csv files to backup csv files.
 		"""
 
-		backup_file = DBLayer.path.joinpath(filename)
+		backup_file = DBLayer.path.joinpath("backups").joinpath("filenames")
 
 		dict_list = DBLayer.get_csv_data(backup_file)
 		finished = DBLayer.write_csv_file(backup_file, dict_list)

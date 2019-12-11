@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from database.database_layer import DBLayer
-from model_classes import *
 from csv import DictWriter
 from pathlib import Path
 
