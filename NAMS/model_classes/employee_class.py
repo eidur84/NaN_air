@@ -58,8 +58,8 @@ class Employee:
 		return "Villa"
 
 	def job_check(job):
-		if job in ["Flugmaður", "Flugþjónn", ""]:
-			return job
+		if job.title() in ["Flugmaður", "Flugþjónn", ""]:
+			return job.title()
 		else:
 			return "Villa"
 
