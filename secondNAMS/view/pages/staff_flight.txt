@@ -1,0 +1,11 @@
+Manna flug
+
+1-5) Velja starfsmann
+  n) Næstu 5 starfsmenn
+  p) Síðustu 5 starfsmenn
+  l) Ljúka skráningu starfsmanna á flug
+
+  ** Vinsamlegast veldu alla starfsmenn í gefnu flugi **
+  ** Fyrsti valinn flugmaður er yfirflugmaður og fyrsti valinn flugþjónn er yfirflugþjónn **
+
+            Aðgerð (1-5/n/p): _

@@ -29,10 +29,8 @@ class Employee:
 
 	#--------------------- Basic check functions
 	def name_check(name):
-		if name == "":
-			return name
-		elif name.replace(" ", "").isalpha():
-			return name
+		if name == "" or name.replace(" ", "").isalpha():
+			return name.title()
 		else:
 			return "Villa"
 
@@ -46,7 +44,7 @@ class Employee:
 					if int(ssn[:2]) <= 29:
 						return ssn
 
-				elif ssn[2:4] in ["04", "06", "09", "11"]:
+				elif ssn[2:4] in ["04", "06", "09", "11"]: # April, June, Sept., Nov.
 
 					if int(ssn[:2]) <= 30:
 						return ssn
@@ -56,6 +54,7 @@ class Employee:
 						return ssn
 		elif ssn == "":
 			return ssn
+
 		return "Villa"
 
 	def job_check(job):
@@ -65,25 +64,19 @@ class Employee:
 			return "Villa"
 
 	def home_check(home):
-		if home == "":
-			return home
-		elif len(home) > 4:
-			return home
+		if home == "" or  len(home) > 4:
+			return home.title()
 		else:
 			return "Villa"
 
 	def landline_check(landline):
-		if landline == "":
-			return landline
-		elif landline.isnumeric() and len(landline) == 7:
+		if landline == "" or landline.isnumeric() and len(landline) >= 7:
 			return landline
 		else:
 			return "Villa"
 
 	def gsm_check(gsm):
-		if gsm == "":
-			return gsm
-		elif gsm.isnumeric() and len(gsm) == 7:
+		if gsm == "" or gsm.isnumeric() and len(gsm) == 7:
 			return gsm
 		else:
 			return "Villa"
@@ -91,14 +84,14 @@ class Employee:
 	def email_check(email):
 		if email == "":
 			return email
-		elif "@" in email and "." in email and len(email.replace("@", "").replace(".", "")) >= 4:
+		elif "@" in email and "." in email and len(email) >= 5:
 			return email
 		else:
 			return "Villa"
 
 	def license_check(license):
 		if license == "" or len(license) == 6:
-			return license
+			return license.upper()
 		else:
 			return "Villa"
 	#--------------------- Basic check functions end

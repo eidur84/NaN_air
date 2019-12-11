@@ -24,61 +24,116 @@ class UILayer:
 		Each page has a corresponding UI class view type (Pager, Form or StaticOptions)
 		"""
 		path = ["front_page"]
+		form_data = {}
+		display_data = {}
 		while True:
 			state = path[-1]
 			page_type = UILayer.page_check(state)
 
 			if page_type == "form":
-				form_data = BLLayer.form_system(state)
+				if state == "update_staff":
+					form_data = display_data
+				else:
+					form_data = BLLayer.form_system(state, form_data)
 
 				form_data = Form.page(state, form_data)
 
 				# Go back
 				if form_data["action"] == "back":
 					path.pop()
+					form_data["action"] = ""
 
 				# Create instance with data from user input
 				else:
-					finished = BLLayer.create_row(state, form_data["instance"])
-					path.pop()
+					print(form_data["instance"])
+					form_data["instance"] = BLLayer.form_input_check(state, form_data["instance"])
+					print(form_data["instance"])
+					form_input = form_data["instance"].get_attributes().values()
+					if "Villa" not in form_input:
+						finished = BLLayer.create_row(state, form_data["instance"])
+
+						# If user created a flight and wants to staff it immediately
+						if form_data["action"] == "staff_flight":
+
+							staff_data = BLLayer.paging_system("staff_flight")
+							staff_data["rtrip"] = False
+							staff_data = Pager.page("staff_flight", staff_data)
+
+							if staff_data["action"] == "back":
+								path.pop()
+
+							else:
+								finished = BLLayer.create_crew_members(form_data["instance"], staff_data["instance_list"])
+						form_data = {}
+						path.pop()
+
 
 			elif page_type == "pager":
 				display_data = BLLayer.paging_system(state)
 
 				display_data = Pager.page(state, display_data)
-
-				# Go back
-				if "action" in display_data:
+				# Go back or other specific actions
+				if "action" in display_data and display_data["action"] != "":
 					if display_data["action"] == "back":
 						path.pop()
+						display_data["action"] = ""
+						display_data["datetime"] = ""
+
+					elif display_data["action"] == "non_busy_staff":
+						path.append("non_busy_staff")
+						display_data["action"] = ""
+						display_data["datetime"] = ""
+
+					elif display_data["action"] == "busy_staff":
+						path.append("busy_staff")
+						display_data["action"] = ""
+						display_data["datetime"] = ""
+
 
 				# If an instance is chosen from list
 				else:
-
 					# If instance is a round trip instance, convert "instance" to departure instance instead
-					if "rtrip" in display_data:
+					if "rtrip" in display_data and display_data["rtrip"] is True:
 						display_data["instance"] = display_data["departure"]
 
 					# Other object types
 					else:
 						old_dict = display_data["instance"].get_attributes()
 
-					# Put user into form mode for editing instance
-					display_data = Form.page(state, display_data)
+					if state == "employee_list":
+						path.append("staff_member")
 
-					# Go back
-					if display_data["action"] == "back":
-						path.pop()
-
-					# Update instance
 					else:
+						# Put user into form mode for editing instance
+						display_data = Form.page(state, display_data)
 
-						# If instance is a round trip call different update function
-						if "rtrip" in display_data:
-							finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
+						# Go back
+						if display_data["action"] == "back":
+							path.pop()
+							display_data["action"] = ""
 
+						# Update instance
 						else:
-							finished = BLLayer.update_row(old_dict, display_data["instance"])
+
+							# If instance is a round trip call different update function
+							if "rtrip" in display_data and display_data["rtrip"] is True:
+								finished = BLLayer.update_rtrip(display_data["departure"], display_data["returnflight"])
+
+								# If user wants to staff the given round trip
+								if display_data["action"] == "staff_flight":
+
+									staff_data = BLLayer.paging_system("staff_flight")
+									staff_data["rtrip"] = False
+									staff_data = Pager.page("staff_flight", staff_data)
+
+									if staff_data["action"] == "back":
+										path.pop()
+
+									else:
+										finished = BLLayer.update_crew(display_data["departure"], staff_data["instance_list"])
+
+							else:
+								finished = BLLayer.update_row(old_dict, display_data["instance"])
 
 			elif page_type == "static":
 				state = StaticOptions.page(state)
@@ -98,9 +153,9 @@ class UILayer:
 		"""
 		Checks which ui class type should handle given page.
 		"""
-		if state in ["new_employee", "new_airplane", "new_dest", "new_rtrip"]:
+		if state in ["new_employee", "new_airplane", "new_dest", "new_rtrip", "update_staff"]:
 			return "form"
-		elif state in ["employee_list", "dest_list", "airplane_list", "rtrip_list"]:
+		elif state in ["employee_list", "dest_list", "airplane_list", "rtrip_list", "busy_staff", "non_busy_staff", "employee_schedule"]:
 			return "pager"
 		else:
 			return "static"

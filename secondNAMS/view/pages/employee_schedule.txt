@@ -1,0 +1,6 @@
+Vaktaplan starfsmanns
+
+l) Næsta vika
+k) Fyrri vika
+
+            Aðgerð: _

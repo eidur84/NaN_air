@@ -1,0 +1,7 @@
+Upplýsingar um starfsmann
+#------------------------ header ends
+
+1) Breyta upplýsingum um gefinn starfsmann
+2) Sjá vaktaplan starfsmanns
+
+            Aðgerð (1/2): _

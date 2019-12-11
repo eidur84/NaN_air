@@ -1,0 +1,10 @@
+Uppteknir starfsmenn
+#------------------ header end
+
+n) Næstu 5 starfsmenn
+p) Síðustu 5 starfsmenn
+
+l) Næsta dagsetning
+k) Fyrri dagsetning
+
+            Aðgerð: _

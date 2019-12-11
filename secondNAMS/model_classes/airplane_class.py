@@ -52,7 +52,7 @@ class Airplane:
 	#--------------------- Basic check functions
 	def name_check(name):
 		if name.replace("-", "").isalpha() and len(name) == 6 or name == "":
-			return name
+			return name.upper()
 		else:
 			return "Villa"
 
@@ -70,7 +70,7 @@ class Airplane:
 
 	def manufacturer_check(manuf_str):
 		if manuf_str.replace(" ", "").isalnum() or manuf_str == "":
-			return manuf_str
+			return manuf_str.title()
 		else:
 			return "Villa"
 	#--------------------- Basic check functions end

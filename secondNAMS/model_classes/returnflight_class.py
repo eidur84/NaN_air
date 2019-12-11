@@ -78,13 +78,38 @@ class ReturnFlight:
 		return attribute_dict
 
 
-	def short_display(self):
-		first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Kl: {self.__departure}"
+	def short_display(self, schedule_view=False):
+		if schedule_view is True:
+			departure_dt = dt.datetime.strptime(self.__arrival, "%Y-%m-%dT%H:%M:%S")
+		else:
+			departure_dt = dt.datetime.strptime(self.__departure, "%Y-%m-%dT%H:%M:%S")
+		time = departure_dt.strftime("%H:%M")
+		weekday_list = ["Sun", "Mán", "Þri", "Mið", "Fim", "Fös", "Lau"]
+		weekday = weekday_list[int(departure_dt.strftime("%w"))]
+		month_day = departure_dt.strftime("%d").lstrip("0")
+		month_list = [
+			"Janúar",
+			"Febrúar",
+			"Mars",
+			"Apríl",
+			"Maí",
+			"Júní",
+			"Júlí",
+			"Ágúst",
+			"September",
+			"Október",
+			"Nóvember",
+			"Desember"
+		]
+		month = month_list[int(departure_dt.strftime("%m")) - 1]
+		year = departure_dt.strftime("%Y")
+		if schedule_view is True:
+			first_half = f"Heimkoma: {time}, {weekday}. {month_day}. {month} {year}."
+		else:
+			first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}."
 		return first_half
 
-	def __str__(self):
 
-		first_half = f"Flugnúmer: {self.__flightID}. Frá {self.__departingFrom} til {self.__arrivingAt}. "
-		second_half = f"Brottför: {self.__departure}. Lending: {self.__arrival}. Flugvél: {self.__aircraft_name}"
-		return first_half + second_half
+
+
 

@@ -40,6 +40,7 @@ class StaticOptions(UILayer):
 			screen = UILayer.footer(screen, line_number)
 
 			# Print screen
+			print("\n" * (len(screen)//2))
 			for line in screen:
 				print("\n" + line, end="")
 
@@ -92,6 +93,12 @@ class StaticOptions(UILayer):
 					return "employee_schedule"
 				elif action == "2":
 					return "update_employee"
+
+			elif state == "staff_member":
+				if action == "1":
+					return "update_staff"
+				elif action == "2":
+					return "employee_schedule"
 
 
 

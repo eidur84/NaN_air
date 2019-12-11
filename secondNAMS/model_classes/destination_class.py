@@ -39,19 +39,19 @@ class Destination:
 
 	def country_check(country):
 		if country == "" or country.replace(" ", "").isalpha():
-			return country.capitalize()
+			return country.title()
 		else:
 			return "Villa "
 
 	def city_check(city):
 		if city == "" or city.isalpha():
-			return city
+			return city.title()
 		else:
 			return "Villa"
 
 	def airport_check(airport): 				
 		if airport == "" or airport.replace(" ", "").isalpha():
-			return airport
+			return airport.title()
 		else:
 			return "Villa"
 
@@ -69,12 +69,12 @@ class Destination:
 
 	def contactname_check(name): 				
 		if name == "" or name.replace(" ", "").isalpha():
-			return name
+			return name.title()
 		else:
 			return "Villa"
 
 	def contactphone_check(phone): 				
-		if phone == "" or phone.isdecimal():
+		if phone == "" or phone.isdecimal() and len(phone) >= 7:
 			return phone
 		else:
 			return "Villa"
@@ -104,8 +104,8 @@ class Destination:
 			("Land", self.__country),
 			("Borg", self.__city),
 			("Flugvöllur", self.__airport),
-			("Flugtími", self.__flight_time),
-			("Fjarlægð", self.__distance),
+			("Flugtími (min)", self.__flight_time),
+			("Fjarlægð (km)", self.__distance),
 			("Tengiliður", self.__contact_name),
 			("Sími tengiliðs", self.__contact_phone)
 		]

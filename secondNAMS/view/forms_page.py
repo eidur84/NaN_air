@@ -57,7 +57,7 @@ class Form(UILayer):
 
 		Returns user input along with path.
 		"""
-
+		form_data["action"] = ""
 		while True:
 			screen = UILayer.frame()        # Create border and line list (screen)
 			screen, line_number = UILayer.header(screen, state)      # Create header
@@ -80,7 +80,7 @@ class Form(UILayer):
 
 			index = 1
 			for key, value in form_fields:
-				print(key,value)
+
 				translated_forms = form_data["instance"].attribute_translation()
 				line_number -= len(form_fields) + 2
 				screen, line_number, screen_too_small = Form.form_outline(screen, line_number, translated_forms)
@@ -91,6 +91,7 @@ class Form(UILayer):
 
 
 				# Print screen and move cursor
+				print("\n" * (len(screen)//2))
 				for line in screen:
 					print("\n" + line, end="")
 
@@ -106,19 +107,20 @@ class Form(UILayer):
 					return form_data
 
 				if action != "":
-					print(dict_keys[index], action)
 					form_dict[dict_keys[index]] = action
 
 				index += 1
 				form_data["instance"].__init__(form_dict)
-
+				form_dict = form_data["instance"].get_attributes()  # Refresh form dict
 
 				# Opportunity to change info
 				if key == form_fields[-1][0]:
 
-					# Automatically go back through form if ERROR in one of the fields
-					if "ERROR" in form_dict.values():
+					# Automatically go back through form if error in one of the fields
+					if "Villa" in form_dict.values():
 						action = "2"
+
+					# If action isn't "2", user gets chance to change info or leave data as is
 					else:
 						translated_forms = form_data["instance"].attribute_translation()
 						line_number -= len(form_fields) + 2
@@ -129,6 +131,7 @@ class Form(UILayer):
 						input_line = screen[line_number].rstrip("|+- ").rstrip("_")
 
 						# Print screen and move cursor
+						print("\n" * (len(screen)//2))
 						for line in screen:
 							print("\n" + line, end="")
 
@@ -138,8 +141,31 @@ class Form(UILayer):
 			if action == "2":
 				continue
 
+			if state == "new_rtrip" or state == "rtrip_list":
+				translated_forms = form_data["instance"].attribute_translation()
+				line_number -= len(form_fields) + 2
+				screen, line_number, screen_too_small = Form.form_outline(screen, line_number, translated_forms)
+				line_number += 1
+				screen[line_number] = "|" + " " * (len(screen[line_number]) - 2) + "|"
+				screen[line_number] = UILayer.aligner(screen[line_number], "Skrá starfsmenn í flug núna? 1) Já 2) Nei : _", "center")
+				input_line = screen[line_number].rstrip("|+- ").rstrip("_")
+
+				print("\n" * (len(screen)//2))
+				for line in screen:
+					print("\n" + line, end="")
+
+				jump = len(screen) - (line_number + 1)
+				action = UILayer.get_action(input_line, jump)
+
+				if action == "1":
+					form_data["action"] = "staff_flight"
+				else:
+					form_data["action"] = "create"
+			else:
+				form_data["action"] = "create"
+
 			form_data["instance"].set_valid()
-			form_data["action"] = "create"
+
 			return form_data
 
 

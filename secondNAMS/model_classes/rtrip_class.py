@@ -8,8 +8,6 @@ class RTrip:
 	def __init__(self, departure, returnflight):
 		self.__departure = departure
 		self.__returnflight = returnflight
-		self.__display1 = departure.short_display()
-		self.__display2 = returnflight.short_display()
 
 
 	def get_departure(self):
@@ -18,9 +16,9 @@ class RTrip:
 	def get_returnflight(self):
 		return self.__returnflight
 
-	def display1(self):
-		return self.__display1
+	def display1(self, show_manned=True):
+		return self.__departure.short_display(show_manned)
 
-	def display2(self):
-		return self.__display2
+	def display2(self, schedule_view=False):
+		return self.__returnflight.short_display(schedule_view)
 

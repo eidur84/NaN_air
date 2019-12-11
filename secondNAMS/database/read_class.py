@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-from csv import DictReader
 from database.database_layer import DBLayer
 from model_classes.employee_class import Employee
 from model_classes.airplane_class import Airplane
 from model_classes.destination_class import Destination
 from model_classes.departure_class import Departure
-from model_classes.returnflight_class import ReturnFlight
-from model_classes.rtrip_class import RTrip
-
+from model_classes.crew_class import Crew
 
 class Read(DBLayer):
 	"""
@@ -27,12 +24,13 @@ class Read(DBLayer):
 
 		return staff_list
 
-	def read_airplane(filter_column, key_word):
+	def read_airplane(filter_column="valid", key_word="True"):
 		"""
 		Looks in airplane csv file for rows matching given conditions.
 		Returns list of instances.
 		"""
 		attribute_dict_list = DBLayer.generic_search('Airplanes.csv', filter_column, key_word)
+
 		airplane_list = [ ]
 		for attribute_dict in attribute_dict_list:
 			airplane = Airplane(attribute_dict)
@@ -40,7 +38,7 @@ class Read(DBLayer):
 
 		return airplane_list
 
-	def read_dest(filter_column, key_word):
+	def read_dest(filter_column="valid", key_word="True"):
 		"""
 		Looks in destination csv file for rows matching given conditions.
 		Returns list of instances.
@@ -54,28 +52,52 @@ class Read(DBLayer):
 		return dest_list
 
 
-	def read_rtrip(filter_column, key_word):
+	def read_rtrip(filter_column="valid", key_word="True"):
 		"""
 		Looks in rtrip csv file for rows matching given conditions.
-		Returns list of instances.
+		Returns list of rows in round trip file.
 		"""
 		attribute_dict_list = DBLayer.generic_search('RoundTrips.csv', filter_column, key_word)
-		rtrip_list = [ ]
-		count = 0
-		for attribute_dict in attribute_dict_list:
 
-			if attribute_dict["direction"] == "outbound":
-				departure = Departure(attribute_dict, from_csv=True)
-				count += 1
-			elif attribute_dict["direction"] == "inbound":
-				returnflight = ReturnFlight(attribute_dict)
-				count += 1
+		return attribute_dict_list
 
-			# Collects two rows, creates Departure and ReturnFlight instances in order
-			# Creates RTrip instance containing the two connected instances
-			if count == 2:
-				rtrip = RTrip(departure, returnflight)
-				count = 0
-				rtrip_list.append(rtrip)
 
-		return rtrip_list
+	def flight_crew(flightID = "all"):
+		"""
+		Finds crew members for a given flightID. Returns list of Crew instances (rows in csv file).
+		"""
+
+		crew_list = [ ]
+		if flightID == "all":
+			attribute_dict_list = Read.generic_search("Crew.csv", "valid", "True")
+
+			for attribute_dict in attribute_dict_list:
+				crew_row = Crew(attribute_dict)
+				crew_list.append(crew_row)
+
+		else:
+			attribute_dict_list = Read.generic_search("Crew.csv", "flightID", flightID)
+
+			for attribute_dict in attribute_dict_list:
+				if attribute_dict["valid"] == "True":
+					crew_row = Crew(attribute_dict)
+					crew_list.append(crew_row)
+
+
+		return crew_list
+
+
+	def departures_on_date(date_str):
+		""" Finds departures on same day as date_str (format: YYYY-MM-DD)."""
+
+		attribute_dict_list = Read.read_rtrip("valid", "True")
+		departure_list = [ ]
+		for row_nr in range(0, len(attribute_dict_list), 2):
+			if attribute_dict_list[row_nr]["departure"][0:10] == date_str:
+				departure = Departure(attribute_dict_list[row_nr], from_csv=True)
+				departure_list.append(departure)
+
+		return departure_list
+
+
+
