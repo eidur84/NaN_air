@@ -195,11 +195,11 @@ class Departure:
 		year = departure_dt.strftime("%Y")
 		if show_manned is True:
 			if self.__manned is True:
-				first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}. Mannað"
+				first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}. {self.__aircraft_name}. Mannað"
 			else:
-				first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}. Ómannað"
+				first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}. {self.__aircraft_name}. Ómannað"
 		else:
-			first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}."
+			first_half = f"{self.__departingFrom} til {self.__arrivingAt}. Brottför: {time}, {weekday}. {month_day}. {month} {year}. {self.__aircraft_name}."
 		return first_half
 
 

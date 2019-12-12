@@ -20,6 +20,7 @@ class Pager:
 		index = 0
 		display_data["action"] = ""
 		display_data["instance_list"] = [ ]
+		screen_too_small = False
 		while True:
 			screen = UILayer.frame()        # Create border and line list (screen)
 			screen, line_number = UILayer.header(screen, state)      # Create header
@@ -244,10 +245,11 @@ class Pager:
 
 	@staticmethod
 	def format_schedule(screen, line_number, display_data, index):
-
+		""" Format an employees schedule for the week."""
 		page_size = display_data["page_size"]
 		line_number += 1
 		line = FlightDate(display_data["datetime"]).short_display(with_time=False)
+		line = line + " til " + FlightDate(display_data["week_end"]).short_display(with_time=False, with_title=False)
 		screen_too_small = False
 		screen[line_number] = UILayer.aligner(screen[line_number], line, "left")
 		for instance in display_data["data"][index * page_size: index * page_size + page_size]:

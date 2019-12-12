@@ -24,7 +24,7 @@ class Employee:
 		self.__landline = Employee.landline_check(attribute_dict["landline"])
 		self.__gsm = Employee.gsm_check(attribute_dict["gsm"])
 		self.__email = Employee.email_check(attribute_dict["email"])
-		self.__license = Employee.license_check(attribute_dict["license"])
+		self.__license = attribute_dict["license"]
 
 
 	#--------------------- Basic check functions
@@ -89,11 +89,6 @@ class Employee:
 		else:
 			return "Villa"
 
-	def license_check(license):
-		if license == "" or len(license) == 6:
-			return license.upper()
-		else:
-			return "Villa"
 	#--------------------- Basic check functions end
 
 	def get_attributes(self):
@@ -122,7 +117,7 @@ class Employee:
 			("Heimasími", self.__landline),
 			("GSM sími", self.__gsm),
 			("Tölvupóstur", self.__email),
-			("Leyfi", self.__license)
+			("Flugvélaleyfi", self.__license)
 		]
 
 	def set_valid(self):
@@ -133,7 +128,7 @@ class Employee:
 		return ["valid", "ssn", "name", "job", "home", "landline", "gsm", "email", "license"]
 
 	def short_display(self):
-		first_half = f"{self.__ssn}, {self.__name}. {self.__job}, {self.__license}. {self.__landline}, {self.__gsm}."
+		first_half = f"{self.__ssn}, {self.__name}. {self.__job}. Leyfi: {self.__license}. {self.__email}. {self.__landline}, {self.__gsm}."
 		return first_half
 
 	def __str__(self):

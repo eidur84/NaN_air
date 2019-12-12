@@ -131,7 +131,9 @@ class UILayer:
 								# If user wants to staff the given round trip
 								if display_data["action"] == "staff_flight":
 
-									staff_data = BLLayer.paging_system("staff_list")
+									airplane_name = display_data["instance"].get_attributes()["aircraft_name"]
+
+									staff_data = BLLayer.paging_system("staff_list", aircraft_name=airplane_name)
 									staff_data["rtrip"] = False
 									staff_data = Pager.page("staff_flight", staff_data)
 

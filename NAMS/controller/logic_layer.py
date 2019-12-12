@@ -21,7 +21,7 @@ class BLLayer:
 	Business logic layer, handles communcaction betwwen UI and DB layers and does calculations relating to time.
 	"""
 	@staticmethod
-	def paging_system(state, display_data={}):
+	def paging_system(state, display_data={}, aircraft_name=""):
 		"""
 		Creates a key,value pair in display_Data dict, key: "data", value: list of object instances.
 		"""
@@ -31,6 +31,22 @@ class BLLayer:
 
 		elif state == "staff_list":
 			data = Read.read_staff("valid", "True")
+
+			# If only showing staff allowed to fly a certain airplane
+			if aircraft_name != "":
+				qualified_staff = [ ]
+				airplane_type = DBLayer.generic_search("Airplanes.csv", "name", aircraft_name, result_column="type")[0]
+
+				for employee in data:
+					aircraft_license = employee.get_attributes()["license"]
+
+					if aircraft_license == airplane_type:
+						qualified_staff.append(employee)
+
+				# Only show qualified staff for given airplane type
+				data = qualified_staff
+
+
 
 		elif state == "airplane_list":
 			data = Read.read_airplane("valid", "True")
@@ -131,6 +147,7 @@ class BLLayer:
 			current_week.append(week_day.isoformat()[0:10])
 			week_day = week_day + dt.timedelta(days=1)
 
+
 		# Find flights on each day in given week, add to week_flights list
 		week_flights = [ ]
 		for date in current_week:
@@ -153,7 +170,7 @@ class BLLayer:
 
 		display_data["data"] = staff_schedule
 		display_data["datetime"] = last_monday
-		display_data["week_end"] = week_day
+		display_data["week_end"] = week_day - dt.timedelta(days=1)
 		return display_data
 
 
@@ -221,8 +238,8 @@ class BLLayer:
 			if attribute_dict["ssn"] in ssn_list:
 				attribute_dict["ssn"] = "Villa"
 
-			airplane_names = DBLayer.generic_search("Airplanes.csv", "valid", "True", result_column="name")
-			if attribute_dict["license"] not in airplane_names:
+			airplane_types = DBLayer.generic_search("Airplanes.csv", "valid", "True", result_column="type")
+			if attribute_dict["license"] not in airplane_types:
 				attribute_dict["license"] = "Villa"
 
 		elif state == "new_airplane":
