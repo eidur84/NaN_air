@@ -236,6 +236,12 @@ class BLLayer:
 				attribute_dict["ID"] = "Villa"
 
 		elif state == "new_rtrip":
+			departure = dt.datetime.strptime(attribute_dict["departure"], "%Y-%m-%dT%H:%M:%S")
+			arrival_at_dest = dt.datetime.strptime(attribute_dict["arrival"], "%Y-%m-%dT%H:%M:%S")
+
+			# Time when landing back home
+			arrival = departure + 2 * (arrival_at_dest - departure) + dt.timedelta(hours=1)
+
 			dest_id_list = DBLayer.generic_search("Destinations.csv", "valid", "True", result_column="ID")
 			if attribute_dict["arrivingAt"] not in dest_id_list or attribute_dict["arrivingAt"] == "KEF":
 				attribute_dict["arrivingAt"] = "Villa"
@@ -245,9 +251,9 @@ class BLLayer:
 				attribute_dict["aircraft_name"] = "Villa"
 
 			else:
-				pass
-
-			departure = dt.datetime.strptime(attribute_dict["departure"], "%Y-%m-%dT%H:%M:%S")
+				airplane_available = BLLayer.available_airplane_check(attribute_dict["aircraft_name"], departure, arrival)
+				if not airplane_available:
+					attribute_dict["aircraft_name"] = "Villa"
 
 			runway_empty = BLLayer.runway_check(departure)
 			if not runway_empty:
@@ -257,10 +263,52 @@ class BLLayer:
 		return instance
 
 	@staticmethod
-	def available_airplane_check(departure, airplane):
+	def available_airplane_check(airplane, departure_time, arrival_time):
+		"""
+		Checks if airplane is in use in another flight at same time as newly created flight.
+		Args:
+			airplane: airplane name
+			departure_time: datetime for when departing from KEF
+			arrival_time: datetime for when arriving back in KEF
+		"""
 
-		departures_on_date = 0
-		
+		day_of = departure_time.isoformat()[0:10]
+		day_before = (departure_time - dt.timedelta(days=1)).isoformat()[0:10]
+
+		departures_on_date = [ ]
+		departures_on_date.append(Read.departures_on_date(day_of))
+		departures_on_date.append(Read.departures_on_date(day_before))
+
+		same_airplane_rtrips = [ ]
+		for dep in departures_on_date:
+			if dep.get_attributes()["aircraft_name"] == airplane:
+				ret = BLLayer.create_returnflight(dep, instant_write=False, make_serial=False)
+				rtrip = RTrip(dep, ret)
+				same_airplane_rtrips.append(rtrip)
+
+		no_overlap = True
+
+		if len(same_airplane_rtrips) > 0:
+			for rtrip in same_airplane_rtrips:
+
+				# Get start and end of round trip
+				flight_start = dt.datetime.strptime(rtrip.flight_start(), "%Y-%m-%dT%H:%M:%S")
+				flight_end = dt.datetime.strptime(rtrip.flight_end(), "%Y-%m-%dT%H:%M:%S")
+
+				# If round trip starts more than an hour after the airplane has arrived, no overlap
+				if flight_start > arrival_time + dt.timedelta(hours=1):
+					no_overlap = True
+
+				# If round trip ends more than an hour before the flight, no overlap
+				elif flight_end + dt.timedelta(hours=1) < departure_time:
+					no_overlap = True
+
+				else:
+					no_overlap = False
+					break
+
+		return no_overlap
+
 
 
 	@staticmethod

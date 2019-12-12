@@ -16,6 +16,12 @@ class RTrip:
 	def get_returnflight(self):
 		return self.__returnflight
 
+	def flight_start(self):
+		return self.__departure.get_attributes()["departure"]
+
+	def flight_end(self):
+		return self.__returnflight.get_attributes()["arrival"]
+
 	def display1(self, show_manned=True):
 		return self.__departure.short_display(show_manned)
 
