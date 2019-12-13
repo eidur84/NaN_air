@@ -9,12 +9,14 @@ Dagur 1, vika 1:
 
 Á degi eitt var byrjað á að fara yfir A kröfur í verkefnalýsingu og þær settar fram á skýran máta sem grunnvirknikröfur kerfisins. Gerð var stutt greining á þeim tveimur notendahópum sem koma til með að nota kerfið. Gerð voru notkunartilvik fyrir hverja grunnvirknikröfu sem sett var fram. Á mynd sést „to-do“ listi hópsins fyrir fyrstu viku námskeiðsins. Færslum verður síðan bætt við í listann eftir þörfum.
 Dagur 2, vika 1:
+
 Morgunfundur:
   
 
 Á morgunfundinum var ákveðið að byrja daginn á að fara saman yfir notkunartilvikin sett fram á fyrsta degi, til að meðlimir hópsins gætu samræmt hugmyndir sínar um virkni kerfisins. Helstu verkefni dagsins voru síðan að greina hvaða valmöguleikar væru notanda í boði á hverjum glugga og að gera stöðurit fyrir stöðu notanda innan forritsins (sem sýnir glugga innan forritsins).
 Myndin að ofan sýnir „to-do“ listann fyrir fyrstu vikuna við setningu morgunfundar á degi tvö.
 Bætt var við „Fara yfir notkunartilvik“ færslunni.
+
 Kvöldfundur: 
   
 
@@ -69,3 +71,124 @@ Hópurinn byrjaði á því að skrifa model klasa kerfisins og verður sú vinn
 
 
 Dagur 2, vika 2:
+
+Morgunfundur:
+  
+Í dag verða model klasarnir kláraðir og hafist handa við að skrifa klasana í database layer kerfisins. Einnig verða csv skrárnar (fengnar frá kennurum) aðlagaðar að forminu lýst í síðustu dagbókarfærslu.
+
+Kvöldfundur:
+  
+
+Ákveðið hvaða csv skrár þyrfti og hvaða dálkar væru í þeim og eftir það voru csv skrár frá kennurum aðlagaðar að því formi. Hér að neðan sést mynd af breyttri uppbyggingu csv skránna.
+  
+
+Í Destinations skránni er ID dálkurinn notaður sem Primary Key (einkvæmt auðkenni fyrir hverja færslu). ID-in eru á forminu “KEF” og “KUS” fyrir Keflavík og Kulusuk sem dæmi. Primary Key Rtrip (vinnuferðir) skránnar er flightID sem, til að byrja með, er serial tala (1, 2, 3, 4, 5,..) en verður seinna breytt á formið sem gefið er í B-kröfunum. Primary Key fyrir Staff er ssn þ.e. kennitala hvers starfsmanns. Primary Key Airplanes skránnar er einkvæmt nafn flugvélarinnar. Crew skráin heldur utan um stöðu hvers starfsmanns í hverju flugi með því að tengja saman flightID vinnuferðarinnar og ssn starfsmannsins auk stöðu þeirra í vinnuferðinni.
+
+
+Dagur 3, vika 2:
+
+Morgunfundur:
+  
+
+Í dag verður “CRUD” virkni database lagsins útfærð og model klasar kláraðir að mestu leyti. Eftir það verður gagnagrunnslag kerfisins tilbúið í meginatriðum og þá verður hægt að færa einbeitinguna yfir að hinum lögum kerfisins.
+
+Kvöldfundur:
+Verkefni dagsins voru kláruð að miklu leyti en á eftir að leggja lokahönd á þá (Round trips skjalið flækir CRUD virknina).
+
+
+Dagur 4, vika 2:
+
+Morgunfundur:
+
+
+Planið í dag er að reyna slípa samskipti milli layera og einfalda/samhæfa klasana í BLLayer þannig að allar CRUD methods í klösunum heiti það sama. Það er stefnt á að hefja vinnuna á UI layernum af fullum krafti í dag.
+
+
+Kvöldfundur:
+CRUD föllin í BLLayer klösunum orðin samhæfð sem auðveldar áframhaldandi vinnu í UI layernum. Fókusinn á UI layer næstu daga.
+
+
+Dagur 5, vika 2:
+
+Morgunfundur:
+
+
+Stefnt á að fullklára eitt path í UI layernum í dag. Nýskráning starfsmanns verður pathið sem við ætlum að byrja á. 
+
+Kvöldfundur:
+Gengur vel með UI, höldum áfram að vinna í því yfir helgina og mestri vinnunni ætti að vera lokið þegar við hittumst á mánudag. Við getum þá vonandi fókusað á að útfæra A kröfur.
+
+
+
+
+
+
+
+
+Dagur 1, vika 3:
+
+Morgunfundur:
+
+
+Það er að komast nokkuð góð mynd á hugbúnaðinn í heild, UI virknin er að mestu leyti útfærð og DB lagið líka. 
+
+
+Í dag er planið að skrifa check föll fyrir model klasana sem passa upp á að allar upplýsingar sem rata inn í kerfið í gegnum skráningarformin séu á réttu formi. Eins vantar að setja upp einhverja glugga í UI kerfinu sem eru útfærðir með txt fælum. Mögulega ef tími gefst til byrja að útfæra A kröfur eins og vaktaplan og annað sem vantar upp á.
+
+
+Kvöldfundur:
+Model klasarnir voru kláraðir í dag. Bættum við Date klasa sem heldur utan um dagsetningar og fall inn í BLLayer sem býr til lista yfir dagsetninar ár fram í tímann og skilar til UI. Ákveðnir hlutir varðandi skráningu fluga voru einnig lagaðir í dag. Planið er að halda áfram að vinna með dagsetningarnar og fullklára skráningarkerfi flugferða sem reiðir sig á paging í UI með dagsetningum. Næstu skref eru svo að skoða mönnun flugferða betur og útfæra allar A kröfur inn í hugbúnaðinn.
+
+
+Dagur 2, vika 3:
+
+Morgunfundur:
+
+
+Stefnt að því að koma Crew hlutanum í gagnið í dag þannig hægt sé að skrá áhöfn á vinnuferð ásamt því að koma inn dagatali sem vinnur með page-ernum til að hægt sé að endurtaka ákveðnar ferðir.
+
+
+Kvöldfundur:
+
+Crew hlutinn var kláraður í dag og virkni svo sem að sjá lausa starfsmenn og upptekna starfsmenn skrifaður inn í hugbúnaðinn. Mönnun vakta var gerð möguleg út frá lista af vinnuferðum. Næstu skref eru að útfæra vaktaplan einstaka starfsmanna og renna yfir 
+
+
+
+Dagur 3, vika 3:
+
+Morgunfundur:
+
+Stefnt að því að vinna að vaktaplani starfsmanns í dag og vinna með update backup function til að koma í veg fyrir að gögn tapist þegar skrifað er í csv skrá. Stór hluti A krafna er tilbúinn en einhverjar B kröfur vantar upp á. Eftir að vaktaplaninu er lokið er planið er renna yfir A og B kröfur og bera saman við núverandi virkni til að tryggja að engin virkni hafi gleymst eða virki ekki sem skildi. Undirbúningsvinna á skýrslu og myndbandi getur líka hafist í dag. 
+
+
+  
+
+Kvöldfundur:
+
+Backup functionið og vaktaplan starfsmanns klárað í dag. Ýmis smá atriði löguð, svo sem að sama flugvélin geti ekki verið  í tveimur flugum á sama tíma. Flestar A kröfur komnar og einhverjar B kröfur. Stefnt á að ráðast á það sem vantar upp á B kröfurnar, látum flugnúmerinn mæta afgangi þar sem það kallar á mikla endurskrifun á hugbúnaðinum.
+
+
+
+Dagur 4, vika 3:
+
+Morgunfundur:
+
+Ennþá einhverjar A og B kröfur eftir, og nokkrar hálfar A kröfur svo sem að koma í veg fyrir að nafni og kennitölu geti verið breytt eftir að starfsmaður er skráður. Stefnt á að reyna að klára flestar A og B kröfur fyrir skil. Í dag er planið að taka fyrir hvernig vinnuferðir eru listaðar sem þurfa að geta verið listaðir eftir degi og viku samkvæmt A kröfum. Skýrslan þarf líka helst að klárast í dag og mögulega vinna við vidjóið, í versta falli verður vídjóið sett saman á morgun.
+
+
+  
+ 
+Kvöldfundur:
+
+Skýrslan að mestu tilbúin, vantar að uppfæra klasarit lítillega og breyta og bæta við texta sem lýsir því hvaða breytingum forritið tók frá upphaflegri hönnun, vantar að bæta í upphafs- og lokaorð. Villuleit verður haldið áfram í kvöld en annars sjáum við ekki fram á að mikið meiru verði bætt við hugbúnaðinn. 
+
+
+Dagur 5, vika 3:
+
+Morgunfundur:
+
+Vinnan í dag snýst bara um að klára skýrsluna og taka upp vídeo. Við gerum ekki ráð fyrir að forrita meira þótt að það séu nokkrur kröfur hafi vantað upp á í B flokki. Ástæðan fyrir að við ætlum ekki að forrita meira er að þau atriði sem vantar upp á kosta of miklar breytingar og endurskrif á kóða.
+
+Kvöldfundur:
+
+Verkefnið gekk vel á heildina litið og við náðum að framkvæma hluti sem við vorum ekki endilega bjartsýnir á að ná er kemur að viðmótinu. Það vantaði upp á nokkrar B kröfur, en við ákváðum að rembast ekki við þær áfram og láta gott heita.
